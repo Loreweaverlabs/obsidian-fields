@@ -1,13 +1,17 @@
-// Pixel-art portrait generator: five hand-authored 64x64 busts -> public/portraits/*.png.
-// Zero-dependency PNG encoder (Node zlib). Regenerate with: npm run portraits
-// Art direction: dark parchment backgrounds, single left key light, 1px auto-outline,
-// distinct silhouettes per §6.3 briefs. Display with image-rendering: pixelated.
+// Pixel-art portrait generator: five chest-up PFP busts in the Forgotten Runes Warriors
+// Guild idiom -> public/portraits/*.png. Regenerate with: npm run portraits
+//
+// Style study (tokens 16/777/2500/4444/9999/13000 via forgottenrunes.com/api/art/warriors):
+//   50x50 canvas · near-black background with a faint hue · hard black outline ·
+//   flat 2-tone materials (no gradients, no dither) · one or two loud saturated hues
+//   per figure · gold trim accents · tiny high-contrast faces · pale rune glyph corner.
+// Ours are chest-up crops at the same logical resolution, displayed at 1x/2x integer scale.
 import { deflateSync } from 'node:zlib';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 // ---------------------------------------------------------------------------
-// PNG encoding
+// PNG encoding (zero-dep)
 // ---------------------------------------------------------------------------
 
 const CRC_TABLE = (() => {
@@ -32,8 +36,7 @@ function chunk(type: string, data: Uint8Array): Uint8Array {
   dv.setUint32(0, data.length);
   for (let i = 0; i < 4; i++) out[4 + i] = type.charCodeAt(i);
   out.set(data, 8);
-  const crcBuf = out.subarray(4, 8 + data.length);
-  dv.setUint32(8 + data.length, crc32(crcBuf));
+  dv.setUint32(8 + data.length, crc32(out.subarray(4, 8 + data.length)));
   return out;
 }
 
@@ -43,53 +46,48 @@ function encodePng(w: number, h: number, rgba: Uint8Array): Uint8Array {
   const dv = new DataView(ihdr.buffer);
   dv.setUint32(0, w);
   dv.setUint32(4, h);
-  ihdr[8] = 8; // bit depth
-  ihdr[9] = 6; // RGBA
+  ihdr[8] = 8;
+  ihdr[9] = 6;
   const raw = new Uint8Array(h * (1 + w * 4));
   for (let y = 0; y < h; y++) {
-    raw[y * (1 + w * 4)] = 0; // filter: none
+    raw[y * (1 + w * 4)] = 0;
     raw.set(rgba.subarray(y * w * 4, (y + 1) * w * 4), y * (1 + w * 4) + 1);
   }
   const idat = new Uint8Array(deflateSync(raw, { level: 9 }));
-  return new Uint8Array([
-    ...sig,
-    ...chunk('IHDR', ihdr),
-    ...chunk('IDAT', idat),
-    ...chunk('IEND', new Uint8Array(0)),
-  ]);
+  return new Uint8Array([...sig, ...chunk('IHDR', ihdr), ...chunk('IDAT', idat), ...chunk('IEND', new Uint8Array(0))]);
 }
 
 // ---------------------------------------------------------------------------
 // Pixel toolkit
 // ---------------------------------------------------------------------------
 
-const W = 64;
-const H = 64;
+const W = 50;
+const H = 50;
 
 type Hex = string;
-
-function hex(c: Hex): [number, number, number] {
-  return [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)];
-}
+const hex = (c: Hex): [number, number, number] => [
+  parseInt(c.slice(1, 3), 16),
+  parseInt(c.slice(3, 5), 16),
+  parseInt(c.slice(5, 7), 16),
+];
 
 class Px {
-  buf = new Uint8Array(W * H); // palette indexes
+  buf = new Uint8Array(W * H);
   pal: [number, number, number][] = [];
   names = new Map<string, number>();
   bgSet = new Set<number>();
 
-  color(name: string, c: Hex, isBg = false): number {
-    if (this.names.has(name)) return this.names.get(name)!;
+  color(name: string, c: Hex, isBg = false): void {
+    if (this.names.has(name)) return;
     const idx = this.pal.length;
     this.pal.push(hex(c));
     this.names.set(name, idx);
     if (isBg) this.bgSet.add(idx);
-    return idx;
   }
   n(name: string): number {
-    const idx = this.names.get(name);
-    if (idx === undefined) throw new Error(`unknown color ${name}`);
-    return idx;
+    const i = this.names.get(name);
+    if (i === undefined) throw new Error(`unknown color ${name}`);
+    return i;
   }
   set(x: number, y: number, name: string): void {
     if (x < 0 || y < 0 || x >= W || y >= H) return;
@@ -107,21 +105,8 @@ class Px {
   vline(x: number, y0: number, y1: number, name: string): void {
     for (let y = y0; y <= y1; y++) this.set(x, y, name);
   }
-  disc(cx: number, cy: number, rx: number, ry: number, name: string): void {
-    for (let y = Math.floor(cy - ry); y <= cy + ry; y++)
-      for (let x = Math.floor(cx - rx); x <= cx + rx; x++) {
-        const dx = (x - cx) / rx;
-        const dy = (y - cy) / ry;
-        if (dx * dx + dy * dy <= 1) this.set(x, y, name);
-      }
-  }
-  /** rows: array of [y, x0, x1] runs */
   runs(rows: [number, number, number][], name: string): void {
     for (const [y, x0, x1] of rows) this.hline(x0, x1, y, name);
-  }
-  dither(x: number, y: number, w: number, h: number, a: string, b: string): void {
-    for (let j = y; j < y + h; j++)
-      for (let i = x; i < x + w; i++) this.set(i, j, (i + j) % 2 === 0 ? a : b);
   }
   /** replace color a with b inside a rect region */
   swap(x: number, y: number, w: number, h: number, a: string, b: string): void {
@@ -132,26 +117,18 @@ class Px {
         if (this.buf[j * W + i] === ai) this.buf[j * W + i] = this.n(b);
       }
   }
-  /** darken background pixels adjacent to figure pixels — the classic 1px sprite outline */
+  /** classic 1px black sprite outline over background */
   autoOutline(name: string): void {
     const o = this.n(name);
     const src = this.buf.slice();
-    const isBg = (v: number) => this.bgSet.has(v) || v === o;
+    const isBgLike = (v: number) => this.bgSet.has(v) || v === o;
     for (let y = 0; y < H; y++)
       for (let x = 0; x < W; x++) {
-        const v = src[y * W + x];
-        if (!this.bgSet.has(v)) continue;
-        const nb = [
+        if (!this.bgSet.has(src[y * W + x])) continue;
+        const touchesFigure = [
           [x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1],
-        ].some(([i, j]) => i >= 0 && j >= 0 && i < W && j < H && !isBg(src[j * W + i]));
-        if (nb) this.buf[y * W + x] = o;
-      }
-  }
-  vignette(dark: string): void {
-    for (let y = 0; y < H; y++)
-      for (let x = 0; x < W; x++) {
-        const d = Math.hypot(x - 32, y - 30);
-        if (d > 34 && this.bgSet.has(this.buf[y * W + x])) this.buf[y * W + x] = this.n(dark);
+        ].some(([i, j]) => i >= 0 && j >= 0 && i < W && j < H && !isBgLike(src[j * W + i]));
+        if (touchesFigure) this.buf[y * W + x] = o;
       }
   }
   png(): Uint8Array {
@@ -167,135 +144,136 @@ class Px {
   }
 }
 
-interface SkinTones {
+interface Tones {
   skin: Hex;
   shade: Hex;
-  dark: Hex;
-  light: Hex;
 }
 
-function base(glow: Hex, tones: SkinTones): Px {
+/** FRWC-style base: flat hued near-black bg + shared face colors. */
+function base(bg: Hex, tones: Tones): Px {
   const p = new Px();
-  p.color('bg', '#241d13', true);
-  p.color('bgDark', '#191510', true);
-  p.color('glow', glow, true);
-  p.color('outline', '#0c0a07');
+  p.color('bg', bg, true);
+  p.color('outline', '#06060a');
   p.color('skin', tones.skin);
   p.color('shade', tones.shade);
-  p.color('dark', tones.dark);
-  p.color('light', tones.light);
-  p.color('white', '#e8e2d0');
-  p.color('ink', '#1a140e');
+  p.color('rune', '#c9d6c4'); // the pale glyph mint used on warrior tokens
+  p.color('white', '#ede8d8');
+  p.color('ink', '#14101c');
   p.rect(0, 0, W, H, 'bg');
-  p.disc(32, 26, 26, 24, 'glow');
-  p.vignette('bgDark');
   return p;
 }
 
-/** Shared face core: neck, head block, right-side shading, ears. Characters reshape after. */
-function headCore(p: Px, opts: { jawY: number; headW: number; earY: number; ears?: boolean }): void {
-  const { jawY, headW, earY } = opts;
-  // neck + trap shadow
-  p.rect(28, jawY - 2, 9, 10, 'skin');
-  p.swap(28, jawY - 2, 9, 10, 'skin', 'shade');
-  p.rect(29, jawY - 2, 6, 9, 'skin');
-  // skull
-  p.disc(32, 20, headW, 12, 'skin');
-  // cheeks->jaw taper
-  p.rect(32 - headW + 2, 24, headW * 2 - 4, jawY - 24, 'skin');
-  p.hline(32 - headW + 4, 32 + headW - 5, jawY, 'skin');
-  p.hline(32 - headW + 6, 32 + headW - 7, jawY + 1, 'skin');
-  p.hline(30, 35, jawY + 2, 'skin'); // chin
-  // key light from the left: shade the right third of the face
-  for (let y = 9; y <= jawY + 2; y++)
-    for (let x = 32 + Math.floor(headW * 0.45); x <= 32 + headW; x++) {
-      if (p.get(x, y) === p.n('skin')) p.set(x, y, 'shade');
-    }
-  // under-jaw AO
-  p.hline(29, 36, jawY + 3, 'shade');
-  if (opts.ears !== false) {
-    p.rect(32 - headW - 1, earY, 2, 4, 'skin');
-    p.rect(32 + headW - 1, earY, 2, 4, 'shade');
-    p.set(32 - headW, earY + 2, 'shade');
-  }
+/**
+ * Chest-up head block, FRWC proportions: wide flat face, hard side-shadow band,
+ * 2px eyes under a 1px brow line, 2px mouth. Head spans roughly x17..x33, crown y6, chin y26.
+ */
+function head(p: Px, opts: { crown?: number; chin?: number; wide?: number }): { crown: number; chin: number; l: number; r: number } {
+  const crown = opts.crown ?? 7;
+  const chin = opts.chin ?? 26;
+  const wide = opts.wide ?? 8; // half-width
+  const l = 25 - wide;
+  const r = 25 + wide;
+  // skull: flat-topped, slight rounding at crown and jaw (chunky, not oval)
+  p.rect(l + 1, crown, wide * 2 - 1, chin - crown, 'skin');
+  p.rect(l, crown + 2, wide * 2 + 1, chin - crown - 4, 'skin');
+  p.hline(l + 2, r - 3, chin, 'skin');
+  p.hline(l + 3, r - 4, chin + 1, 'skin'); // chin
+  // flat right shadow band (key light left) — one hard-edged tone, warrior-style
+  p.rect(r - 3, crown + 1, 4, chin - crown, 'shade');
+  p.hline(l + 3, r - 4, chin + 1, 'skin');
+  p.rect(r - 4, chin, 2, 2, 'shade');
+  // neck
+  p.rect(22, chin + 1, 7, 4, 'skin');
+  p.rect(27, chin + 1, 2, 4, 'shade');
+  return { crown, chin, l, r };
 }
 
-function eyes(
+function face(
   p: Px,
-  y: number,
-  opts: { lx?: number; rx?: number; browTilt?: 'level' | 'in' | 'sad'; narrow?: boolean; browC?: string; whites?: boolean },
+  opts: {
+    eyeY: number;
+    style?: 'dots' | 'narrow' | 'zeal';
+    browC?: string;
+    mouth?: 'flat' | 'smirkL' | 'smirkR' | 'grim' | 'small';
+    mouthY?: number;
+  },
 ): void {
-  const lx = opts.lx ?? 27;
-  const rx = opts.rx ?? 36;
-  const browC = opts.browC ?? 'dark';
-  for (const [x, shadeName] of [
-    [lx, 'skin'],
-    [rx, 'shade'],
-  ] as const) {
-    // socket
-    p.hline(x - 1, x + 2, y - 1, shadeName === 'skin' ? 'shade' : 'dark');
-    if (!opts.narrow && opts.whites !== false) {
-      p.set(x, y, 'white');
-      p.set(x + 1, y, 'ink');
-    } else if (opts.narrow) {
-      p.hline(x, x + 1, y, 'ink');
-    } else {
-      p.set(x, y, 'ink');
-      p.set(x + 1, y, 'ink');
-    }
-  }
-  // brows
-  const tilt = opts.browTilt ?? 'level';
-  if (tilt === 'level') {
-    p.hline(lx - 1, lx + 2, y - 2, browC);
-    p.hline(rx - 1, rx + 2, y - 2, browC);
-  } else if (tilt === 'in') {
-    p.hline(lx - 1, lx + 2, y - 2, browC);
-    p.set(lx + 2, y - 1, browC);
-    p.hline(rx - 1, rx + 2, y - 2, browC);
-    p.set(rx - 1, y - 1, browC);
+  const y = opts.eyeY;
+  const browC = opts.browC ?? 'ink';
+  // brows: single bold line, warrior-style
+  p.hline(19, 22, y - 2, browC);
+  p.hline(27, 30, y - 2, browC);
+  if (opts.style === 'narrow') {
+    p.hline(19, 21, y, 'ink');
+    p.hline(28, 30, y, 'ink');
+  } else if (opts.style === 'zeal') {
+    p.set(19, y, 'white');
+    p.set(20, y, 'ink');
+    p.set(21, y, 'white');
+    p.set(28, y, 'white');
+    p.set(29, y, 'ink');
+    p.set(30, y, 'white');
   } else {
-    p.set(lx - 1, y - 1, browC);
-    p.hline(lx, lx + 2, y - 2, browC);
-    p.hline(rx - 1, rx + 1, y - 2, browC);
-    p.set(rx + 2, y - 1, browC);
+    p.rect(20, y, 2, 2, 'ink');
+    p.rect(28, y, 2, 2, 'ink');
+  }
+  // nose: one shadow notch only (tokens mostly skip noses)
+  p.set(25, y + 4, 'shade');
+  const my = opts.mouthY ?? y + 7;
+  if (opts.mouth === 'smirkR') {
+    p.hline(23, 27, my, 'ink');
+    p.set(28, my - 1, 'ink');
+  } else if (opts.mouth === 'smirkL') {
+    p.hline(23, 27, my, 'ink');
+    p.set(22, my - 1, 'ink');
+  } else if (opts.mouth === 'grim') {
+    p.hline(22, 28, my, 'ink');
+  } else if (opts.mouth === 'small') {
+    p.hline(24, 26, my, 'ink');
+  } else {
+    p.hline(23, 27, my, 'ink');
   }
 }
 
-function nose(p: Px, y0: number, y1: number): void {
-  p.vline(33, y0, y1, 'shade');
-  p.set(34, y1, 'shade');
-  p.set(32, y1, 'light');
-}
-
-function mouth(p: Px, y: number, kind: 'flat' | 'smirkL' | 'smirkR' | 'grim' | 'pursed'): void {
-  if (kind === 'flat') p.hline(29, 34, y, 'dark');
-  if (kind === 'grim') {
-    p.hline(29, 35, y, 'dark');
-    p.hline(30, 34, y + 1, 'shade');
-  }
-  if (kind === 'smirkL') {
-    p.hline(29, 34, y, 'dark');
-    p.set(28, y - 1, 'dark');
-  }
-  if (kind === 'smirkR') {
-    p.hline(29, 34, y, 'dark');
-    p.set(35, y - 1, 'dark');
-  }
-  if (kind === 'pursed') {
-    p.hline(30, 33, y, 'dark');
-    p.set(29, y, 'shade');
-    p.set(34, y, 'shade');
-  }
-  p.hline(30, 33, y + 1, kind === 'grim' ? 'dark' : 'light'); // lower lip light
-}
-
-/** Shoulders: trapezoid from yTop widening to bottom in garment base color. */
-function shoulders(p: Px, yTop: number, name: string, halfTop = 12, halfBot = 26): void {
-  for (let y = yTop; y < H; y++) {
-    const t = (y - yTop) / (H - yTop);
-    const half = Math.round(halfTop + (halfBot - halfTop) * Math.min(1, t * 1.6));
-    p.hline(32 - half, 32 + half, y, name);
+/** Rune glyph, top-left corner — every warrior token carries one. 5x7-ish, pale mint. */
+function rune(p: Px, kind: 'anvil' | 'ember' | 'key' | 'sun' | 'coin'): void {
+  const g = 'rune';
+  if (kind === 'anvil') {
+    p.hline(5, 9, 6, g);
+    p.hline(6, 8, 7, g);
+    p.vline(7, 8, 9, g);
+    p.hline(5, 9, 10, g);
+  } else if (kind === 'ember') {
+    p.set(7, 5, g);
+    p.set(6, 6, g);
+    p.set(8, 6, g);
+    p.vline(7, 6, 8, g);
+    p.set(5, 8, g);
+    p.set(9, 8, g);
+    p.hline(6, 8, 9, g);
+    p.set(7, 10, g);
+  } else if (kind === 'key') {
+    p.rect(5, 5, 3, 3, g);
+    p.set(6, 6, 'bg');
+    p.vline(6, 8, 11, g);
+    p.set(7, 9, g);
+    p.set(7, 11, g);
+  } else if (kind === 'sun') {
+    p.rect(6, 6, 3, 3, g);
+    p.set(7, 4, g);
+    p.set(7, 10, g);
+    p.set(4, 7, g);
+    p.set(10, 7, g);
+    p.set(5, 5, g);
+    p.set(9, 5, g);
+    p.set(5, 9, g);
+    p.set(9, 9, g);
+  } else {
+    p.rect(5, 6, 4, 4, g);
+    p.set(6, 7, 'bg');
+    p.set(7, 8, 'bg');
+    p.set(9, 5, g);
+    p.set(4, 10, g);
   }
 }
 
@@ -309,322 +287,282 @@ function save(name: string, p: Px): void {
 }
 
 // ---------------------------------------------------------------------------
-// SERAH the Anvil — steel-grey crop, scarred brow, gorget & pauldrons, level stare
+// SERAH the Anvil — steel-grey crop, brow scar, plate + gold trim, company sash
 // ---------------------------------------------------------------------------
 {
-  const p = base('#2a251c', { skin: '#c09468', shade: '#93694a', dark: '#684732', light: '#dcb488' });
-  p.color('steel', '#525c68');
-  p.color('steelD', '#333a44');
-  p.color('steelL', '#8b98a6');
-  p.color('steelXL', '#c2ccd6');
-  p.color('leather', '#5c4630');
-  p.color('sash', '#7e3025');
-  p.color('hairG', '#9aa0a2');
-  p.color('hairGD', '#6d7375');
-  p.color('hairGL', '#c5cbcd');
-  p.color('scar', '#a4705a');
+  const p = base('#10101c', { skin: '#d29a6c', shade: '#a06a48' });
+  p.color('steel', '#8e9aa8');
+  p.color('steelD', '#5a6474');
+  p.color('steelL', '#c6d0da');
+  p.color('gold', '#e8a832');
+  p.color('goldD', '#a87418');
+  p.color('sash', '#c03a2c');
+  p.color('sashD', '#8a2418');
+  p.color('hair', '#a8a49c');
+  p.color('hairD', '#6e6a64');
 
-  shoulders(p, 44, 'steelD');
-  // pauldron plates
-  p.runs([[46, 10, 24], [47, 9, 25], [48, 8, 26], [50, 8, 26], [52, 9, 27], [55, 10, 28]], 'steel');
-  p.runs([[46, 40, 54], [47, 39, 55], [48, 38, 56], [50, 38, 56], [52, 37, 55], [55, 36, 54]], 'steel');
-  p.swap(38, 44, 26, 20, 'steel', 'steelD'); // shade right pauldron back down
-  p.runs([[47, 10, 20], [51, 9, 21], [56, 11, 23]], 'steelL'); // plate edges, lit side
+  // torso: steel breastplate, flat 2-tone with gold trim line
+  p.rect(12, 34, 27, 16, 'steel');
+  p.rect(29, 34, 10, 16, 'steelD');
+  p.rect(14, 33, 23, 1, 'steel');
+  // pauldrons: big chunky slabs
+  p.runs([[33, 9, 17], [34, 8, 18], [35, 8, 18], [36, 8, 18], [37, 9, 17], [38, 10, 16]], 'steel');
+  p.runs([[33, 33, 41], [34, 32, 42], [35, 32, 42], [36, 32, 42], [37, 33, 41], [38, 34, 40]], 'steelD');
+  p.hline(9, 15, 33, 'steelL');
+  p.hline(8, 12, 34, 'steelL');
+  // gold trim across the chest + collar rivets
+  p.hline(15, 35, 40, 'gold');
+  p.hline(15, 35, 41, 'goldD');
+  p.set(17, 44, 'gold');
+  p.set(33, 44, 'gold');
+  // company sash, over one shoulder
+  p.runs([[34, 30, 34], [35, 29, 34], [36, 28, 33], [38, 26, 31], [40, 24, 29], [42, 22, 27], [44, 20, 25], [46, 19, 24], [48, 18, 23]], 'sash');
+  p.runs([[37, 27, 32], [39, 25, 30], [41, 23, 28], [43, 21, 26], [45, 20, 25], [47, 18, 24], [49, 18, 23]], 'sashD');
   // gorget
-  p.runs([[44, 26, 38], [45, 25, 39], [46, 25, 39], [47, 26, 38]], 'steel');
-  p.hline(26, 36, 44, 'steelL');
-  p.set(27, 45, 'steelXL');
-  // sash knot at left shoulder
-  p.rect(22, 47, 5, 4, 'sash');
-  p.set(23, 51, 'sash');
+  p.rect(20, 31, 11, 3, 'steelD');
+  p.hline(20, 30, 31, 'steelL');
 
-  headCore(p, { jawY: 33, headW: 10, earY: 22 });
-  // strong jaw
-  p.hline(26, 39, 31, 'skin');
-  p.swap(37, 26, 5, 8, 'skin', 'shade');
-  // cropped grey hair — spiky top line
-  p.runs([[8, 27, 36], [9, 25, 39], [10, 24, 40], [11, 23, 41], [12, 23, 42], [13, 22, 42], [14, 22, 42]], 'hairG');
-  for (let x = 23; x <= 41; x += 3) p.set(x, 7 + (x % 2), 'hairG'); // spiky crop
-  p.swap(33, 7, 11, 9, 'hairG', 'hairGD');
-  p.hline(23, 30, 9, 'hairGL');
-  p.runs([[15, 22, 24], [16, 22, 23], [17, 22, 23], [18, 22, 22]], 'hairG'); // temple left
-  p.runs([[15, 40, 42], [16, 41, 42], [17, 41, 42], [18, 42, 42]], 'hairGD'); // temple right
-  eyes(p, 22, { browTilt: 'level', browC: 'hairGD' });
-  nose(p, 24, 28);
-  mouth(p, 31, 'grim');
-  // the scar: brow through cheek, left side
-  p.set(26, 18, 'scar');
-  p.set(26, 19, 'scar');
-  p.set(27, 21, 'scar');
-  p.set(27, 24, 'scar');
-  p.set(28, 26, 'scar');
-  // weathering
-  p.set(29, 28, 'shade');
-  p.set(36, 28, 'dark');
-  p.hline(28, 30, 34, 'shade'); // set jaw line
+  const h = head(p, { crown: 8, chin: 26, wide: 8 });
+  // cropped grey hair: chunky crop with a notched top edge — hair, not helmet
+  p.rect(h.l, h.crown - 2, 17, 4, 'hair');
+  for (let x = h.l; x <= h.r; x += 3) p.set(x, h.crown - 3, 'hair'); // notched crop top
+  p.set(h.l + 4, h.crown - 3, 'hair');
+  p.runs([[h.crown + 2, h.l, h.l + 2], [h.crown + 2, h.r - 3, h.r], [h.crown + 3, h.l, h.l + 1], [h.crown + 3, h.r - 2, h.r], [h.crown + 4, h.l, h.l], [h.crown + 4, h.r - 1, h.r]], 'hair');
+  p.swap(25, h.crown - 3, 10, 7, 'hair', 'hairD');
+  p.hline(h.l + 1, 22, h.crown - 2, 'white'); // silver streak, one row only
+  face(p, { eyeY: 16, style: 'dots', mouth: 'grim', mouthY: 23 });
+  // the scar: hard light notch through left brow to cheek
+  p.set(20, 13, 'shade');
+  p.vline(20, 14, 15, 'white');
+  p.set(20, 18, 'white');
+  p.set(21, 19, 'shade');
+  rune(p, 'anvil');
   save('serah', p);
 }
 
 // ---------------------------------------------------------------------------
-// KAEL the Ember — dark auburn swept hair, ember scarf, half-smirk, a glint
+// KAEL the Ember — swept auburn hair, ember scarf, leather + gold clasp, smirk
 // ---------------------------------------------------------------------------
 {
-  const p = base('#2c2015', { skin: '#c89b6d', shade: '#9a6f4c', dark: '#6f4b34', light: '#e6c091 '.trim() as Hex });
-  p.color('hair', '#5a3323');
-  p.color('hairD', '#3c2117');
-  p.color('hairL', '#8a5233');
-  p.color('scarf', '#a33c2e');
-  p.color('scarfD', '#6f271e');
-  p.color('scarfL', '#cf6a4f');
-  p.color('jerkin', '#4f3a28');
-  p.color('jerkinD', '#37281b');
-  p.color('jerkinL', '#6f5439');
-  p.color('buckle', '#c9a23f');
+  const p = base('#170d0c', { skin: '#d8a276', shade: '#a87050' });
+  p.color('hair', '#7c3a20');
+  p.color('hairD', '#521f10');
+  p.color('hairL', '#b06034');
+  p.color('scarf', '#e04824');
+  p.color('scarfD', '#9c2814');
+  p.color('scarfL', '#ff7c3c');
+  p.color('leather', '#6a4a2e');
+  p.color('leatherD', '#48301c');
+  p.color('gold', '#e8a832');
 
-  shoulders(p, 44, 'jerkinD');
-  p.runs([[44, 22, 42], [45, 20, 44], [46, 18, 46], [47, 17, 47]], 'jerkin');
-  p.swap(34, 44, 14, 20, 'jerkin', 'jerkinD');
-  p.vline(21, 46, 63, 'jerkinL'); // lit seam
-  // scarf: one solid wrap high on the neck, tail a connected band over the right shoulder
-  p.runs([[39, 27, 37], [40, 25, 39], [41, 24, 40], [42, 24, 41], [43, 25, 42], [44, 26, 42]], 'scarf');
-  for (let i = 0; i < 11; i++) {
-    const y = 45 + i;
-    const x = 37 + Math.floor(i * 0.8);
-    p.hline(x, x + 4 - Math.floor(i / 5), y, 'scarf');
-  }
-  p.swap(34, 39, 16, 24, 'scarf', 'scarfD');
-  p.hline(25, 33, 40, 'scarfL');
-  p.hline(24, 30, 42, 'scarfL');
-  p.set(38, 46, 'scarfL');
-  p.set(40, 49, 'scarfL');
-  p.set(25, 43, 'buckle');
+  // leather jerkin
+  p.rect(13, 36, 25, 14, 'leather');
+  p.rect(28, 36, 10, 14, 'leatherD');
+  p.runs([[34, 12, 20], [35, 11, 21], [36, 12, 22]], 'leather');
+  p.runs([[34, 30, 38], [35, 29, 39], [36, 28, 39]], 'leatherD');
+  // strap across chest
+  for (let i = 0; i < 12; i++) p.set(16 + i, 49 - i, 'leatherD');
+  // the ember scarf: big flat wrap + wind-caught tail (their loud-hue move)
+  p.runs([[30, 20, 31], [31, 18, 32], [32, 17, 33], [33, 17, 34], [34, 18, 33], [35, 20, 30]], 'scarf');
+  p.runs([[31, 29, 32], [32, 29, 33], [33, 30, 34], [34, 29, 33]], 'scarfD');
+  p.hline(18, 25, 31, 'scarfL');
+  // tail flying to the right
+  p.runs([[33, 35, 40], [34, 36, 43], [35, 38, 46], [36, 40, 44], [37, 42, 47], [38, 44, 47]], 'scarf');
+  p.runs([[36, 44, 46], [37, 45, 47], [39, 45, 47], [40, 46, 47]], 'scarfD');
+  p.set(41, 34, 'scarfL');
+  p.set(46, 35, 'scarfL');
+  p.set(19, 33, 'gold'); // clasp
 
-  headCore(p, { jawY: 32, headW: 9, earY: 22 });
-  // narrower young jaw
-  p.hline(28, 36, 33, 'skin');
-  p.hline(30, 34, 34, 'shade');
-  // swept-back hair with a falling strand
-  p.runs(
-    [
-      [6, 27, 37], [7, 25, 40], [8, 24, 42], [9, 23, 43], [10, 23, 44], [11, 22, 44],
-      [12, 22, 44], [13, 22, 43], [14, 22, 27], [14, 39, 43], [15, 22, 25], [15, 41, 43],
-      [16, 22, 24], [16, 41, 43], [17, 22, 23], [17, 42, 43], [18, 42, 43],
-    ],
-    'hair',
-  );
-  p.swap(33, 5, 12, 10, 'hair', 'hairD');
-  p.runs([[7, 26, 33], [8, 25, 30]], 'hairL'); // swept sheen
-  // loose strand over brow, right
-  p.vline(38, 13, 16, 'hair');
-  p.set(39, 15, 'hairD');
-  eyes(p, 22, { browTilt: 'in', browC: 'hairD' });
-  p.set(28, 22, 'white'); // the glint
-  nose(p, 24, 27);
-  mouth(p, 30, 'smirkR');
-  p.set(36, 29, 'shade'); // smirk crease
+  const h = head(p, { crown: 8, chin: 25, wide: 8 });
+  // swept-back hair: tall flame-flick silhouette, warrior hard edges
+  p.rect(h.l, h.crown - 3, 17, 5, 'hair');
+  p.runs([[h.crown - 4, h.l + 3, h.r - 6], [h.crown - 5, h.l + 5, h.r - 9]], 'hair');
+  p.runs([[h.crown - 4, h.r - 5, h.r - 2], [h.crown - 3, h.r - 1, h.r + 1], [h.crown - 2, h.r + 1, h.r + 1]], 'hair'); // wind flick
+  p.runs([[h.crown + 2, h.l, h.l + 1], [h.crown + 3, h.l, h.l], [h.crown + 2, h.r - 1, h.r + 1], [h.crown + 3, h.r, h.r + 1], [h.crown + 4, h.r, h.r + 1]], 'hair'); // temples
+  p.swap(26, h.crown - 5, 12, 9, 'hair', 'hairD');
+  p.hline(h.l + 2, 24, h.crown - 3, 'hairL'); // sheen
+  p.set(22, h.crown + 1, 'hairL');
+  // one loose strand over the brow
+  p.vline(30, h.crown + 3, h.crown + 5, 'hairD');
+  face(p, { eyeY: 16, style: 'dots', mouth: 'smirkR', mouthY: 22, browC: 'hairD' });
+  p.hline(19, 22, 14, 'hairD'); // cocked left brow, one px higher
+  p.hline(19, 22, 15, 'skin');
+  rune(p, 'ember');
   save('kael', p);
 }
 
 // ---------------------------------------------------------------------------
-// MOTHER ROOKE the Ledger — moss hood, pale coif, heavy-lidded eyes, iron key
+// MOTHER ROOKE the Ledger — moss hood, cream coif, round face, the iron key
 // ---------------------------------------------------------------------------
 {
-  const p = base('#232418', { skin: '#c9a98a', shade: '#9c7c61', dark: '#6f5443', light: '#e5cbae' });
-  p.color('hood', '#48583b');
-  p.color('hoodD', '#2f3b27');
-  p.color('hoodL', '#69805a');
-  p.color('coif', '#cfc6ae');
-  p.color('coifD', '#a29a82');
-  p.color('robe', '#3a4030');
-  p.color('robeD', '#282d21');
-  p.color('iron', '#7d8288');
-  p.color('ironD', '#4c5055');
-  p.color('cord', '#5c4630');
+  const p = base('#0c120d', { skin: '#d8b28c', shade: '#a8805c' });
+  p.color('hood', '#5c7a3c');
+  p.color('hoodD', '#3a5426');
+  p.color('hoodL', '#84a45c');
+  p.color('coif', '#e4dcc4');
+  p.color('coifD', '#b4ac90');
+  p.color('robe', '#474f38');
+  p.color('robeD', '#2f3524');
+  p.color('iron', '#9aa2ac');
+  p.color('ironD', '#5c646e');
+  p.color('cord', '#6a4a2e');
 
-  // robe: solid, softly widening
-  shoulders(p, 43, 'robe');
-  p.swap(34, 43, 16, 21, 'robe', 'robeD');
-  p.swap(10, 58, 44, 6, 'robe', 'robeD');
-  // hood: one solid silhouette — dome over the head flowing into the shoulders
-  p.disc(32, 16, 13, 12, 'hood');
-  for (let y = 16; y <= 46; y++) {
-    const t = (y - 16) / 30;
-    const half = Math.round(13 + t * 7);
-    p.hline(32 - half, 32 + half, y, 'hood');
-  }
-  p.swap(35, 4, 16, 44, 'hood', 'hoodD'); // right side in shadow
-  // hood highlight ridge, lit side
-  p.runs([[7, 28, 33], [8, 25, 30], [10, 22, 25], [13, 20, 22], [17, 19, 20], [22, 19, 19]], 'hoodL');
-  // face opening — smaller and rounder than the other casts
-  p.disc(32, 22, 8, 9, 'bg');
-  p.rect(26, 26, 13, 7, 'bg');
-  // coif: a warm cream ring framing the opening
-  for (let y = 13; y <= 33; y++)
-    for (let x = 22; x <= 42; x++) {
-      const dx = (x - 32) / 9;
-      const dy = (y - 22.5) / 10.5;
-      const dx2 = (x - 32) / 8;
-      const dy2 = (y - 22) / 9;
-      const inOuter = dx * dx + dy * dy <= 1;
-      const inInner = dx2 * dx2 + (y <= 31 ? dy2 * dy2 : 1.1) <= 1;
-      if (inOuter && !inInner && p.get(x, y) !== p.n('bg')) p.set(x, y, 'coif');
-    }
-  p.swap(35, 12, 8, 23, 'coif', 'coifD');
-  // the face: round, aged, knowing
-  p.disc(32, 23, 7, 8, 'skin');
-  p.rect(27, 27, 11, 4, 'skin');
-  p.hline(28, 36, 31, 'skin');
-  p.hline(30, 35, 32, 'skin'); // soft chin
-  for (let y = 15; y <= 32; y++)
-    for (let x = 35; x <= 40; x++) if (p.get(x, y) === p.n('skin')) p.set(x, y, 'shade');
-  p.hline(29, 34, 33, 'shade'); // under-chin
-  eyes(p, 22, { narrow: true, browTilt: 'level', browC: 'dark' });
-  p.hline(26, 28, 20, 'shade'); // heavy lids
-  p.hline(35, 37, 20, 'dark');
-  p.set(25, 23, 'shade'); // crow's feet
-  p.set(39, 23, 'dark');
-  nose(p, 24, 26);
-  mouth(p, 29, 'pursed');
-  p.set(27, 26, 'shade'); // cheek fullness
-  p.set(28, 27, 'light');
-  p.set(37, 26, 'dark');
-  p.hline(29, 30, 27, 'shade'); // smile line
-  // iron key on a cord, over the robe
-  p.vline(30, 44, 46, 'cord');
-  p.vline(34, 44, 46, 'cord');
-  p.rect(30, 47, 5, 3, 'iron');
-  p.set(32, 48, 'robeD'); // bow hole
-  p.vline(32, 50, 55, 'iron');
-  p.set(33, 52, 'iron');
-  p.set(33, 55, 'iron');
-  p.set(30, 47, 'ironD');
-  p.set(32, 56, 'ironD');
+  // robe
+  p.rect(12, 36, 27, 14, 'robe');
+  p.rect(28, 36, 11, 14, 'robeD');
+  // hood: one big chunky bell around the head, flat 2-tone
+  p.runs(
+    [
+      [4, 21, 29], [5, 19, 31], [6, 17, 33], [7, 16, 34], [8, 15, 35], [9, 14, 36],
+      [10, 14, 36], [11, 13, 37], [12, 13, 37], [13, 13, 37], [14, 12, 38], [15, 12, 38],
+      [16, 12, 38], [17, 12, 38], [18, 12, 38], [19, 12, 38], [20, 12, 38], [21, 12, 38],
+      [22, 12, 38], [23, 13, 38], [24, 13, 38], [25, 13, 38], [26, 14, 38], [27, 14, 38],
+      [28, 14, 38], [29, 15, 38], [30, 13, 39], [31, 12, 40], [32, 11, 40], [33, 10, 41],
+      [34, 10, 41], [35, 10, 41],
+    ],
+    'hood',
+  );
+  p.swap(29, 4, 13, 32, 'hood', 'hoodD');
+  p.vline(15, 8, 30, 'hoodL'); // lit ridge
+  p.vline(14, 12, 28, 'hoodL');
+  // face opening + coif ring — the cream band must READ under the hood
+  p.rect(18, 12, 15, 15, 'coif');
+  p.rect(19, 15, 13, 14, 'skin');
+  p.swap(28, 12, 6, 18, 'coif', 'coifD');
+  p.rect(20, 29, 11, 2, 'coif'); // chin band
+  p.swap(28, 29, 4, 2, 'coif', 'coifD');
+  p.hline(19, 27, 14, 'coif'); // forehead band, lit side
+  p.hline(28, 31, 14, 'coifD');
+  // round cheeks: widen mid-face by 1px each side
+  p.vline(18, 18, 24, 'skin');
+  p.vline(32, 18, 24, 'shade');
+  p.rect(29, 13, 3, 16, 'shade'); // face shadow band
+  face(p, { eyeY: 19, style: 'narrow', mouth: 'small', mouthY: 26 });
+  p.set(18, 22, 'shade'); // cheek crease
+  p.set(31, 22, 'shade');
+  p.hline(23, 27, 21, 'shade'); // under-eye line — she has seen your ledger
+  // the iron key, worn big on the chest (tokens love a big prop)
+  p.vline(24, 36, 38, 'cord');
+  p.vline(26, 36, 38, 'cord');
+  p.rect(22, 39, 7, 5, 'iron');
+  p.rect(24, 40, 3, 3, 'bg');
+  p.swap(22, 39, 7, 5, 'bg', 'robeD');
+  p.vline(25, 44, 48, 'iron');
+  p.hline(26, 27, 46, 'iron');
+  p.hline(26, 27, 48, 'iron');
+  p.swap(27, 39, 2, 10, 'iron', 'ironD');
+  rune(p, 'key');
   save('rooke', p);
 }
 
 // ---------------------------------------------------------------------------
-// BROTHER HALE of the Returning Sun — shaved head, gaunt zeal, sun-disc, mail
+// BROTHER HALE of the Returning Sun — shaved zealot, gold mantle, mail, sun-disc
 // ---------------------------------------------------------------------------
 {
-  const p = base('#2d2513', { skin: '#b98e62', shade: '#8c6344', dark: '#63432e', light: '#d9b184' });
-  p.color('mail', '#4a4f57');
-  p.color('mailD', '#33373d');
-  p.color('mailL', '#6e747e');
-  p.color('mantle', '#a8842c');
-  p.color('mantleD', '#7a5f1d');
-  p.color('mantleL', '#d0ab4a');
-  p.color('sun', '#e3b83f');
-  p.color('sunL', '#f4dc8a');
-  p.color('scarB', '#8c5340');
+  const p = base('#141008', { skin: '#c8905e', shade: '#96603c' });
+  p.color('mail', '#6e7686');
+  p.color('mailD', '#464c58');
+  p.color('mailL', '#9aa4b4');
+  p.color('mantle', '#e8a418');
+  p.color('mantleD', '#a86e0c');
+  p.color('mantleL', '#ffd45c');
+  p.color('sun', '#ffd45c');
+  p.color('sunD', '#e8a418');
 
-  shoulders(p, 44, 'mailD');
-  p.dither(14, 45, 36, 19, 'mail', 'mailD'); // ring mail texture
-  p.dither(16, 45, 10, 4, 'mailL', 'mail'); // lit rings, left
-  // mail collar so the neck reads armored, not bare
-  p.runs([[41, 28, 36], [42, 27, 37], [43, 26, 38]], 'mail');
-  p.dither(27, 42, 11, 2, 'mail', 'mailL');
-  // gold half-mantle: one SOLID drape over the left shoulder, with fold shading
-  for (let y = 44; y < H; y++) {
-    const t = (y - 44) / (H - 44);
-    const x0 = 10 + Math.round(t * 3);
-    const x1 = 31 - Math.round(t * 4);
-    p.hline(x0, x1, y, 'mantle');
-  }
-  p.swap(22, 44, 10, 20, 'mantle', 'mantleD'); // inner edge falls to shadow
-  p.vline(15, 46, 62, 'mantleD'); // fold
-  p.vline(19, 45, 63, 'mantleD'); // fold
-  p.vline(11, 46, 61, 'mantleL'); // lit rim
-  p.hline(11, 27, 44, 'mantleL'); // shoulder hem
-  p.hline(12, 24, 45, 'mantle');
-  // sun-disc pendant on the mail
-  p.disc(38, 52, 3, 3, 'sun');
-  p.set(37, 51, 'sunL');
-  for (const [dx, dy] of [[0, -5], [0, 5], [-5, 0], [5, 0], [-4, -4], [4, -4], [-4, 4], [4, 4]] as const) {
-    p.set(38 + dx, 52 + dy, 'sun');
+  // mail torso: flat 2-tone with a single facet line (no dither — tokens keep it flat)
+  p.rect(13, 34, 25, 16, 'mail');
+  p.rect(28, 34, 10, 16, 'mailD');
+  p.vline(15, 34, 49, 'mailL');
+  p.rect(21, 31, 9, 4, 'mailD'); // collar
+  p.hline(21, 29, 31, 'mailL');
+  // gold half-mantle over the left shoulder: one solid saturated slab + hard folds
+  p.runs([[32, 8, 20], [33, 7, 21], [34, 7, 21], [35, 7, 21], [36, 7, 20]], 'mantle');
+  p.rect(7, 36, 13, 14, 'mantle');
+  p.vline(11, 37, 49, 'mantleD');
+  p.vline(16, 36, 49, 'mantleD');
+  p.hline(7, 19, 32, 'mantleL');
+  p.vline(7, 33, 49, 'mantleL');
+  p.rect(20, 33, 2, 2, 'sun'); // clasp pinning the mantle
+  p.set(21, 34, 'sunD');
+  // sun-disc pendant, big and proud
+  p.rect(31, 40, 5, 5, 'sun');
+  p.set(32, 41, 'mantleL');
+  p.swap(34, 40, 2, 5, 'sun', 'sunD');
+  for (const [dx, dy] of [[2, -3], [2, 7], [-3, 2], [7, 2], [-2, -2], [6, -2], [-2, 6], [6, 6]] as const) {
+    p.set(31 + dx, 40 + dy, 'sunD');
   }
 
-  headCore(p, { jawY: 33, headW: 9, earY: 22 });
-  // shaved skull: just a stubble shadow band
-  p.runs([[9, 27, 37], [10, 25, 39], [11, 24, 40]], 'shade');
-  p.swap(24, 9, 17, 3, 'shade', 'dark');
-  p.hline(26, 31, 9, 'shade');
-  // gaunt: hollow cheeks
-  p.vline(26, 26, 29, 'shade');
-  p.vline(38, 26, 29, 'dark');
-  p.set(27, 30, 'shade');
-  p.set(37, 30, 'dark');
-  // burning stare: whites showing, brows pinched in
-  eyes(p, 21, { browTilt: 'in', whites: true, browC: 'dark' });
-  p.set(27, 20, 'white');
-  p.set(36, 20, 'white');
-  nose(p, 23, 28);
-  mouth(p, 31, 'flat');
-  p.hline(29, 34, 32, 'shade'); // drawn mouth line
-  // old burn scar at the right temple
-  p.set(39, 17, 'scarB');
-  p.set(40, 18, 'scarB');
-  p.set(39, 19, 'scarB');
+  const h = head(p, { crown: 7, chin: 25, wide: 8 });
+  // shaved head: bare skull, one hard stubble shadow band at the crown
+  p.hline(h.l + 1, h.r - 1, h.crown, 'shade');
+  p.hline(h.l, h.r - 2, h.crown + 1, 'shade');
+  p.swap(h.l, h.crown, 6, 2, 'shade', 'skin'); // lit side of the scalp stays bare
+  // gaunt hollows
+  p.vline(19, 19, 22, 'shade');
+  p.set(20, 23, 'shade');
+  face(p, { eyeY: 16, style: 'zeal', mouth: 'flat', mouthY: 22 });
+  p.hline(22, 28, 23, 'shade'); // drawn line under the mouth
+  // burn scar at the right temple: hard notch
+  p.rect(31, 12, 2, 3, 'shade');
+  p.set(30, 14, 'shade');
+  rune(p, 'sun');
   save('hale', p);
 }
 
 // ---------------------------------------------------------------------------
-// VEX Coinsworn — widow's peak, stubble, earring, violet doublet, sly grin
+// VEX Coinsworn — widow's peak, earring, violet doublet, slashed sleeves, a coin
 // ---------------------------------------------------------------------------
 {
-  const p = base('#242031', { skin: '#c39a72', shade: '#95704f', dark: '#6a4c36', light: '#e0bd92' });
-  p.color('hair', '#241a16');
-  p.color('hairL', '#4a362c');
-  p.color('doublet', '#4b4f7e');
-  p.color('doubletD', '#33365a');
-  p.color('doubletL', '#6f74a8');
-  p.color('slash', '#8a4f9e');
-  p.color('coin', '#d8b24a');
-  p.color('coinL', '#f0d98c');
-  p.color('collar', '#cfc6ae');
+  const p = base('#120d1a', { skin: '#cfa075', shade: '#9c714e' });
+  p.color('hair', '#241820');
+  p.color('hairL', '#4c3440');
+  p.color('doublet', '#6a4f9e');
+  p.color('doubletD', '#46326c');
+  p.color('doubletL', '#9070cc');
+  p.color('slash', '#e8a832');
+  p.color('coin', '#ffd45c');
+  p.color('coinD', '#c08a1c');
+  p.color('collar', '#e4dcc4');
 
-  shoulders(p, 45, 'doubletD');
-  p.runs([[45, 21, 43], [46, 19, 45], [47, 18, 46], [48, 17, 47]], 'doublet');
-  p.swap(34, 45, 14, 19, 'doublet', 'doubletD');
-  // slashed sleeves hint
-  for (const y of [50, 53, 56, 59]) {
-    p.hline(13, 17, y, 'slash');
-    p.hline(46, 50, y, 'slash');
+  // violet doublet, loud like their quartered jackets
+  p.rect(12, 35, 27, 15, 'doublet');
+  p.rect(28, 35, 11, 15, 'doubletD');
+  p.runs([[33, 11, 20], [34, 10, 21]], 'doublet');
+  p.runs([[33, 30, 39], [34, 29, 40]], 'doubletD');
+  p.vline(14, 35, 49, 'doubletL');
+  // slashed sleeves: hard gold slits
+  for (const y of [38, 41, 44, 47]) {
+    p.hline(9, 13, y, 'slash');
+    p.hline(37, 41, y, 'slash');
   }
-  p.vline(20, 46, 63, 'doubletL');
-  // thin collar
-  p.runs([[44, 27, 37], [45, 26, 30], [45, 34, 38]], 'collar');
-  // a coin, mid-flip by his shoulder
-  p.disc(48, 42, 2, 2, 'coin');
-  p.set(47, 41, 'coinL');
+  p.rect(8, 36, 2, 14, 'doubletD');
+  p.rect(41, 36, 2, 14, 'doubletD');
+  // high thin collar
+  p.hline(20, 31, 32, 'collar');
+  p.hline(19, 24, 33, 'collar');
+  p.hline(27, 31, 33, 'collar');
+  // the coin, mid-flip by his right shoulder
+  p.rect(41, 28, 4, 4, 'coin');
+  p.set(42, 29, 'white');
+  p.swap(43, 28, 2, 4, 'coin', 'coinD');
 
-  headCore(p, { jawY: 32, headW: 9, earY: 22 });
-  // lean face: cheek shade
-  p.vline(37, 25, 30, 'shade');
-  p.set(27, 28, 'shade');
-  // slicked hair with widow's peak
-  p.runs(
-    [
-      [7, 26, 38], [8, 24, 40], [9, 23, 41], [10, 23, 42], [11, 22, 42], [12, 22, 43],
-      [13, 22, 24], [13, 31, 33], [13, 40, 43], [14, 22, 23], [14, 32, 32], [14, 41, 43],
-      [15, 22, 23], [15, 42, 43], [16, 42, 43],
-    ],
-    'hair',
-  );
-  p.swap(33, 6, 12, 11, 'hair', 'hair'); // keep dark; sheen next
-  p.hline(25, 31, 8, 'hairL');
-  // gold earring, left ear (lit side)
-  p.set(21, 26, 'coin');
-  p.set(21, 27, 'coinL');
-  // sly narrow eyes + raised brow
-  eyes(p, 22, { narrow: true, browC: 'hair' });
-  p.hline(26, 29, 19, 'hair'); // raised left brow
-  p.hline(35, 38, 20, 'hair');
-  nose(p, 24, 27);
-  mouth(p, 30, 'smirkL');
-  p.set(27, 29, 'shade'); // grin crease
-  // stubble dither along jaw
-  p.dither(27, 31, 11, 3, 'shade', 'skin');
-  p.hline(29, 34, 33, 'dark');
+  const h = head(p, { crown: 8, chin: 25, wide: 8 });
+  // slicked black hair with a sharp widow's peak
+  p.rect(h.l, h.crown - 2, 17, 3, 'hair');
+  p.runs([[h.crown + 1, h.l, h.l + 3], [h.crown + 1, h.r - 4, h.r], [h.crown + 2, h.l, h.l + 1], [h.crown + 2, h.r - 2, h.r], [h.crown + 3, h.r - 1, h.r], [h.crown + 4, h.r, h.r]], 'hair');
+  // the widow's peak: a bold 3-wide wedge driving down the brow
+  p.runs([[h.crown + 1, 24, 26], [h.crown + 2, 24, 26], [h.crown + 3, 25, 25], [h.crown + 4, 25, 25]], 'hair');
+  p.hline(h.l + 1, 22, h.crown - 2, 'hairL'); // slick sheen
+  // gold earring, lit side
+  p.set(16, 22, 'coin');
+  p.set(16, 23, 'coinD');
+  face(p, { eyeY: 17, style: 'narrow', mouth: 'smirkL', mouthY: 23, browC: 'hair' });
+  p.set(30, 15, 'hair'); // arched right brow
+  // stubble: solid shadow mass with a notched edge (flat, never dithered)
+  p.runs([[24, 20, 30], [25, 21, 29], [26, 23, 27]], 'shade');
+  p.set(22, 24, 'shade');
+  p.set(31, 24, 'shade');
+  rune(p, 'coin');
   save('vex', p);
 }
 
@@ -634,7 +572,7 @@ const sheet = `<!doctype html><meta charset="utf-8"><title>portrait sheet</title
 ${['serah', 'kael', 'rooke', 'hale', 'vex']
   .map(
     (n) =>
-      `<figure style="margin:0;text-align:center"><img src="./${n}.png" style="width:256px;image-rendering:pixelated;border:1px solid #3a3226"><figcaption>${n}</figcaption></figure>`,
+      `<figure style="margin:0;text-align:center"><img src="./${n}.png" style="width:250px;image-rendering:pixelated;border:1px solid #3a3226"><figcaption>${n}</figcaption></figure>`,
   )
   .join('\n')}
 </body>`;

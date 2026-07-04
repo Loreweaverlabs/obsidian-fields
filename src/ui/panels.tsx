@@ -64,8 +64,8 @@ export function Portrait(props: { ltId: string; size: 'small' | 'big' }): JSX.El
         className={`portrait ${props.size}`}
         src={`${import.meta.env.BASE_URL}${pub.portraitImage}`}
         alt={`${pub.name} ${pub.epithet}`}
-        width={props.size === 'big' ? 96 : 40}
-        height={props.size === 'big' ? 96 : 40}
+        width={props.size === 'big' ? 100 : 50}
+        height={props.size === 'big' ? 100 : 50}
       />
     );
   }
