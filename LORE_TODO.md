@@ -8,13 +8,13 @@ embedded in authored flavor text (flagged below) and need a find-replace in that
 ## Factions (strings.json → `factions`)
 | Placeholder | Where used | Notes |
 |---|---|---|
-| the Lich Lord | war news, epilogues | spec-named placeholder power |
-| the Bone Court | contract offers, envoys, discovery | the Lich Lord's agents |
+| the Lich Emperor | war news, epilogues | renamed from spec placeholder "Lich Lord" at lead direction (2026-07-04) |
+| the Bone Court | contract offers, envoys, discovery | the Lich Emperor's agents |
 | "a pale legate of the Bone Court" | offer/envoy source lines | envoy archetype |
 | "bone legions", "bone banners" | war news phrasing | troop descriptors |
 | the Zombie King | war news, epilogues | spec-named placeholder power |
-| the Carrion Throne | contract offers, envoys, discovery | the Zombie King's agents |
-| "a fly-crowned herald of the Carrion Throne" | offer/envoy source lines | envoy archetype |
+| the Carrion Crown | contract offers, envoys, discovery | the Zombie King's agents; renamed from "Carrion Throne" for clarity — Emperor holds Court, King wears Crown |
+| "a fly-crowned herald of the Carrion Crown" | offer/envoy source lines | envoy archetype |
 | "shambling columns", "the horde" | war news phrasing | troop descriptors |
 
 ## Places (strings.json → `places`)

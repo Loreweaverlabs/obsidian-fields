@@ -6,13 +6,26 @@
     "portraitToken": "SA",
     "portraitColor": "#8a6d3b",
     "archetype": "Second-in-command",
-    "visibleTraits": ["steady", "blunt", "protective of the ranks"],
+    "visibleTraits": [
+      "steady",
+      "blunt",
+      "protective of the ranks"
+    ],
     "reputationBlurb": "Twenty years under three banners and never once broke a line. Says less than she knows. The soldiers would follow her off a cliff — mostly because she'd never march them off one.",
     "wage": 12,
     "voice": {
-      "signaturePhrases": ["We held.", "The line is the line.", "I'll not dress it up."],
-      "reportStyleTags": ["terse", "plain", "owns-failures"]
-    }
+      "signaturePhrases": [
+        "We held.",
+        "The line is the line.",
+        "I'll not dress it up."
+      ],
+      "reportStyleTags": [
+        "terse",
+        "plain",
+        "owns-failures"
+      ]
+    },
+    "portraitImage": "portraits/serah.png"
   },
   {
     "id": "kael",
@@ -21,13 +34,26 @@
     "portraitToken": "KE",
     "portraitColor": "#a33c2e",
     "archetype": "Young captain",
-    "visibleTraits": ["brilliant", "hungry", "thin-skinned"],
+    "visibleTraits": [
+      "brilliant",
+      "hungry",
+      "thin-skinned"
+    ],
     "reputationBlurb": "Took a bridge at nineteen with eleven riders and made sure everyone heard about it. The best raid-hand on the Fields when his blood is up. Wants a name. Wants it soon.",
     "wage": 9,
     "voice": {
-      "signaturePhrases": ["You should have seen it.", "Give me the hard road.", "They'll sing about that one."],
-      "reportStyleTags": ["vivid", "self-forward", "chafes-at-detail"]
-    }
+      "signaturePhrases": [
+        "You should have seen it.",
+        "Give me the hard road.",
+        "They'll sing about that one."
+      ],
+      "reportStyleTags": [
+        "vivid",
+        "self-forward",
+        "chafes-at-detail"
+      ]
+    },
+    "portraitImage": "portraits/kael.png"
   },
   {
     "id": "rooke",
@@ -36,13 +62,26 @@
     "portraitToken": "MR",
     "portraitColor": "#4a6741",
     "archetype": "Quartermaster & spymaster",
-    "visibleTraits": ["meticulous", "careful", "well-connected"],
+    "visibleTraits": [
+      "meticulous",
+      "careful",
+      "well-connected"
+    ],
     "reputationBlurb": "Keeps the count — of sacks, of coins, of rumors. Has a cousin in every camp and a price for every fact. If Rooke says a road is watched, the road is watched.",
     "wage": 8,
     "voice": {
-      "signaturePhrases": ["By my count.", "I put small trust in luck.", "Provisioned and accounted."],
-      "reportStyleTags": ["precise", "hedged", "numeric"]
-    }
+      "signaturePhrases": [
+        "By my count.",
+        "I put small trust in luck.",
+        "Provisioned and accounted."
+      ],
+      "reportStyleTags": [
+        "precise",
+        "hedged",
+        "numeric"
+      ]
+    },
+    "portraitImage": "portraits/rooke.png"
   },
   {
     "id": "hale",
@@ -51,13 +90,26 @@
     "portraitToken": "BH",
     "portraitColor": "#b8912f",
     "archetype": "Warrior-priest",
-    "visibleTraits": ["devout", "fearless", "unbending"],
+    "visibleTraits": [
+      "devout",
+      "fearless",
+      "unbending"
+    ],
     "reputationBlurb": "A priest of the Returning Sun who traded his cloister for a maul. Burns the dead twice, he says: once for safety, once for spite. Signed on to fight the powers, not to serve them.",
     "wage": 6,
     "voice": {
-      "signaturePhrases": ["The light abides.", "Ash is a kind of mercy.", "It was necessary."],
-      "reportStyleTags": ["liturgical", "absolute", "unapologetic"]
-    }
+      "signaturePhrases": [
+        "The light abides.",
+        "Ash is a kind of mercy.",
+        "It was necessary."
+      ],
+      "reportStyleTags": [
+        "liturgical",
+        "absolute",
+        "unapologetic"
+      ]
+    },
+    "portraitImage": "portraits/hale.png"
   },
   {
     "id": "vex",
@@ -66,12 +118,25 @@
     "portraitToken": "VC",
     "portraitColor": "#5a5f8f",
     "archetype": "Sellsword",
-    "visibleTraits": ["charming", "mercenary", "slippery"],
+    "visibleTraits": [
+      "charming",
+      "mercenary",
+      "slippery"
+    ],
     "reputationBlurb": "Knows every fence, toll-taker, and back road between here and Bleakgate. Fights well when watched and bargains better than he fights. His loyalty is a ledger with generous margins.",
     "wage": 10,
     "voice": {
-      "signaturePhrases": ["Coin clarifies.", "Could've gone worse — didn't, thanks to me.", "I know a man."],
-      "reportStyleTags": ["glib", "deflecting", "boastful"]
-    }
+      "signaturePhrases": [
+        "Coin clarifies.",
+        "Could've gone worse — didn't, thanks to me.",
+        "I know a man."
+      ],
+      "reportStyleTags": [
+        "glib",
+        "deflecting",
+        "boastful"
+      ]
+    },
+    "portraitImage": "portraits/vex.png"
   }
 ]

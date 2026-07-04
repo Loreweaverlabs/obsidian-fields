@@ -6,6 +6,7 @@ import type { Epilogue, GameState } from '../engine/types';
 export interface EpilogueSection {
   heading: string;
   body: string;
+  ltId?: string;
 }
 
 export function composeEpilogue(state: GameState, epilogue: Epilogue): EpilogueSection[] {
@@ -44,7 +45,7 @@ export function composeEpilogue(state: GameState, epilogue: Epilogue): EpilogueS
     sec.deeds.forEach((d, i) => {
       lines.push(`${intros[i % intros.length](d.turn)} ${pub.name} ${d.text}.`);
     });
-    sections.push({ heading: name, body: lines.join(' ') });
+    sections.push({ heading: name, body: lines.join(' '), ltId: sec.ltId });
   }
   return sections;
 }

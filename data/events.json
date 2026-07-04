@@ -240,8 +240,8 @@
   {
     "id": "e_f_courtship_zombie",
     "kind": "FACTION",
-    "title": "The Throne's Sweetener",
-    "text": "A fly-crowned herald delivers a chest of mixed coin that smells faintly of the grave, and a message spoken in a borrowed voice: 'The Throne feeds those who feed it.'",
+    "title": "The Crown's Sweetener",
+    "text": "A fly-crowned herald delivers a chest of mixed coin that smells faintly of the grave, and a message spoken in a borrowed voice: 'The Crown feeds those who feed it.'",
     "sourceTag": "faction envoy",
     "acts": [
       1
@@ -285,8 +285,8 @@
   {
     "id": "e_f_zombie_gift",
     "kind": "FACTION",
-    "title": "The Throne Provides",
-    "text": "The Throne's gratitude arrives on a wagon: salt-meat (you check; it's pig), barrels of dark beer, and a purse. The herald waits to watch you accept it, which is the actual gift being purchased.",
+    "title": "The Crown Provides",
+    "text": "The Crown's gratitude arrives on a wagon: salt-meat (you check; it's pig), barrels of dark beer, and a purse. The herald waits to watch you accept it, which is the actual gift being purchased.",
     "sourceTag": "faction envoy",
     "acts": [
       2,
@@ -334,7 +334,7 @@
     "id": "e_f_zombie_demand",
     "kind": "FACTION",
     "title": "The Herald Asks Plainly",
-    "text": "The fly-crowned herald does not sit. 'The Throne hears you sell to the bone-men too. The Throne is patient. The Throne is not infinitely patient. Decide what you are.'",
+    "text": "The fly-crowned herald does not sit. 'The Crown hears you sell to the bone-men too. The Crown is patient. The Crown is not infinitely patient. Decide what you are.'",
     "sourceTag": "faction envoy",
     "acts": [
       2,
@@ -374,8 +374,8 @@
   {
     "id": "e_f_zombie_scorn",
     "kind": "FACTION",
-    "title": "The Throne Marks You",
-    "text": "In the night someone — something — plants a spear at your gate with a dead crow lashed to it, facing your tent. The old hands don't touch it. The Throne's opinion, delivered.",
+    "title": "The Crown Marks You",
+    "text": "In the night someone — something — plants a spear at your gate with a dead crow lashed to it, facing your tent. The old hands don't touch it. The Crown's opinion, delivered.",
     "sourceTag": "faction envoy",
     "acts": [
       2,

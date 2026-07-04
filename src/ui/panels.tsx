@@ -48,6 +48,34 @@ function ltName(id: string | undefined): string {
   return p ? `${p.name} ${p.epithet}` : id;
 }
 
+/** One unambiguous label per employer: agents + the power they serve (user request). */
+function sourceLabel(source: string): string {
+  if (source === 'LICH') return `${STRINGS.factions.lich.agents} · ${STRINGS.factions.lich.power}`;
+  if (source === 'ZOMBIE') return `${STRINGS.factions.zombie.agents} · ${STRINGS.factions.zombie.power}`;
+  return 'neutral';
+}
+
+/** Pixel portrait with initials-token fallback (portrait path is data, spec §12.1). */
+export function Portrait(props: { ltId: string; size: 'small' | 'big' }): JSX.Element {
+  const pub = publicById.get(props.ltId)!;
+  if (pub.portraitImage) {
+    return (
+      <img
+        className={`portrait ${props.size}`}
+        src={`${import.meta.env.BASE_URL}${pub.portraitImage}`}
+        alt={`${pub.name} ${pub.epithet}`}
+        width={props.size === 'big' ? 96 : 40}
+        height={props.size === 'big' ? 96 : 40}
+      />
+    );
+  }
+  return (
+    <span className={`token ${props.size === 'big' ? 'big' : ''}`} style={{ background: pub.portraitColor }}>
+      {pub.portraitToken}
+    </span>
+  );
+}
+
 function Card(props: {
   card: ReportCard;
   text: string;
@@ -227,7 +255,7 @@ export function CouncilPanel(props: {
             <div key={b.contractId} className={`offer source-${def.source.toLowerCase()}`}>
               <div className="offer-head">
                 <b>{def.title}</b>
-                <span className="badge">{def.source === 'NEUTRAL' ? 'neutral' : def.source === 'LICH' ? STRINGS.factions.lich.agents : STRINGS.factions.zombie.agents}</span>
+                <span className="badge faction-badge">{sourceLabel(def.source)}</span>
                 <span className="badge banked">accepted</span>
               </div>
               <div className="offer-meta">
@@ -246,7 +274,7 @@ export function CouncilPanel(props: {
               <summary>
                 <div className="offer-head">
                   <b>{def.title}</b>
-                  <span className="badge">{def.source === 'NEUTRAL' ? 'neutral' : def.source === 'LICH' ? STRINGS.factions.lich.agents : STRINGS.factions.zombie.agents}</span>
+                  <span className="badge faction-badge">{sourceLabel(def.source)}</span>
                 </div>
                 <div className="offer-meta">
                   {o.paymentAdjusted}g · {def.troopRisk} risk · {def.domain.toLowerCase()} · expires t{o.expiresTurn}
@@ -288,9 +316,7 @@ export function CouncilPanel(props: {
           return (
             <div key={lt.id} className="order-row">
               <div className="order-lt">
-                <span className="token" style={{ background: pub.portraitColor }}>
-                  {pub.portraitToken}
-                </span>
+                <Portrait ltId={lt.id} size="small" />
                 <div>
                   <b>{pub.name}</b> <span className="dim">{pub.epithet}</span>
                 </div>
@@ -439,9 +465,7 @@ export function RosterPanel(props: { state: GameState }): JSX.Element {
         return (
           <div key={lt.id} className={`profile ${lt.status !== 'active' ? 'departed' : ''}`}>
             <div className="profile-head">
-              <span className="token big" style={{ background: pub.portraitColor }}>
-                {pub.portraitToken}
-              </span>
+              <Portrait ltId={lt.id} size="big" />
               <div>
                 <h3>
                   {pub.name} <span className="dim">{pub.epithet}</span>
@@ -553,22 +577,22 @@ export function LedgerPanel(props: { state: GameState }): JSX.Element {
             {state.completedContracts.length} done · {state.failedContracts.length} failed
           </div>
           <div className="dim">
-            last 5 turns: {recentLich} for the Court, {recentZombie} for the Throne
+            last 5 turns: {recentLich} for the Court, {recentZombie} for the Crown
           </div>
         </div>
       </div>
 
       <h3>Standings</h3>
-      <StandingBar label={STRINGS.factions.lich.power} value={state.standing.lich} />
-      <StandingBar label={STRINGS.factions.zombie.power} value={state.standing.zombie} />
+      <StandingBar faction="lich" label={`${STRINGS.factions.lich.power} (${STRINGS.factions.lich.agents})`} value={state.standing.lich} />
+      <StandingBar faction="zombie" label={`${STRINGS.factions.zombie.power} (${STRINGS.factions.zombie.agents})`} value={state.standing.zombie} />
 
       <h3>The war</h3>
       <div className="war-gauge">
-        <span className="war-side">{STRINGS.factions.lich.power}</span>
+        <span className="war-side"><span className="fdot lich" />{STRINGS.factions.lich.power}</span>
         <div className="war-bar">
           <div className="war-dot" style={{ left: `${trackPct}%` }} />
         </div>
-        <span className="war-side">{STRINGS.factions.zombie.power}</span>
+        <span className="war-side">{STRINGS.factions.zombie.power}<span className="fdot zombie" style={{ marginLeft: 6, marginRight: 0 }} /></span>
       </div>
       <p className="dim war-note">
         Where the front stands, as best the company can judge it. War news varies with the teller.
@@ -577,11 +601,11 @@ export function LedgerPanel(props: { state: GameState }): JSX.Element {
   );
 }
 
-function StandingBar(props: { label: string; value: number }): JSX.Element {
+function StandingBar(props: { faction: 'lich' | 'zombie'; label: string; value: number }): JSX.Element {
   const pct = ((props.value + 100) / 200) * 100;
   return (
     <div className="standing">
-      <span className="standing-label">{props.label}</span>
+      <span className="standing-label"><span className={`fdot ${props.faction}`} />{props.label}</span>
       <div className="standing-bar">
         <div className="standing-zero" />
         <div className="standing-dot" style={{ left: `${pct}%` }} />
@@ -611,7 +635,11 @@ export function EpiloguePanel(props: {
       <h2 className="epilogue-title">The Company’s Account</h2>
       {sections.map((s, i) => (
         <section key={i} className="epi-section">
-          {s.heading && <h3>{s.heading}</h3>}
+          {s.heading && (
+            <h3>
+              {s.ltId && <Portrait ltId={s.ltId} size="small" />} {s.heading}
+            </h3>
+          )}
           {s.body.split('\n').map((p, j) => (p.trim() ? <p key={j}>{p}</p> : null))}
         </section>
       ))}

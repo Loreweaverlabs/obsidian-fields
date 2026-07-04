@@ -16,7 +16,7 @@ t01 [ACCEPT] accepted “Topple the Watch-Spires” (ZOMBIE, pays 70)
 t01 [ACCEPT] accepted “Grain Before the Frost” (NEUTRAL, pays 30)
 t01 [ROLL] serah chance 95% vs d100=14 -> margin 81 -> CRIT
 t01 [DRIFT] hale loyalty 66 -5 -> 61 (hook h_serve_zombie (c_z03))
-t01 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t01 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t01 [DRIFT] serah loyalty 72 +2 -> 74 (mission triumph)
 t01 [ROLL] rooke chance 95% vs d100=1 -> margin 94 -> CRIT
 t01 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
@@ -26,7 +26,7 @@ t01 [DRIFT] rooke loyalty 78 +8 -> 86 (hook r_kin_helped (c_n02))
 t01 [HOOK] rooke the company stood for Marrowbrook -> loyalty +8
 t01 [ROLL] vex chance 64% vs d100=72 -> PARTIAL
 t01 [EVENT] event “A Gift from the Bone Court” fired (gold +10, standing.lich +2)
-t01 [EVENT] event “The Throne's Sweetener” fired (gold +10, standing.zombie +2)
+t01 [EVENT] event “The Crown's Sweetener” fired (gold +10, standing.zombie +2)
 t01 [WAR_TRACK] warTrack 0 + drift 0 + noise 1 + push 0 -> 1
 t01 [REPORT_FILTER] war news via herald (lich): claims Court gaining (truth: 1)
 t01 [DRIFT] serah loyalty 78 -1 -> 77 (drift toward setpoint 70)
@@ -110,7 +110,7 @@ t04 [ACCEPT] double-dealing: +3 heat -> 16
 t04 [ACCEPT] accepted “Feed the Column” (ZOMBIE, pays 55)
 t04 [ROLL] serah chance 95% vs d100=81 -> margin 14 -> SUCCESS
 t04 [DRIFT] hale loyalty 64 -5 -> 59 (hook h_serve_zombie (c_z02))
-t04 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t04 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t04 [DRIFT] kael loyalty 58 +1 -> 59 (hook k_latitude (latitude))
 t04 [ROLL] kael chance 95% vs d100=25 -> margin 70 -> CRIT
 t04 [RIDER] kael AMBITIOUS latitude rider: tack-on objective SUCCEEDED (+17 gold)
@@ -125,7 +125,7 @@ t04 [ACCEPT] accepted “Where the Bone Banners March” (ZOMBIE, pays 45)
 t04 [ROLL] rooke chance 95% vs d100=73 -> margin 22 -> CRIT
 t04 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
 t04 [DRIFT] hale loyalty 54 -5 -> 49 (hook h_serve_zombie (c_z01))
-t04 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t04 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t04 [DRIFT] serah loyalty 86 +1 -> 87 (event e_c_shared_hardship)
 t04 [DRIFT] kael loyalty 70 +1 -> 71 (event e_c_shared_hardship)
 t04 [DRIFT] rooke loyalty 86 +1 -> 87 (event e_c_shared_hardship)
@@ -168,7 +168,7 @@ t05 [DRIFT] hale loyalty 58 -5 -> 53 (hook h_serve_lich (c_l04))
 t05 [HOOK] hale every job done FOR the Bone Court is a stain -> loyalty -5
 t05 [ROLL] vex chance 64% vs d100=36 -> margin 28 -> SUCCESS
 t05 [DRIFT] hale loyalty 53 -5 -> 48 (hook h_serve_zombie (c_z04))
-t05 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t05 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t05 [EVENT] event “What the Storm Uncovered” fired
 t05 [EVENT] event “The Dead Walk the Flats” fired
 t05 [WAR_TRACK] warTrack 0 + drift 0 + noise 1 + push 0 -> 1
@@ -193,7 +193,7 @@ t06 [ACCEPT] double-dealing: +4 heat -> 29
 t06 [ACCEPT] accepted “Blunt the Bone Sortie” (ZOMBIE, pays 105)
 t06 [ROLL] serah chance 95% vs d100=10 -> margin 85 -> CRIT
 t06 [DRIFT] hale loyalty 50 -5 -> 45 (hook h_serve_zombie (c_z05))
-t06 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t06 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t06 [DRIFT] serah loyalty 93 +2 -> 95 (mission triumph)
 t06 [DRIFT] kael loyalty 71 -1 -> 70 (micromanagement resentment)
 t06 [HOOK] kael micromanagement accumulator: 2 consecutive explicit orders -> -1 loyalty (§7.3)
@@ -370,7 +370,7 @@ t12 [ACCEPT] double-dealing: +5 heat -> 28
 t12 [ACCEPT] accepted “Unseat the Bone Garrison” (ZOMBIE, pays 140)
 t12 [ROLL] vex chance 43% vs d100=33 -> margin 10 -> SUCCESS
 t12 [DRIFT] hale loyalty 44 -5 -> 39 (hook h_serve_zombie (c_z09))
-t12 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t12 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t12 [DRIFT] hale loyalty 39 +6 -> 45 (hook h_purge (c_z09))
 t12 [HOOK] hale burning the dead is the work -> loyalty +6
 t12 [EVENT] event “The Legate Grows Pointed” fired (heat +4)
@@ -400,9 +400,9 @@ t13 [ACCEPT] accepted “Mark the Legate's Path” (ZOMBIE, pays 110)
 t13 [ROLL] rooke chance 95% vs d100=39 -> margin 56 -> CRIT
 t13 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
 t13 [DRIFT] hale loyalty 49 -5 -> 44 (hook h_serve_zombie (c_z08))
-t13 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t13 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t13 [ROLL] vex chance 64% vs d100=100 -> margin -36 -> DISASTER
-t13 [EVENT] event “The Throne Provides” fired (gold +15, standing.zombie +2)
+t13 [EVENT] event “The Crown Provides” fired (gold +15, standing.zombie +2)
 t13 [EVENT] event “The Fields Tighten” fired
 t13 [WAR_TRACK] warTrack 2 + drift 0 + noise -1 + push 0 -> 1
 t13 [REPORT_FILTER] war news via scout: claims Court gaining (truth: -1)
@@ -477,7 +477,7 @@ t15 [ROLL] kael chance 95% vs d100=57 -> margin 38 -> CRIT
 t15 [RIDER] kael AMBITIOUS latitude rider: tack-on objective SUCCEEDED (+27 gold)
 t15 [DRIFT] kael loyalty 84 +3 -> 87 (glory seized (tack-on))
 t15 [DRIFT] hale loyalty 63 -5 -> 58 (hook h_serve_zombie (c_z06))
-t15 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t15 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t15 [DRIFT] kael loyalty 87 +4 -> 91 (mission triumph)
 t15 [ROLL] rooke spent 50 gold -> 20 recruits (CRIT)
 t15 [ROLL] vex chance 64% vs d100=94 -> FAILURE
@@ -666,7 +666,7 @@ t23 [ROLL] kael chance 64% vs d100=26 -> margin 38 -> CRIT
 t23 [DRIFT] kael loyalty 93 +6 -> 99 (hook k_glory (c_z12))
 t23 [HOOK] kael glory won by his own hand -> loyalty +6
 t23 [DRIFT] hale loyalty 68 -5 -> 63 (hook h_serve_zombie (c_z12))
-t23 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t23 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t23 [DRIFT] kael loyalty 99 +2 -> 100 (mission triumph)
 t23 [ROLL] rooke chance 92% vs d100=66 -> margin 26 -> CRIT
 t23 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
@@ -734,7 +734,7 @@ t25 [ACCEPT] accepted “Snuff the Last Beacons” (ZOMBIE, pays 170)
 t25 [ROLL] kael chance 92% vs d100=37 -> margin 55 -> CRIT
 t25 [RIDER] kael AMBITIOUS latitude rider: tack-on objective SUCCEEDED (+34 gold)
 t25 [DRIFT] hale loyalty 65 -5 -> 60 (hook h_serve_zombie (c_z13))
-t25 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t25 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t25 [ROLL] rooke chance 95% vs d100=75 -> SUCCESS
 t25 [EVENT] event “The Dead Walk the Flats” fired
 t25 [WAR_TRACK] warTrack 7 + drift 1 + noise 0 + push 1 -> 9
@@ -763,7 +763,7 @@ t26 [ROLL] rooke chance 92% vs d100=33 -> margin 59 -> CRIT
 t26 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
 t26 [RIDER] rooke METICULOUS latitude rider: preparation saved 1 soldier
 t26 [DRIFT] hale loyalty 63 -5 -> 58 (hook h_serve_zombie (c_z15))
-t26 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t26 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t26 [EVENT] event “Talk of Other Banners” fired
 t26 [WAR_TRACK] warTrack 9 + drift 1 + noise 0 + push 1 -> 10
 t26 [REPORT_FILTER] war news via scout: claims horde gaining (truth: 1)

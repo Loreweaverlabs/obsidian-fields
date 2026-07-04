@@ -2,7 +2,7 @@
 // outcome records; here each lieutenant's axes distort the PLAYER-FACING card. Every
 // distortion is logged (REPORT_FILTER) and material discrepancies carry hidden evidence
 // keys so discovered contradictions become CONFRONT ammunition (§9.5, D-023).
-import { TUNING, contractById, hiddenById, publicById } from './data';
+import { STRINGS, TUNING, contractById, hiddenById, publicById } from './data';
 import { addCard, bandOf, getLt, log } from './core';
 import { chance, randInt } from './rng';
 import { recordTell } from './drama';
@@ -244,10 +244,10 @@ export function generateWarNewsCard(state: GameState, facts: WarNewsFacts): void
       facts.sourceType === 'scout'
         ? 'your own scouts'
         : facts.sourceType === 'traveler'
-          ? 'a traveler on the Salt Road'
+          ? `a traveler on ${STRINGS.places.road}`
           : facts.heraldSide === 'lich'
-            ? 'a herald of the Bone Court'
-            : 'a herald of the Carrion Throne',
+            ? `a herald of ${STRINGS.factions.lich.agents}`
+            : `a herald of ${STRINGS.factions.zombie.agents}`,
     facts: { ...facts },
     citable: false,
   });

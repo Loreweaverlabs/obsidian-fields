@@ -300,7 +300,7 @@ export const TEMPLATES: TemplateLibrary = {
     'The envoys arrived separately and said the same sentence in two dead languages: we know. No ultimatum followed. The absence of the ultimatum was the message.',
   ],
   'discovery_exposed.ANY.ANY': [
-    'It is out. Every fence, herald, and toll-keeper on the Fields knows the company sold to both thrones at once, and by nightfall both thrones knew it too. No new envoys will come. The ones already dispatched are not envoys.',
+    'It is out. Every fence, herald, and toll-keeper on the Fields knows the company sold to the Court and the Crown at once, and by nightfall both powers knew it too. No new envoys will come. The ones already dispatched are not envoys.',
     'The double game is over because everyone can see the board now. Both courts have posted the company’s name, and on the Fields those postings are read aloud. The roads just got longer in every direction.',
   ],
 

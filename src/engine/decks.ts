@@ -1,5 +1,5 @@
 // Contract offers and the event deck (§5). War state and player state shape the deal.
-import { CONTRACTS, EVENTS, TUNING, contractById, publicById } from './data';
+import { CONTRACTS, EVENTS, STRINGS, TUNING, contractById, publicById } from './data';
 import { actOf, addCard, adjustStanding, bandAtMost, bandOf, getLt, log } from './core';
 import { chance, randInt, weightedPick } from './rng';
 import { forcedPoachCheck, liveOpportunityFor, spawnOpportunity } from './drama';
@@ -102,9 +102,9 @@ export function drawOffers(state: GameState): void {
       templateKey: 'contract_offer',
       sourceTag:
         def.source === 'LICH'
-          ? 'a pale legate of the Bone Court'
+          ? STRINGS.factions.lich.envoy
           : def.source === 'ZOMBIE'
-            ? 'a fly-crowned herald of the Carrion Throne'
+            ? STRINGS.factions.zombie.envoy
             : 'a petitioner at the gate',
       facts: {
         contractId: def.id,

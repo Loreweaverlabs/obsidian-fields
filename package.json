@@ -12,7 +12,8 @@
     "sim": "tsx src/sim/harness.ts",
     "cli": "tsx src/sim/cli.ts",
     "golden:gen": "tsx src/test/golden_gen.ts",
-    "sample:kael": "tsx src/sim/sample_kael.ts"
+    "sample:kael": "tsx src/sim/sample_kael.ts",
+    "portraits": "tsx scripts/portraits.ts"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -6,8 +6,8 @@
   "companyFormal": "the Free Company",
   "factions": {
     "lich": {
-      "power": "the Lich Lord",
-      "faction": "the Lich Lord's host",
+      "power": "the Lich Emperor",
+      "faction": "the Lich Emperor's host",
       "agents": "the Bone Court",
       "envoy": "a pale legate of the Bone Court",
       "troops": "bone legions"
@@ -15,8 +15,8 @@
     "zombie": {
       "power": "the Zombie King",
       "faction": "the Zombie King's horde",
-      "agents": "the Carrion Throne",
-      "envoy": "a fly-crowned herald of the Carrion Throne",
+      "agents": "the Carrion Crown",
+      "envoy": "a fly-crowned herald of the Carrion Crown",
       "troops": "shambling columns"
     }
   },

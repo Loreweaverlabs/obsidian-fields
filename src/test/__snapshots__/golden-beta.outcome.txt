@@ -33,7 +33,7 @@ t01 [DRIFT] serah loyalty 74 +4 -> 78 (hook s_protect (c_n01))
 t01 [HOOK] serah protecting neutrals affirms her -> loyalty +4
 t01 [DRIFT] vex loyalty 50 +2 -> 52 (mission triumph)
 t01 [EVENT] event “A Gift from the Bone Court” fired (gold +10, standing.lich +2)
-t01 [EVENT] event “The Throne's Sweetener” fired (gold +10, standing.zombie +2)
+t01 [EVENT] event “The Crown's Sweetener” fired (gold +10, standing.zombie +2)
 t01 [WAR_TRACK] warTrack 0 + drift 0 + noise 1 + push -1 -> 0
 t01 [REPORT_FILTER] war news via scout: claims no change (truth: 0)
 t01 [DRIFT] serah loyalty 78 -1 -> 77 (drift toward setpoint 70)
@@ -127,10 +127,10 @@ t04 [ACCEPT] double-dealing: +4 heat -> 8
 t04 [ACCEPT] accepted “Topple the Watch-Spires” (ZOMBIE, pays 70)
 t04 [ROLL] serah chance 95% vs d100=75 -> margin 20 -> SUCCESS
 t04 [DRIFT] hale loyalty 58 -5 -> 53 (hook h_serve_zombie (c_z05))
-t04 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t04 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t04 [ROLL] kael chance 95% vs d100=52 -> margin 43 -> CRIT
 t04 [DRIFT] hale loyalty 53 -5 -> 48 (hook h_serve_zombie (c_z03))
-t04 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t04 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t04 [DRIFT] kael loyalty 63 +2 -> 65 (mission triumph)
 t04 [ACCEPT] accepted “Grain Before the Frost” (NEUTRAL, pays 30)
 t04 [ROLL] rooke chance 95% vs d100=36 -> margin 59 -> CRIT
@@ -161,7 +161,7 @@ t05 [ACCEPT] double-dealing: +3 heat -> 14
 t05 [ACCEPT] accepted “Where the Bone Banners March” (ZOMBIE, pays 45)
 t05 [ROLL] serah chance 92% vs d100=44 -> margin 48 -> CRIT
 t05 [DRIFT] hale loyalty 50 -5 -> 45 (hook h_serve_zombie (c_z02))
-t05 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t05 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t05 [DRIFT] serah loyalty 86 +2 -> 88 (mission triumph)
 t05 [DRIFT] kael loyalty 65 -1 -> 64 (micromanagement resentment)
 t05 [HOOK] kael micromanagement accumulator: 4 consecutive explicit orders -> -1 loyalty (§7.3)
@@ -169,7 +169,7 @@ t05 [TELL_SCHEDULED] kael tell "micromanage_grumble" scheduled for delivery by t
 t05 [ROLL] kael spent 40 gold -> 16 recruits (CRIT)
 t05 [ROLL] rooke chance 95% vs d100=55 -> margin 40 -> CRIT
 t05 [DRIFT] hale loyalty 45 -5 -> 40 (hook h_serve_zombie (c_z01))
-t05 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t05 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t05 [DRIFT] hale loyalty 40 -1 -> 39 (micromanagement resentment)
 t05 [HOOK] hale micromanagement accumulator: 4 consecutive explicit orders -> -1 loyalty (§7.3)
 t05 [TELL_SCHEDULED] hale tell "micromanage_grumble" scheduled for delivery by turn 6 (guaranteed, §9.3)
@@ -215,7 +215,7 @@ t06 [HOOK] hale burning the dead is the work -> loyalty +6
 t06 [DRIFT] hale loyalty 42 +2 -> 44 (mission triumph)
 t06 [ROLL] vex chance 64% vs d100=25 -> margin 39 -> CRIT
 t06 [DRIFT] hale loyalty 44 -5 -> 39 (hook h_serve_zombie (c_z04))
-t06 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t06 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t06 [DRIFT] vex loyalty 52 +2 -> 54 (mission triumph)
 t06 [DRIFT] serah loyalty 94 +1 -> 95 (event e_c_shared_hardship)
 t06 [DRIFT] kael loyalty 64 +1 -> 65 (event e_c_shared_hardship)
@@ -339,7 +339,7 @@ t11 [ROLL] kael chance 85% vs d100=41 -> margin 44 -> CRIT
 t11 [DRIFT] serah loyalty 99 -5 -> 94 (hook s_harm_village (c_z07))
 t11 [HOOK] serah harming the helpless is past her line -> loyalty -5
 t11 [DRIFT] hale loyalty 55 -5 -> 50 (hook h_serve_zombie (c_z07))
-t11 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t11 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t11 [DRIFT] kael loyalty 63 +2 -> 65 (mission triumph)
 t11 [ROLL] rooke spent 40 gold -> 16 recruits (CRIT)
 t11 [DRIFT] hale loyalty 50 -1 -> 49 (micromanagement resentment)
@@ -350,7 +350,7 @@ t11 [DRIFT] hale loyalty 49 +6 -> 55 (hook h_purge (c_n11))
 t11 [HOOK] hale burning the dead is the work -> loyalty +6
 t11 [DRIFT] hale loyalty 55 +2 -> 57 (mission triumph)
 t11 [EVENT] event “The Court Remembers” fired (standing.lich +2)
-t11 [EVENT] event “The Throne Provides” fired (gold +15, standing.zombie +2)
+t11 [EVENT] event “The Crown Provides” fired (gold +15, standing.zombie +2)
 t11 [WAR_TRACK] warTrack 1 + drift 0 + noise 1 + push 0 -> 2
 t11 [REPORT_FILTER] war news via traveler: claims horde gaining (truth: 1)
 t11 [DRIFT] serah loyalty 94 -1 -> 93 (drift toward setpoint 70)
@@ -415,7 +415,7 @@ t13 [DRIFT] kael loyalty 65 -1 -> 64 (micromanagement resentment)
 t13 [HOOK] kael micromanagement accumulator: 10 consecutive explicit orders -> -1 loyalty (§7.3)
 t13 [ROLL] kael chance 85% vs d100=14 -> margin 71 -> CRIT
 t13 [DRIFT] hale loyalty 56 -5 -> 51 (hook h_serve_zombie (c_z06))
-t13 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t13 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t13 [DRIFT] kael loyalty 64 +2 -> 66 (mission triumph)
 t13 [ROLL] rooke chance 92% vs d100=43 -> margin 49 -> CRIT
 t13 [DRIFT] hale loyalty 51 -5 -> 46 (hook h_serve_lich (c_l08))
@@ -464,7 +464,7 @@ t14 [DRIFT] hale loyalty 44 -1 -> 43 (micromanagement resentment)
 t14 [HOOK] hale micromanagement accumulator: 10 consecutive explicit orders -> -1 loyalty (§7.3)
 t14 [ROLL] hale chance 92% vs d100=5 -> margin 87 -> CRIT
 t14 [DRIFT] hale loyalty 43 -5 -> 38 (hook h_serve_zombie (c_z09))
-t14 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t14 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t14 [DRIFT] hale loyalty 38 +6 -> 44 (hook h_purge (c_z09))
 t14 [HOOK] hale burning the dead is the work -> loyalty +6
 t14 [DRIFT] hale loyalty 44 +2 -> 46 (mission triumph)
@@ -507,7 +507,7 @@ t15 [ACCEPT] accepted “Census of the Displaced” (NEUTRAL, pays 70)
 t15 [ROLL] kael chance 64% vs d100=84 -> margin -20 -> FAILURE
 t15 [ROLL] rooke chance 92% vs d100=8 -> margin 84 -> CRIT
 t15 [DRIFT] hale loyalty 35 -5 -> 30 (hook h_serve_zombie (c_z08))
-t15 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
+t15 [HOOK] hale every job done FOR the Carrion Crown is a stain -> loyalty -5
 t15 [WILLINGNESS] hale band=DISAFFECTED -> slowWalk roll 40% -> rolled 34 -> SLOW_WALK (-2 C_eff)
 t15 [ROLL] hale spent 40 gold -> 5 recruits (FAILURE)
 t15 [ROLL] vex chance 64% vs d100=14 -> CRIT

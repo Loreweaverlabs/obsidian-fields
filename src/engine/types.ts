@@ -162,8 +162,9 @@ export interface CastPublic {
   id: string;
   name: string;
   epithet: string;
-  portraitToken: string; // short initials + color token; real art can replace via data
+  portraitToken: string; // initials fallback if no image
   portraitColor: string;
+  portraitImage?: string; // path under the site root, e.g. "portraits/serah.png"
   archetype: string;
   visibleTraits: string[];
   reputationBlurb: string;

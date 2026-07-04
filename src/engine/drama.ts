@@ -1,6 +1,6 @@
 // Drama systems: tells (§9.3), opportunities (§5.2), betrayal/desertion/resignation (§9.4),
 // heat & discovery (§5.2), war track (§4), loyalty drift (§9.2).
-import { EVENTS, TUNING, eventById, hiddenById, publicById } from './data';
+import { EVENTS, STRINGS, TUNING, eventById, hiddenById, publicById } from './data';
 import {
   actOf,
   addCard,
@@ -262,7 +262,7 @@ export function executeDeparture(state: GameState, lt: LtState, opp?: Opportunit
     state.turnHeatAdded = true;
     state.warNewsAntagonist = lt.id;
     const side = opp?.source ?? resolveAutoSource(state);
-    lt.departedNote = `went over to ${side === 'lich' ? 'the Bone Court' : 'the Carrion Throne'}, taking ${taken} soldiers and everything he knew`;
+    lt.departedNote = `went over to ${STRINGS.factions[side].agents}, taking ${taken} soldiers and everything he knew`;
     log(state, 'DEPARTURE', {
       actor: lt.id,
       inputs: { style, trusted, troopsTaken: taken, intelHeat: d.betrayalIntelHeat, defectedTo: side },
