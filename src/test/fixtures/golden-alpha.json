@@ -1,0 +1,836 @@
+{
+  "seed": "golden-alpha",
+  "policy": "random",
+  "actions": [
+    {
+      "accepts": [
+        "c_z01"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "RECRUIT",
+          "gold": 52,
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "RECRUIT",
+          "gold": 43,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n01",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z01",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n03"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l03",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PROMOTE"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 42,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l02",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z03",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "vex",
+          "verb": "REPRIMAND"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_z04"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z04",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z05",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "REWARD",
+          "gold": 47
+        },
+        {
+          "ltId": "kael",
+          "verb": "REWARD",
+          "gold": 53
+        },
+        {
+          "ltId": "rooke",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l01",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l05",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n04",
+        "c_l04",
+        "c_n05"
+      ],
+      "orders": [
+        {
+          "ltId": "rooke",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "hale",
+          "verb": "REST",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "REST",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "kael",
+          "verb": "REST",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z02",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 60,
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n02",
+        "c_z11",
+        "c_l07"
+      ],
+      "orders": [
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 37,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z11",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n02",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l07",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n08"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "RECRUIT",
+          "gold": 35,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z09",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n08",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l09",
+        "c_l10"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "hale",
+          "verb": "REST",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z09",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l08"
+      ],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l09",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "PRAISE"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_z08",
+        "c_z06"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n11",
+        "c_l11"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l11",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "PRIVATE_TALK"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n06",
+        "c_l06"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "REWARD",
+          "gold": 55
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l06",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "REST",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_z07"
+      ],
+      "orders": [
+        {
+          "ltId": "kael",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n09",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n07",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "rumor",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "REWARD",
+          "gold": 30
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n10",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "kael",
+          "verb": "RECRUIT",
+          "gold": 48,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n14",
+        "c_z12"
+      ],
+      "orders": [
+        {
+          "ltId": "kael",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "RECRUIT",
+          "gold": 56,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "vex",
+          "verb": "RECRUIT",
+          "gold": 38,
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n15"
+      ],
+      "orders": [
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z12",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n14",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "GUARD_CAMP",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "rumor",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l14",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l15",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 43,
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "SCOUT",
+          "scoutTarget": "rumor",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z14",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_z15",
+        "c_z13"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "REST",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 44,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "REST",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n12"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z13",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n13",
+          "latitude": "intent"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l13"
+      ],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "REPRIMAND"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l13",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "SCOUT",
+          "scoutTarget": "faction",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "REST",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "RECRUIT",
+          "gold": 39,
+          "latitude": "explicit"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "_comment": "All proper nouns live here so a lore rename is a one-file edit (spec §2.1). See LORE_TODO.md.",
+  "setting": "the Obsidian Fields",
+  "settingShort": "the Fields",
+  "company": "the company",
+  "companyFormal": "the Free Company",
+  "factions": {
+    "lich": {
+      "power": "the Lich Lord",
+      "faction": "the Lich Lord's host",
+      "agents": "the Bone Court",
+      "envoy": "a pale legate of the Bone Court",
+      "troops": "bone legions"
+    },
+    "zombie": {
+      "power": "the Zombie King",
+      "faction": "the Zombie King's horde",
+      "agents": "the Carrion Throne",
+      "envoy": "a fly-crowned herald of the Carrion Throne",
+      "troops": "shambling columns"
+    }
+  },
+  "neutrals": {
+    "village": "Marrowbrook",
+    "villageDesc": "a surviving village on the Fields' edge",
+    "guild": "the Glasspickers' Guild",
+    "merchant": "Ossian the relic-broker"
+  },
+  "places": {
+    "bridge": "the Glass Bridge",
+    "ridge": "Cinder Ridge",
+    "crypt": "the Hollow Crypt",
+    "road": "the Salt Road",
+    "spire": "the Broken Spire",
+    "flats": "the Mirror Flats",
+    "gate": "Bleakgate"
+  },
+  "faith": "the Order of the Returning Sun"
+}

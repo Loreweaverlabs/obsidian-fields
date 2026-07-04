@@ -1,0 +1,40 @@
+{
+  "warOutcomes": {
+    "LICH_VICTORY": "In the end the Fields went to the Bone Court. The last shambling columns broke on the glass and did not rise again in any shape their King would recognize; the bone legions stand down the length of the Salt Road now, patient as furniture, and the wind over the Fields carries lime and quiet.",
+    "ZOMBIE_VICTORY": "In the end the Fields went to the Carrion Throne. The bone legions were pulled down by weight of numbers that did not tire, and what remains of the Court's order sleeps under new management. The horde does not celebrate. It grazes.",
+    "STALEMATE": "In the end the Fields went to no one. Two dead powers ground each other down to the glass and stopped, like millstones with nothing left between them. The war did not end so much as run out. On the Fields, this is called peace."
+  },
+  "archetypes": {
+    "BANNERMEN": {
+      "title": "Bannermen of the Victor",
+      "text": "The company backed the winning power, and the winning power remembers. There is a document — vellum, sealed, faintly cold to the touch — naming the company sworn auxiliaries with garrison rights and first call on contracts in the pacified Fields. Captains who held the middle of this war now wait in your anteroom. The soldiers have new boots, back pay, and the particular quiet of men who chose a side in a war between the dead and were, this once, right."
+    },
+    "BACKED_THE_LOSER": {
+      "title": "The Losing Banner",
+      "text": "The company backed the power that lost, and the Fields have a long memory and a new administration. The contracts dried up first, then the courtesies, then the roads. What remains of the company travels by night now, spending down its reputation in taverns where the war is already becoming a story — one in which, the tellers agree, the company chose wrong."
+    },
+    "RICH_AND_FREE": {
+      "title": "Rich and Free",
+      "text": "The company swore to no banner, and it walks off the Fields owing nothing to anything that does not breathe. The strongbox takes two men to lift. Let the powers have their glass and their arithmetic; the company took its pay from both hands and kept its name its own. In the mercenary trade this is called winning, and for once the trade is correct."
+    },
+    "EXPOSED": {
+      "title": "Exposed",
+      "text": "Both powers know now, and neither forgives. The company's name is written in two ledgers under the same word, and there is no road off the Fields that some patrol does not watch. The double game paid well — right up until it was the only fact anyone knew about you. The company scatters by threes and fours, un-hired, un-harbored, waiting to learn which power's patience runs out first."
+    },
+    "COMPANY_BREAKS": {
+      "title": "The Company Breaks",
+      "text": "There is no company. There is a strongbox with nothing in it, a muster roll that stopped being true one desertion at a time, and a banner in a wagon-bed no one will unfold again. The Fields ate it — the contracts, the wages, the choices, all of it. The war between the dead grinds on without any opinion about this, which is somehow the worst of it."
+    },
+    "GROUND_DOWN": {
+      "title": "Ground Down",
+      "text": "The company survived, which the old hands will tell you is the whole of the job. It is smaller now, and poorer, and it walks off the Fields with thin purses, mended gear, and the kind of shared silence that does not need to explain itself. No songs. No garrison rights. But the muster roll still answers, and the banner still means something to the people under it. There are worse ends on the Fields. The company buried several of them."
+    }
+  },
+  "ltMemorial": {
+    "dead": "{name} {epithet} did not leave the Fields. The company keeps the grave-count and the stories; on the Fields, that is what passes for a monument.",
+    "betrayed": "{name} {epithet} sold the company's trust and marches under another banner now. The name is not spoken at the fires, which is its own kind of memorial.",
+    "deserted": "{name} {epithet} walked out under an open sky, loudly, and did not look back. Some at the fires curse the name. Not all.",
+    "absconded": "{name} {epithet} left in the night with a heavier purse than the ledger can explain. The fires laugh about it now. The laughter is thin.",
+    "resigned": "{name} {epithet} gave back the commission formally, correctly, and finally. The space where that name stood in the line has not really been filled. Everyone knows it."
+  }
+}
