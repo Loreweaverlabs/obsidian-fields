@@ -65,9 +65,10 @@ export function scheduleTell(state: GameState, lt: LtState, kind: string, payloa
   });
 }
 
-/** Tells visible to the player before the current council (turn <= current reports phase). */
+/** Tells surfaced in PRIOR turns (§9.3, strict): the player has had at least one full
+ * council to act on each of them before a departure may fire. */
 export function surfacedTellCount(state: GameState, lt: LtState): number {
-  return lt.tells.filter((t) => t.turn <= state.turn).length;
+  return lt.tells.filter((t) => t.turn < state.turn).length;
 }
 
 /** Band-crossing detection after all loyalty movement this turn (§9.3). */

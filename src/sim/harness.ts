@@ -75,7 +75,8 @@ function runOne(seed: string, policy: PolicyName): RunResult {
           lt: lt.id,
           status: lt.status,
           turn: lt.departedTurn ?? 0,
-          priorTells: lt.tells.filter((t) => t.turn <= (lt.departedTurn ?? 0)).length,
+          // strictly prior turns (§9.3): the player had a council between tell and fire
+          priorTells: lt.tells.filter((t) => t.turn < (lt.departedTurn ?? 0)).length,
         });
       }
       // 5-turn assignment windows while active (§13.2 "no dead cast members")

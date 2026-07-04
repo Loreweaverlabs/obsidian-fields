@@ -756,57 +756,60 @@
     },
     {
       "accepts": [
-        "c_n13",
-        "c_n15"
+        "c_n13"
       ],
-      "orders": [
-        {
-          "ltId": "kael",
-          "verb": "REST",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "RECRUIT",
-          "gold": 26,
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "vex",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_n15",
-          "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [],
       "orders": [
         {
           "ltId": "serah",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_z13",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "kael",
-          "verb": "REST",
+          "contractId": "c_n13",
           "latitude": "explicit"
         },
         {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l13",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "RECRUIT",
+          "gold": 21,
+          "latitude": "intent"
+        },
+        {
           "ltId": "hale",
-          "verb": "NEGOTIATE",
-          "faction": "lich",
+          "verb": "GUARD_CAMP",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
           "latitude": "intent"
         }
       ]
     },
     {
-      "accepts": [],
+      "accepts": [
+        "c_z13"
+      ],
       "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "zombie",
+          "latitude": "explicit"
+        },
         {
           "ltId": "kael",
           "verb": "GUARD_CAMP",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z13",
           "latitude": "intent"
         },
         {
@@ -817,9 +820,31 @@
         },
         {
           "ltId": "vex",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_l13",
+          "verb": "RECRUIT",
+          "gold": 39,
           "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "serah",
+          "verb": "NEGOTIATE",
+          "faction": "lich",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l15",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "REST",
+          "latitude": "intent"
         }
       ]
     }

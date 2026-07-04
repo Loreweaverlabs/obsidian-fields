@@ -237,6 +237,7 @@ function SetupScreen(props: {
       {props.showImport && <ImportOverlay onSubmit={props.onImportSubmit} onClose={props.onImportClose} />}
       <p className="setup-foot">
         A ~60–75 minute, 30-turn text prototype. Progress saves in your browser after every turn.
+        {' '}Playtesting? Start from the <a href="./playtest.html">tester page</a>.
       </p>
     </div>
   );

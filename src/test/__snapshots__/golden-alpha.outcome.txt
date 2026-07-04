@@ -1,12 +1,12 @@
 seed=golden-alpha version=0.1.0
 end turn=30 reason=completed archetype=RICH_AND_FREE war=STALEMATE
-gold=793 troops=161 lich=91 zombie=45 heat=60 track=1
-lt serah: status=active loyalty=72 tells=0 deeds=10
+gold=911 troops=159 lich=100 zombie=33 heat=60 track=-1
+lt serah: status=active loyalty=73 tells=0 deeds=8
 lt kael: status=active loyalty=78 tells=0 deeds=10
-lt rooke: status=active loyalty=91 tells=0 deeds=6
-lt hale: status=active loyalty=25 tells=6 deeds=8
-lt vex: status=dead loyalty=63 tells=6 deeds=2 departed=t30
-cards=260 records=69
+lt rooke: status=active loyalty=87 tells=0 deeds=6
+lt hale: status=active loyalty=26 tells=6 deeds=7
+lt vex: status=active loyalty=64 tells=6 deeds=0
+cards=262 records=73
 --- decision log ---
 t00 [INIT] run initialized (engine 0.1.0); cast of 5; determinism root 4073475494
 t00 [CONTRACT_DRAW] dealt “Hold the Glass Bridge” (LICH, diff 6, pays 140, expires t2)
@@ -787,98 +787,95 @@ t27 [DRIFT] hale loyalty 25 +1 -> 26 (drift toward setpoint 60)
 t27 [DRIFT] hale loyalty 26 +1 -> 27 (fair pay, on time)
 t27 [DRIFT] vex loyalty 63 -1 -> 62 (drift toward setpoint 42)
 t27 [DRIFT] vex loyalty 62 +1 -> 63 (fair pay, on time)
-t27 [DEPARTURE_CHECK] hale pushPull 22 vs d100=24 -> holds
-t27 [OPPORTUNITY] hale the moment passed — opportunity consumed by a held departure check
-t27 [CONTRACT_DRAW] dealt “The Last Stand at Marrowbrook” (NEUTRAL, diff 7, pays 160, expires t29)
+t27 [DEPARTURE_SUPPRESSED] hale departure check suppressed: only 1 tells surfaced (< 2); legibility first (§9.3)
+t27 [TELL_DELIVERED] vex tell "audit_discrepancy" surfaced to player (strength 2)
+t27 [REPORT_FILTER] rooke Rooke's audit surfaced the missing gold (true vs reported, §10.2)
 t27 [TELL_DELIVERED] hale tell "band_disaffected" surfaced to player (strength 1)
 t28 [WAGES] wages paid in full (-45 gold)
 t28 [ACCEPT] accepted “Cleanse the Glass Bridge Dead” (NEUTRAL, pays 150)
-t28 [ACCEPT] accepted “The Last Stand at Marrowbrook” (NEUTRAL, pays 160)
-t28 [DRIFT] kael loyalty 75 +1 -> 76 (hook k_latitude (latitude))
-t28 [DRIFT] kael loyalty 76 +2 -> 78 (a day of rest)
-t28 [ROLL] rooke spent 26 gold -> 10 recruits (CRIT)
-t28 [ROLL] vex chance 29% vs d100=6 -> margin 23 -> SUCCESS
-t28 [DRIFT] serah loyalty 76 +4 -> 80 (hook s_protect (c_n15))
-t28 [HOOK] serah protecting neutrals affirms her -> loyalty +4
-t28 [DRIFT] rooke loyalty 86 +8 -> 94 (hook r_kin_helped (c_n15))
-t28 [HOOK] rooke the company stood for Marrowbrook -> loyalty +8
+t28 [ROLL] serah chance 64% vs d100=86 -> margin -22 -> FAILURE
+t28 [DRIFT] serah loyalty 76 -2 -> 74 (grieves 12 soldiers lost)
+t28 [ACCEPT] double-dealing: +5 heat -> 52
+t28 [ACCEPT] accepted “Cut the Crown's Road” (LICH, pays 170)
+t28 [ROLL] kael chance 64% vs d100=1 -> margin 63 -> CRIT
+t28 [DRIFT] hale loyalty 27 -5 -> 22 (hook h_serve_lich (c_l13))
+t28 [HOOK] hale every job done FOR the Bone Court is a stain -> loyalty -5
+t28 [DRIFT] kael loyalty 75 +2 -> 77 (mission triumph)
+t28 [ROLL] rooke spent 21 gold -> 8 recruits (CRIT)
+t28 [ROLL] vex chance 71% vs d100=4 -> CRIT
 t28 [EVENT] event “What the Storm Uncovered” fired
 t28 [EVENT] event “The Dead Walk the Flats” fired
-t28 [WAR_TRACK] warTrack 1 + drift 0 + noise -1 + push 0 -> 0
-t28 [REPORT_FILTER] war news via traveler: claims Court gaining (truth: -1)
-t28 [DRIFT] serah loyalty 80 -1 -> 79 (drift toward setpoint 70)
-t28 [DRIFT] serah loyalty 79 +1 -> 80 (fair pay, on time)
-t28 [DRIFT] kael loyalty 78 -1 -> 77 (drift toward setpoint 40)
-t28 [DRIFT] kael loyalty 77 +1 -> 78 (fair pay, on time)
-t28 [DRIFT] rooke loyalty 94 -1 -> 93 (drift toward setpoint 74)
-t28 [DRIFT] rooke loyalty 93 +1 -> 94 (fair pay, on time)
-t28 [DRIFT] hale loyalty 27 +1 -> 28 (drift toward setpoint 60)
-t28 [DRIFT] hale loyalty 28 +1 -> 29 (fair pay, on time)
+t28 [WAR_TRACK] warTrack 1 + drift 0 + noise 0 + push -1 -> 0
+t28 [REPORT_FILTER] war news via scout: claims Court gaining (truth: -1)
+t28 [DRIFT] serah loyalty 74 -1 -> 73 (drift toward setpoint 70)
+t28 [DRIFT] serah loyalty 73 +1 -> 74 (fair pay, on time)
+t28 [DRIFT] kael loyalty 77 -1 -> 76 (drift toward setpoint 40)
+t28 [DRIFT] kael loyalty 76 +1 -> 77 (fair pay, on time)
+t28 [DRIFT] rooke loyalty 86 -1 -> 85 (drift toward setpoint 74)
+t28 [DRIFT] rooke loyalty 85 +1 -> 86 (fair pay, on time)
+t28 [DRIFT] hale loyalty 22 +1 -> 23 (drift toward setpoint 60)
+t28 [DRIFT] hale loyalty 23 +1 -> 24 (fair pay, on time)
 t28 [DRIFT] vex loyalty 63 -1 -> 62 (drift toward setpoint 42)
 t28 [DRIFT] vex loyalty 62 +1 -> 63 (fair pay, on time)
-t28 [CONTRACT_DRAW] offer “Cut the Crown's Road” lapsed unclaimed
-t28 [CONTRACT_DRAW] banked contract “Cleanse the Glass Bridge Dead” expired unexecuted -> quiet forfeit (halved onFail standing, D-013)
+t28 [BAND_CROSS] hale crossed down into BREAKING -> tell guaranteed within 2 turns
+t28 [TELL_SCHEDULED] hale tell "band_breaking" scheduled for delivery by turn 30 (guaranteed, §9.3)
+t28 [DEPARTURE_CHECK] hale pushPull 22 vs d100=61 -> holds
+t28 [OPPORTUNITY] hale the moment passed — opportunity consumed by a held departure check
 t28 [CONTRACT_DRAW] dealt “Eyes Inside Bleakgate” (LICH, diff 7, pays 160, expires t30)
 t28 [CONTRACT_DRAW] dealt “Snuff the Last Beacons” (ZOMBIE, diff 7, pays 170, expires t30)
 t28 [REPORT_FILTER] rooke report filter (CAUTIOUS/METICULOUS): understated a triumph as “acceptable” (calibrated, not a lie)
-t28 [REPORT_FILTER] vex report filter (GREEDY/CAUTIOUS): skimmed 24 (15%), claimed 194
 t29 [WAGES] wages paid in full (-45 gold)
-t29 [ACCEPT] double-dealing: +5 heat -> 49
+t29 [ACCEPT] double-dealing: +5 heat -> 57
 t29 [ACCEPT] accepted “Snuff the Last Beacons” (ZOMBIE, pays 170)
-t29 [ROLL] serah chance 78% vs d100=90 -> margin -12 -> PARTIAL
-t29 [DRIFT] hale loyalty 29 -5 -> 24 (hook h_serve_zombie (c_z13))
-t29 [HOOK] hale every job done FOR the Carrion Throne is a stain -> loyalty -5
-t29 [DRIFT] kael loyalty 78 +2 -> 80 (a day of rest)
-t29 [WILLINGNESS] hale band=BREAKING -> sandbag roll 60% -> rolled 29 -> SANDBAG (-4 C_eff)
-t29 [ROLL] hale chance 36% vs d100=97 -> DISASTER -> standing lich -1
-t29 [EVENT] event “Glass on the Wind” fired
-t29 [WAR_TRACK] warTrack 0 + drift 0 + noise 0 + push 1 -> 1
-t29 [REPORT_FILTER] war news via herald (zombie): claims horde gaining (truth: 1)
-t29 [DRIFT] serah loyalty 80 -1 -> 79 (drift toward setpoint 70)
-t29 [DRIFT] serah loyalty 79 +1 -> 80 (fair pay, on time)
-t29 [DRIFT] kael loyalty 80 -1 -> 79 (drift toward setpoint 40)
-t29 [DRIFT] kael loyalty 79 +1 -> 80 (fair pay, on time)
-t29 [DRIFT] rooke loyalty 94 -1 -> 93 (drift toward setpoint 74)
-t29 [DRIFT] rooke loyalty 93 +1 -> 94 (fair pay, on time)
-t29 [DRIFT] hale loyalty 24 +1 -> 25 (drift toward setpoint 60)
-t29 [DRIFT] hale loyalty 25 +1 -> 26 (fair pay, on time)
-t29 [DRIFT] vex loyalty 63 -1 -> 62 (drift toward setpoint 42)
-t29 [DRIFT] vex loyalty 62 +1 -> 63 (fair pay, on time)
-t29 [CONTRACT_DRAW] dealt “Cut the Crown's Road” (LICH, diff 7, pays 170, expires t31)
-t29 [TELL_DELIVERED] hale tell "sandbag" surfaced to player (strength 1)
-t29 [TELL_DELIVERED] vex tell "audit_discrepancy" surfaced to player (strength 2)
-t29 [REPORT_FILTER] rooke Rooke's audit surfaced the missing gold (true vs reported, §10.2)
+t29 [ROLL] serah chance 78% vs d100=25 -> CRIT -> standing zombie +5, better terms next offers
+t29 [ROLL] rooke chance 64% vs d100=90 -> margin -26 -> DISASTER
+t29 [RIDER] rooke METICULOUS latitude rider: preparation saved 1 soldier
+t29 [ROLL] rooke DISASTER on HIGH-risk contract -> death check 10% -> rolled 29 -> survived
+t29 [DRIFT] serah loyalty 74 -2 -> 72 (grieves 18 soldiers lost)
+t29 [ACCEPT] double-dealing: +6 heat -> 63
+t29 [ACCEPT] accepted “Eyes Inside Bleakgate” (LICH, pays 160)
+t29 [WILLINGNESS] hale band=BREAKING + hook violation (h_serve_lich) -> REFUSED (order wasted)
+t29 [ROLL] vex spent 39 gold -> 2 recruits (DISASTER)
+t29 [DRIFT] serah loyalty 72 +1 -> 73 (event e_c_songs)
+t29 [DRIFT] kael loyalty 77 +1 -> 78 (event e_c_songs)
+t29 [DRIFT] rooke loyalty 86 +1 -> 87 (event e_c_songs)
+t29 [DRIFT] hale loyalty 24 +1 -> 25 (event e_c_songs)
+t29 [DRIFT] vex loyalty 63 +1 -> 64 (event e_c_songs)
+t29 [EVENT] event “A Good Night” fired (loyalty(all) +1)
+t29 [WAR_TRACK] warTrack 0 + drift 0 + noise 0 + push 0 -> 0
+t29 [REPORT_FILTER] war news via herald (zombie): claims horde gaining (truth: 0)
+t29 [DRIFT] serah loyalty 73 -1 -> 72 (drift toward setpoint 70)
+t29 [DRIFT] serah loyalty 72 +1 -> 73 (fair pay, on time)
+t29 [DRIFT] kael loyalty 78 -1 -> 77 (drift toward setpoint 40)
+t29 [DRIFT] kael loyalty 77 +1 -> 78 (fair pay, on time)
+t29 [DRIFT] rooke loyalty 87 -1 -> 86 (drift toward setpoint 74)
+t29 [DRIFT] rooke loyalty 86 +1 -> 87 (fair pay, on time)
+t29 [DRIFT] hale loyalty 25 +1 -> 26 (drift toward setpoint 60)
+t29 [DRIFT] hale loyalty 26 +1 -> 27 (fair pay, on time)
+t29 [DRIFT] vex loyalty 64 -1 -> 63 (drift toward setpoint 42)
+t29 [DRIFT] vex loyalty 63 +1 -> 64 (fair pay, on time)
+t29 [CONTRACT_DRAW] dealt “The Last Stand at Marrowbrook” (NEUTRAL, diff 7, pays 160, expires t31)
+t29 [TELL_DELIVERED] hale tell "refusal" surfaced to player (strength 2)
+t29 [TELL_DELIVERED] hale tell "band_breaking" surfaced to player (strength 2)
 t30 [WAGES] wages paid in full (-45 gold)
-t30 [DRIFT] kael loyalty 80 +1 -> 81 (hook k_latitude (latitude))
-t30 [ACCEPT] double-dealing: +6 heat -> 55
-t30 [ACCEPT] accepted “Eyes Inside Bleakgate” (LICH, pays 160)
-t30 [WILLINGNESS] hale band=DISAFFECTED + hook violation (h_serve_lich) -> REFUSED (order wasted)
-t30 [ACCEPT] double-dealing: +5 heat -> 60
-t30 [ACCEPT] accepted “Cut the Crown's Road” (LICH, pays 170)
-t30 [ROLL] vex chance 22% vs d100=56 -> margin -34 -> DISASTER
-t30 [ROLL] vex DISASTER on HIGH-risk contract -> death check 10% -> rolled 1 -> DEAD
-t30 [DRIFT] serah loyalty 80 -7 -> 73 (death of vex)
-t30 [DRIFT] kael loyalty 81 -4 -> 77 (death of vex)
-t30 [DRIFT] rooke loyalty 94 -4 -> 90 (death of vex)
-t30 [DRIFT] hale loyalty 26 -4 -> 22 (death of vex)
-t30 [DRIFT] serah loyalty 73 -2 -> 71 (grieves 17 soldiers lost)
+t30 [ROLL] serah chance 78% vs d100=8 -> CRIT -> standing lich +5, better terms next offers
+t30 [ROLL] rooke chance 92% vs d100=56 -> margin 36 -> CRIT
+t30 [RIDER] rooke CAUTIOUS latitude rider: CRIT -> SUCCESS (would not gamble the gain)
+t30 [DRIFT] hale loyalty 27 -5 -> 22 (hook h_serve_lich (c_l15))
+t30 [HOOK] hale every job done FOR the Bone Court is a stain -> loyalty -5
+t30 [DRIFT] hale loyalty 22 +2 -> 24 (a day of rest)
+t30 [EVENT] event “Talk of Other Banners” fired
 t30 [EVENT] event “The Roads Fill” fired
-t30 [DRIFT] serah loyalty 71 +1 -> 72 (event e_c_songs)
-t30 [DRIFT] kael loyalty 77 +1 -> 78 (event e_c_songs)
-t30 [DRIFT] rooke loyalty 90 +1 -> 91 (event e_c_songs)
-t30 [DRIFT] hale loyalty 22 +1 -> 23 (event e_c_songs)
-t30 [EVENT] event “A Good Night” fired (loyalty(all) +1)
-t30 [WAR_TRACK] warTrack 1 + drift 0 + noise 0 + push 0 -> 1
-t30 [REPORT_FILTER] war news via traveler: claims no change (truth: 0)
-t30 [DRIFT] serah loyalty 72 -1 -> 71 (drift toward setpoint 70)
-t30 [DRIFT] serah loyalty 71 +1 -> 72 (fair pay, on time)
+t30 [WAR_TRACK] warTrack 0 + drift 0 + noise 0 + push -1 -> -1
+t30 [REPORT_FILTER] war news via traveler: claims Court gaining (truth: -1)
+t30 [DRIFT] serah loyalty 73 -1 -> 72 (drift toward setpoint 70)
+t30 [DRIFT] serah loyalty 72 +1 -> 73 (fair pay, on time)
 t30 [DRIFT] kael loyalty 78 -1 -> 77 (drift toward setpoint 40)
 t30 [DRIFT] kael loyalty 77 +1 -> 78 (fair pay, on time)
-t30 [DRIFT] rooke loyalty 91 -1 -> 90 (drift toward setpoint 74)
-t30 [DRIFT] rooke loyalty 90 +1 -> 91 (fair pay, on time)
-t30 [DRIFT] hale loyalty 23 +1 -> 24 (drift toward setpoint 60)
-t30 [DRIFT] hale loyalty 24 +1 -> 25 (fair pay, on time)
-t30 [CONTRACT_DRAW] banked contract “Eyes Inside Bleakgate” expired unexecuted -> quiet forfeit (halved onFail standing, D-013)
-t30 [TELL_DELIVERED] hale tell "refusal" surfaced to player (strength 2)
-t30 [REPORT_FILTER] vex report filter (GREEDY/CAUTIOUS): exaggerated the opposition, deflected the blame
+t30 [DRIFT] rooke loyalty 87 -1 -> 86 (drift toward setpoint 74)
+t30 [DRIFT] rooke loyalty 86 +1 -> 87 (fair pay, on time)
+t30 [DRIFT] hale loyalty 24 +1 -> 25 (drift toward setpoint 60)
+t30 [DRIFT] hale loyalty 25 +1 -> 26 (fair pay, on time)
+t30 [DRIFT] vex loyalty 64 -1 -> 63 (drift toward setpoint 42)
+t30 [DRIFT] vex loyalty 63 +1 -> 64 (fair pay, on time)
 t30 [END] run ends: RICH_AND_FREE under STALEMATE (completed); epilogue pulls 3 chronicle lines per lieutenant

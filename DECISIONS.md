@@ -123,3 +123,10 @@ lead should skim them and veto any that feel wrong.
   early BATTLE pusher (war outcomes were zombie-tilted ~57/26; now ~48/38 with the rest stalemates).
 - **D-032 — Golden snapshots re-baselined** after this pass (deliberate, per §0.2): fixtures and
   outcome snapshots regenerated at commit "M3".
+- **D-033 — "Prior turns" read strictly.** §9.3's "surfaced to the player in prior turns" is
+  enforced as tells with `turn < checkTurn`, not `<=`: a tell landing the same morning as the
+  fatal council does not count toward the gate, so the player always has at least one full
+  council in hand after the second tell before any departure can fire. Found while annotating
+  the sample Kael run (second tell arrived the morning of the defection). Sim assertions and
+  the golden snapshots were re-baselined after the change; all 500-seed assertions still pass
+  (27.6% random-policy departures, 370/370 audited strictly-prior).

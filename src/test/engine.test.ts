@@ -39,11 +39,12 @@ describe('run invariants', () => {
       expect(Number.isFinite(state.troops)).toBe(true);
       expect(state.troops).toBeGreaterThanOrEqual(0);
       expect(state.epilogue).not.toBeNull();
-      // Hard rule §9.3: every departure had >=2 tells surfaced in prior turns
+      // Hard rule §9.3 (strict): every departure had >=2 tells surfaced in strictly
+      // prior turns — the player had at least one council to act on them.
       for (const lt of state.lts) {
         if (lt.status === 'active' || lt.status === 'dead') continue;
-        const prior = lt.tells.filter((t) => t.turn <= (lt.departedTurn ?? 0));
-        expect(prior.length, `${lt.id} departed with only ${prior.length} surfaced tells`).toBeGreaterThanOrEqual(2);
+        const prior = lt.tells.filter((t) => t.turn < (lt.departedTurn ?? 0));
+        expect(prior.length, `${lt.id} departed with only ${prior.length} strictly-prior tells`).toBeGreaterThanOrEqual(2);
       }
       // Epilogue pulls chronicle lines (§2.4)
       for (const sec of state.epilogue!.ltSections) {
