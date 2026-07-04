@@ -123,6 +123,12 @@ lead should skim them and veto any that feel wrong.
   early BATTLE pusher (war outcomes were zombie-tilted ~57/26; now ~48/38 with the rest stalemates).
 - **D-032 — Golden snapshots re-baselined** after this pass (deliberate, per §0.2): fixtures and
   outcome snapshots regenerated at commit "M3".
+- **D-034 — Deploy target.** GitHub Pages via Actions (simplest per §M7 given `gh` was already
+  authenticated): public repo `Loreweaverlabs/obsidian-fields`, workflow runs tests then deploys
+  `dist/` on every push to main. Game: https://loreweaverlabs.github.io/obsidian-fields/ · tester
+  page: https://loreweaverlabs.github.io/obsidian-fields/playtest.html . Note the repo is public
+  and contains `data/cast_hidden.json` — sealed by convention (spec §6.3: the lead avoids reading
+  it; testers get the URL, not the repo).
 - **D-033 — "Prior turns" read strictly.** §9.3's "surfaced to the player in prior turns" is
   enforced as tells with `turn < checkTurn`, not `<=`: a tell landing the same morning as the
   fatal council does not count toward the gate, so the player always has at least one full
