@@ -72,9 +72,11 @@ if (state.epilogue) {
   const e = state.epilogue;
   console.log(`Archetype: ${e.archetype} | War: ${e.warOutcome} | Aligned: ${e.alignedWith ?? 'no banner'}`);
   console.log(`Treasury ${state.gold} gold, ${state.troops} troops\n`);
-  for (const sec of e.ltSections) {
-    console.log(`  ${name(sec.ltId)} — ${sec.status}${sec.departedNote ? ` (${sec.departedNote})` : ''}`);
-    for (const d of sec.deeds) console.log(`      t${d.turn}: ${d.text}`);
+  const { composeEpilogue } = await import('../render/epilogueText');
+  for (const sec of composeEpilogue(state, e)) {
+    if (sec.heading) console.log(`  — ${sec.heading} —`);
+    for (const line of sec.body.split('\n')) console.log(`  ${line}`);
+    console.log('');
   }
 }
 

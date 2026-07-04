@@ -84,7 +84,7 @@ export function renderCardWithSession(state: GameState, card: ReportCard, sessio
     setting: STRINGS.setting,
     company: STRINGS.company,
     __raw: JSON.stringify(card.facts),
-    ...computedSlots(card),
+    ...computedSlots(card, rng),
   };
   let text = fillSlots(template, card.facts, extra);
   // Structured embellishments the template opts into via markers
@@ -93,31 +93,81 @@ export function renderCardWithSession(state: GameState, card: ReportCard, sessio
   return text.trim();
 }
 
-/** Enum->phrase mappings for facts that need wording, computed per templateKey family. */
-function computedSlots(card: ReportCard): Record<string, string> {
+/** Enum->phrase mappings for facts that need wording, computed per templateKey family.
+ * Variety here uses the card's derived RNG — never the game RNG. */
+function computedSlots(card: ReportCard, rng: ReturnType<typeof derivedRng>): Record<string, string> {
   const f = card.facts as Record<string, unknown>;
   const out: Record<string, string> = {};
+  const src = f.source;
+  out.sourceName =
+    src === 'LICH'
+      ? STRINGS.factions.lich.agents
+      : src === 'ZOMBIE'
+        ? STRINGS.factions.zombie.agents
+        : 'the client';
+  const risk = f.risk;
+  out.riskWord =
+    risk === 'LOW'
+      ? 'the ranks should come home'
+      : risk === 'MED'
+        ? 'blood is likely'
+        : risk === 'HIGH'
+          ? 'a butcher’s bill is possible'
+          : '';
   if (card.templateKey === 'war_news') {
     const dir = f.claimedDirection as number;
-    out.directionPhrase =
+    const lichSide = STRINGS.factions.lich;
+    const zombieSide = STRINGS.factions.zombie;
+    out.directionPhrase = pick(
+      rng,
       dir < 0
-        ? `${STRINGS.factions.lich.faction} gained ground this week.`
+        ? [
+            `${lichSide.faction} gained ground this week.`,
+            `The bone banners moved forward this week.`,
+            `${lichSide.power} took ground and kept it this week.`,
+          ]
         : dir > 0
-          ? `${STRINGS.factions.zombie.faction} pressed forward this week.`
-          : 'The front barely moved this week.';
+          ? [
+              `${zombieSide.faction} pressed forward this week.`,
+              `The horde ground out new miles this week.`,
+              `${zombieSide.power} fed the front and it advanced.`,
+            ]
+          : [
+              'The front barely moved this week.',
+              'Neither power gave or gained much this week.',
+              'A week of shoving and no ground changed hands to speak of.',
+            ],
+    );
     const lean = f.lean as string;
-    out.leanPhrase =
+    out.leanPhrase = pick(
+      rng,
       lean === 'balanced'
-        ? 'Taken whole, the war still hangs level.'
+        ? ['Taken whole, the war still hangs level.', 'On the whole the scales sit even, for now.']
         : lean === 'lich_leaning'
-          ? `Taken whole, the glass tilts toward ${STRINGS.factions.lich.power}.`
+          ? [
+              `Taken whole, the glass tilts toward ${lichSide.power}.`,
+              `The long arithmetic currently favors ${lichSide.power}.`,
+            ]
           : lean === 'zombie_leaning'
-            ? `Taken whole, the glass tilts toward ${STRINGS.factions.zombie.power}.`
+            ? [
+                `Taken whole, the glass tilts toward ${zombieSide.power}.`,
+                `The long arithmetic currently favors ${zombieSide.power}.`,
+              ]
             : lean === 'lich_decisive'
-              ? `The war is being decided, and it is ${STRINGS.factions.lich.power} deciding it.`
-              : `The war is being decided, and it is ${STRINGS.factions.zombie.power} deciding it.`;
+              ? [
+                  `The war is being decided, and it is ${lichSide.power} deciding it.`,
+                  `Call it plainly: the Fields are becoming ${lichSide.power}'s.`,
+                ]
+              : [
+                  `The war is being decided, and it is ${zombieSide.power} deciding it.`,
+                  `Call it plainly: the Fields are becoming ${zombieSide.power}'s.`,
+                ],
+    );
     out.antagonistLine = f.antagonist
-      ? ' Riders swear a turncoat captain — late of your own company — was seen ordering enemy skirmishers with your old signals.'
+      ? pick(rng, [
+          ' Riders swear a turncoat captain — late of your own company — was seen ordering enemy skirmishers with your old signals.',
+          ' And a detail that travels ahead of every column: the enemy’s skirmish line answers to a captain who used to sit at your table.',
+        ])
       : '';
   }
   if (card.templateKey.startsWith('mission_take_contract')) {
