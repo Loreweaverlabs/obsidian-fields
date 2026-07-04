@@ -1,205 +1,597 @@
 [
   {
-    "id": "e_v_serah", "kind": "CAMP", "title": "The Anvil at the Fire",
+    "id": "e_v_serah",
+    "kind": "CAMP",
+    "title": "The Anvil at the Fire",
     "text": "Serah spends the grey hour drilling the newest recruits herself, correcting grips with two fingers and no words. When one boy drops his shield a third time she picks it up, hands it back, and stays until he holds it right. 'The line is the line,' she says, and leaves.",
-    "sourceTag": "seen around camp", "acts": [1], "once": true, "lt": "serah", "weight": 2
+    "sourceTag": "seen around camp",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "lt": "serah",
+    "weight": 2
   },
   {
-    "id": "e_v_kael", "kind": "CAMP", "title": "The Bridge Story Again",
+    "id": "e_v_kael",
+    "kind": "CAMP",
+    "title": "The Bridge Story Again",
     "text": "Kael holds the fire's whole circle with the story of the bridge at Veld — eleven riders, the gate, the fall of the portcullis an arm's length behind him. It gets better every telling. He watches your tent while he tells it.",
-    "sourceTag": "heard around the fire", "acts": [1], "once": true, "lt": "kael", "weight": 2
+    "sourceTag": "heard around the fire",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "lt": "kael",
+    "weight": 2
   },
   {
-    "id": "e_v_rooke", "kind": "CAMP", "title": "The Count Is the Count",
+    "id": "e_v_rooke",
+    "kind": "CAMP",
+    "title": "The Count Is the Count",
     "text": "Mother Rooke catches the salt-merchant's thumb on the scale before the bag touches the board. She does not raise her voice. The merchant repacks every bag while she watches, and throws in a tenth one free.",
-    "sourceTag": "your steward mentions", "acts": [1], "once": true, "lt": "rooke", "weight": 2,
-    "effects": { "gold": 10 }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "lt": "rooke",
+    "weight": 2,
+    "effects": {
+      "gold": 10
+    }
   },
   {
-    "id": "e_v_hale", "kind": "CAMP", "title": "Twice Burned",
+    "id": "e_v_hale",
+    "kind": "CAMP",
+    "title": "Twice Burned",
     "text": "A picket died of fever in the night. Before anyone thought to ask, Brother Hale had built the pyre and lit it, singing the dawn office alone in the dark. 'Once for safety,' he says when you come to watch. 'Once for spite.'",
-    "sourceTag": "seen around camp", "acts": [1], "once": true, "lt": "hale", "weight": 2
+    "sourceTag": "seen around camp",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "lt": "hale",
+    "weight": 2
   },
   {
-    "id": "e_v_vex", "kind": "CAMP", "title": "The Same Mule Twice",
+    "id": "e_v_vex",
+    "kind": "CAMP",
+    "title": "The Same Mule Twice",
     "text": "Vex has, by all accounts, sold the same grey mule to two different tinkers and refereed the resulting dispute for a fee. The company is five silver richer and the tinkers have jointly sworn never to deal with him again. He seems pleased with all outcomes.",
-    "sourceTag": "heard around the fire", "acts": [1], "once": true, "lt": "vex", "weight": 2,
-    "effects": { "gold": 5 }
+    "sourceTag": "heard around the fire",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "lt": "vex",
+    "weight": 2,
+    "effects": {
+      "gold": 5
+    }
   },
   {
-    "id": "e_c_brawl", "kind": "CAMP", "title": "Blood by the Picket Line",
+    "id": "e_c_brawl",
+    "kind": "CAMP",
+    "title": "Blood by the Picket Line",
     "text": "Two soldiers settle a dice grudge with knives before the sergeants pull them apart. One won't march for a week; his opponent won't march again. Quiet camp after.",
-    "sourceTag": "your steward mentions", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "troops": -1 }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "troops": -1
+    }
   },
   {
-    "id": "e_c_gambling", "kind": "CAMP", "title": "The Bones Come Up Wrong",
+    "id": "e_c_gambling",
+    "kind": "CAMP",
+    "title": "The Bones Come Up Wrong",
     "text": "A traveling gambler takes a week's pay off half a squad before someone checks the dice. The dice were honest — which somehow makes it worse. Grumbling in the ranks about coin.",
-    "sourceTag": "heard around the fire", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "gold": -5 }
+    "sourceTag": "heard around the fire",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "gold": -5
+    }
   },
   {
-    "id": "e_c_glassstorm", "kind": "CAMP", "title": "Glass on the Wind",
+    "id": "e_c_glassstorm",
+    "kind": "CAMP",
+    "title": "Glass on the Wind",
     "text": "A black wind off the Fields drives glass-dust through camp for a day and a night. Everything glitters and everyone bleeds a little. The old hands tie rags over their faces and say nothing; the new blood learns.",
-    "sourceTag": "seen around camp", "acts": [1, 2, 3], "weight": 1
+    "sourceTag": "seen around camp",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1
   },
   {
-    "id": "e_c_deserter", "kind": "CAMP", "title": "One Empty Bedroll",
+    "id": "e_c_deserter",
+    "kind": "CAMP",
+    "title": "One Empty Bedroll",
     "text": "A soldier from the third file slipped the pickets before dawn, taking his boots and leaving his back-pay. The sergeants ask whether to chase him. The old hands already know the answer.",
-    "sourceTag": "your steward mentions", "acts": [2, 3], "weight": 1,
-    "effects": { "troops": -1 }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "troops": -1
+    }
   },
   {
-    "id": "e_c_songs", "kind": "CAMP", "title": "A Good Night",
+    "id": "e_c_songs",
+    "kind": "CAMP",
+    "title": "A Good Night",
     "text": "Someone found a cask, someone found a fiddle, and for one evening the Fields sound like somewhere people live. Even the sentries are humming. The company remembers what it's for.",
-    "sourceTag": "heard around the fire", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "loyalty": { "lt": "all", "delta": 1 } }
+    "sourceTag": "heard around the fire",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "loyalty": {
+        "lt": "all",
+        "delta": 1
+      }
+    }
   },
   {
-    "id": "e_c_wolves", "kind": "CAMP", "title": "Glass Wolves at the Pickets",
+    "id": "e_c_wolves",
+    "kind": "CAMP",
+    "title": "Glass Wolves at the Pickets",
     "text": "Lean shapes with mirror-shard eyes test the picket line in the dark. The watch drives them off with torches, but not before they drag down two of the horses and a man who went to cut them loose.",
-    "sourceTag": "seen around camp", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "troops": -2 }
+    "sourceTag": "seen around camp",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "troops": -2
+    }
   },
   {
-    "id": "e_c_relicfind", "kind": "CAMP", "title": "Salvage Luck",
+    "id": "e_c_relicfind",
+    "kind": "CAMP",
+    "title": "Salvage Luck",
     "text": "A forage party turns up a seam of grave-glass where the storm stripped the topsoil — small pieces, but Ossian's factor pays on the spot and asks no questions about the plot markers.",
-    "sourceTag": "your steward mentions", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "gold": 15 }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "gold": 15
+    }
   },
   {
-    "id": "e_c_wage_grumble", "kind": "CAMP", "title": "Thin Purses",
+    "id": "e_c_wage_grumble",
+    "kind": "CAMP",
+    "title": "Thin Purses",
     "text": "The pay-line was quiet this week, which is how soldiers are loudest. Around the fires they are counting on their fingers what the treasury owes and what it holds. The sergeants suggest, respectfully, that the count should improve.",
-    "sourceTag": "your steward mentions", "acts": [1, 2, 3], "weight": 2,
-    "requires": { "goldAtMost": 60 }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 2,
+    "requires": {
+      "goldAtMost": 60
+    }
   },
   {
-    "id": "e_c_shared_hardship", "kind": "CAMP", "title": "The Flood Ditch",
+    "id": "e_c_shared_hardship",
+    "kind": "CAMP",
+    "title": "The Flood Ditch",
     "text": "A night flood off the glass hills nearly takes the east tents; officers and soldiers dig the ditch together in the rain until dawn. Bad night, good story. The kind the company keeps.",
-    "sourceTag": "seen around camp", "acts": [1, 2, 3], "weight": 1,
-    "effects": { "loyalty": { "lt": "all", "delta": 1 } }
+    "sourceTag": "seen around camp",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1,
+    "effects": {
+      "loyalty": {
+        "lt": "all",
+        "delta": 1
+      }
+    }
   },
-
   {
-    "id": "e_f_courtship_lich", "kind": "FACTION", "title": "A Gift from the Bone Court",
+    "id": "e_f_courtship_lich",
+    "kind": "FACTION",
+    "title": "A Gift from the Bone Court",
     "text": "A pale legate leaves a lacquered case at the camp's edge: bonewrought mail, sized — unsettlingly — to your shoulders, and a note in a fine dead hand: 'The Court notices quality.'",
-    "sourceTag": "faction envoy", "acts": [1], "once": true, "weight": 2,
-    "requires": { "notExposed": true },
-    "effects": { "gold": 10, "standing": { "lich": 2 } }
+    "sourceTag": "faction envoy",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "weight": 2,
+    "requires": {
+      "notExposed": true
+    },
+    "effects": {
+      "gold": 10,
+      "standing": {
+        "lich": 2
+      }
+    }
   },
   {
-    "id": "e_f_courtship_zombie", "kind": "FACTION", "title": "The Throne's Sweetener",
+    "id": "e_f_courtship_zombie",
+    "kind": "FACTION",
+    "title": "The Throne's Sweetener",
     "text": "A fly-crowned herald delivers a chest of mixed coin that smells faintly of the grave, and a message spoken in a borrowed voice: 'The Throne feeds those who feed it.'",
-    "sourceTag": "faction envoy", "acts": [1], "once": true, "weight": 2,
-    "requires": { "notExposed": true },
-    "effects": { "gold": 10, "standing": { "zombie": 2 } }
+    "sourceTag": "faction envoy",
+    "acts": [
+      1
+    ],
+    "once": true,
+    "weight": 2,
+    "requires": {
+      "notExposed": true
+    },
+    "effects": {
+      "gold": 10,
+      "standing": {
+        "zombie": 2
+      }
+    }
   },
   {
-    "id": "e_f_lich_gift", "kind": "FACTION", "title": "The Court Remembers",
+    "id": "e_f_lich_gift",
+    "kind": "FACTION",
+    "title": "The Court Remembers",
     "text": "For services rendered, the Bone Court sends a case of black-glass arrowheads and a writ of passage sealed in wax the color of old teeth. The legate's note: 'Continue.'",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 1,
-    "requires": { "standingAtLeast": { "lich": 25 }, "notExposed": true },
-    "effects": { "standing": { "lich": 2 } }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 1,
+    "requires": {
+      "standingAtLeast": {
+        "lich": 25
+      },
+      "notExposed": true
+    },
+    "effects": {
+      "standing": {
+        "lich": 2
+      }
+    }
   },
   {
-    "id": "e_f_zombie_gift", "kind": "FACTION", "title": "The Throne Provides",
+    "id": "e_f_zombie_gift",
+    "kind": "FACTION",
+    "title": "The Throne Provides",
     "text": "The Throne's gratitude arrives on a wagon: salt-meat (you check; it's pig), barrels of dark beer, and a purse. The herald waits to watch you accept it, which is the actual gift being purchased.",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 1,
-    "requires": { "standingAtLeast": { "zombie": 25 }, "notExposed": true },
-    "effects": { "standing": { "zombie": 2 }, "gold": 15 }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 1,
+    "requires": {
+      "standingAtLeast": {
+        "zombie": 25
+      },
+      "notExposed": true
+    },
+    "effects": {
+      "standing": {
+        "zombie": 2
+      },
+      "gold": 15
+    }
   },
   {
-    "id": "e_f_lich_demand", "kind": "FACTION", "title": "The Legate Grows Pointed",
+    "id": "e_f_lich_demand",
+    "kind": "FACTION",
+    "title": "The Legate Grows Pointed",
     "text": "The pale legate arrives unannounced and inventories your camp with its eyes. 'The Court dislikes shared instruments,' it says. 'Choose a hand to be held by. Soon.'",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 2,
-    "requires": { "standingAtLeast": { "lich": 15, "zombie": 15 }, "notExposed": true },
-    "effects": { "heat": 4 }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 2,
+    "requires": {
+      "standingAtLeast": {
+        "lich": 15,
+        "zombie": 15
+      },
+      "notExposed": true
+    },
+    "effects": {
+      "heat": 4
+    }
   },
   {
-    "id": "e_f_zombie_demand", "kind": "FACTION", "title": "The Herald Asks Plainly",
+    "id": "e_f_zombie_demand",
+    "kind": "FACTION",
+    "title": "The Herald Asks Plainly",
     "text": "The fly-crowned herald does not sit. 'The Throne hears you sell to the bone-men too. The Throne is patient. The Throne is not infinitely patient. Decide what you are.'",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 2,
-    "requires": { "standingAtLeast": { "lich": 15, "zombie": 15 }, "notExposed": true },
-    "effects": { "heat": 4 }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 2,
+    "requires": {
+      "standingAtLeast": {
+        "lich": 15,
+        "zombie": 15
+      },
+      "notExposed": true
+    },
+    "effects": {
+      "heat": 4
+    }
   },
   {
-    "id": "e_f_lich_scorn", "kind": "FACTION", "title": "Struck from the Court's Ledgers",
+    "id": "e_f_lich_scorn",
+    "kind": "FACTION",
+    "title": "Struck from the Court's Ledgers",
     "text": "A single rider in bone-lacquer delivers a strip of vellum: your company's name, written and then struck through. No other message. None needed.",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 1,
-    "requires": { "standingAtMost": { "lich": -20 } }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 1,
+    "requires": {
+      "standingAtMost": {
+        "lich": -20
+      }
+    }
   },
   {
-    "id": "e_f_zombie_scorn", "kind": "FACTION", "title": "The Throne Marks You",
+    "id": "e_f_zombie_scorn",
+    "kind": "FACTION",
+    "title": "The Throne Marks You",
     "text": "In the night someone — something — plants a spear at your gate with a dead crow lashed to it, facing your tent. The old hands don't touch it. The Throne's opinion, delivered.",
-    "sourceTag": "faction envoy", "acts": [2, 3], "once": true, "weight": 1,
-    "requires": { "standingAtMost": { "zombie": -20 } }
+    "sourceTag": "faction envoy",
+    "acts": [
+      2,
+      3
+    ],
+    "once": true,
+    "weight": 1,
+    "requires": {
+      "standingAtMost": {
+        "zombie": -20
+      }
+    }
   },
-
   {
-    "id": "e_o_kael_poach", "kind": "OPPORTUNITY", "title": "A Stranger in Grey",
+    "id": "e_o_kael_poach",
+    "kind": "OPPORTUNITY",
+    "title": "A Stranger in Grey",
     "text": "A stranger in grey shared Kael's fire last night — travel-stained, well-spoken, gone by morning watch. Nobody heard the conversation. Kael hasn't mentioned it.",
-    "sourceTag": "heard around the fire", "acts": [2, 3], "lt": "kael", "weight": 2,
-    "requires": { "ltActive": "kael" },
-    "effects": { "spawnOpportunity": { "kind": "POACH", "lt": "kael", "source": "AUTO", "offerQuality": 12, "windowTurns": 3 } }
+    "sourceTag": "heard around the fire",
+    "acts": [
+      2,
+      3
+    ],
+    "lt": "kael",
+    "weight": 2,
+    "requires": {
+      "ltActive": "kael"
+    },
+    "effects": {
+      "spawnOpportunity": {
+        "kind": "POACH",
+        "lt": "kael",
+        "source": "AUTO",
+        "offerQuality": 14,
+        "windowTurns": 3
+      }
+    }
   },
   {
-    "id": "e_o_kael_poach2", "kind": "OPPORTUNITY", "title": "A Letter Under the Saddle",
+    "id": "e_o_kael_poach2",
+    "kind": "OPPORTUNITY",
+    "title": "A Letter Under the Saddle",
     "text": "A groom found a letter sewn under Kael's saddle-flap and — being paid to notice things — mentioned it to Rooke's people before returning it unread. Good paper. A banner-captain's seal, though whose banner he couldn't say.",
-    "sourceTag": "your steward mentions", "acts": [2, 3], "lt": "kael", "weight": 1,
-    "requires": { "ltActive": "kael" },
-    "effects": { "spawnOpportunity": { "kind": "POACH", "lt": "kael", "source": "AUTO", "offerQuality": 14, "windowTurns": 3 } }
+    "sourceTag": "your steward mentions",
+    "acts": [
+      2,
+      3
+    ],
+    "lt": "kael",
+    "weight": 1,
+    "requires": {
+      "ltActive": "kael"
+    },
+    "effects": {
+      "spawnOpportunity": {
+        "kind": "POACH",
+        "lt": "kael",
+        "source": "AUTO",
+        "offerQuality": 15,
+        "windowTurns": 3
+      }
+    }
   },
   {
-    "id": "e_o_vex_skim", "kind": "OPPORTUNITY", "title": "A Broker's Proposition",
+    "id": "e_o_vex_skim",
+    "kind": "OPPORTUNITY",
+    "title": "A Broker's Proposition",
     "text": "One of Ossian's rivals has been drinking with Vex — twice this week — and paying. The word 'consignment' was overheard, and the phrase 'nobody counts glass in a war.'",
-    "sourceTag": "heard around the fire", "acts": [2, 3], "lt": "vex", "weight": 1,
-    "requires": { "ltActive": "vex" },
-    "effects": { "spawnOpportunity": { "kind": "SKIM_BIG", "lt": "vex", "offerQuality": 8, "windowTurns": 2 } }
+    "sourceTag": "heard around the fire",
+    "acts": [
+      2,
+      3
+    ],
+    "lt": "vex",
+    "weight": 1,
+    "requires": {
+      "ltActive": "vex"
+    },
+    "effects": {
+      "spawnOpportunity": {
+        "kind": "SKIM_BIG",
+        "lt": "vex",
+        "offerQuality": 8,
+        "windowTurns": 2
+      }
+    }
   },
   {
-    "id": "e_o_hale_walkout", "kind": "OPPORTUNITY", "title": "Pilgrims on the Road",
+    "id": "e_o_hale_walkout",
+    "kind": "OPPORTUNITY",
+    "title": "Pilgrims on the Road",
     "text": "A ragged column of sun-order pilgrims passed within sight of camp, bound for the shrine country, singing the dawn office. Brother Hale stood at the pickets and watched them out of sight. He has not spoken since.",
-    "sourceTag": "seen around camp", "acts": [2, 3], "lt": "hale", "weight": 1,
-    "requires": { "ltActive": "hale", "ltBandAtMost": { "lt": "hale", "band": "DISAFFECTED" } },
-    "effects": { "spawnOpportunity": { "kind": "WALK_OUT", "lt": "hale", "offerQuality": 10, "windowTurns": 3 } }
+    "sourceTag": "seen around camp",
+    "acts": [
+      2,
+      3
+    ],
+    "lt": "hale",
+    "weight": 1,
+    "requires": {
+      "ltActive": "hale",
+      "ltBandAtMost": {
+        "lt": "hale",
+        "band": "DISAFFECTED"
+      }
+    },
+    "effects": {
+      "spawnOpportunity": {
+        "kind": "WALK_OUT",
+        "lt": "hale",
+        "offerQuality": 8,
+        "windowTurns": 3
+      }
+    }
   },
   {
-    "id": "e_o_serah_line", "kind": "OPPORTUNITY", "title": "The Anvil Writes a Letter",
+    "id": "e_o_serah_line",
+    "kind": "OPPORTUNITY",
+    "title": "The Anvil Writes a Letter",
     "text": "Serah sat up past the late watch writing something by candle, sealing it, and locking it in her campaign chest. She has never once, in anyone's memory, written a letter.",
-    "sourceTag": "seen around camp", "acts": [2, 3], "lt": "serah", "weight": 1,
-    "requires": { "ltActive": "serah", "ltBandAtMost": { "lt": "serah", "band": "DISAFFECTED" } },
-    "effects": { "spawnOpportunity": { "kind": "WALK_OUT", "lt": "serah", "offerQuality": 12, "windowTurns": 3 } }
+    "sourceTag": "seen around camp",
+    "acts": [
+      2,
+      3
+    ],
+    "lt": "serah",
+    "weight": 1,
+    "requires": {
+      "ltActive": "serah",
+      "ltBandAtMost": {
+        "lt": "serah",
+        "band": "DISAFFECTED"
+      }
+    },
+    "effects": {
+      "spawnOpportunity": {
+        "kind": "WALK_OUT",
+        "lt": "serah",
+        "offerQuality": 12,
+        "windowTurns": 3
+      }
+    }
   },
   {
-    "id": "e_o_generic_walkout", "kind": "OPPORTUNITY", "title": "Talk of Other Banners",
+    "id": "e_o_generic_walkout",
+    "kind": "OPPORTUNITY",
+    "title": "Talk of Other Banners",
     "text": "There is talk at the fires of other companies wintering fat off richer wars — the kind of talk that is always around, and only sometimes means something.",
-    "sourceTag": "heard around the fire", "acts": [2, 3], "weight": 1,
+    "sourceTag": "heard around the fire",
+    "acts": [
+      2,
+      3
+    ],
+    "weight": 1,
     "effects": {}
   },
-
   {
-    "id": "e_w_squeeze", "kind": "WAR", "title": "The Fields Tighten",
+    "id": "e_w_squeeze",
+    "kind": "WAR",
+    "title": "The Fields Tighten",
     "text": "Both powers have stopped courting and started counting. Contracts now come with conditions, envoys with ledgers. On the Fields, the space between the two armies is getting narrower — and the company is standing in it.",
-    "sourceTag": "war news", "acts": [2], "once": true, "weight": 3
+    "sourceTag": "war news",
+    "acts": [
+      2
+    ],
+    "once": true,
+    "weight": 3
   },
   {
-    "id": "e_w_convergence", "kind": "WAR", "title": "The Glass Runs Toward an Edge",
+    "id": "e_w_convergence",
+    "kind": "WAR",
+    "title": "The Glass Runs Toward an Edge",
     "text": "Every scout, trader, and drunk agrees on one thing now: this war has a shape, and the shape has an ending in it. The powers are done maneuvering. What remains is the arithmetic of the field.",
-    "sourceTag": "war news", "acts": [3], "once": true, "weight": 3
+    "sourceTag": "war news",
+    "acts": [
+      3
+    ],
+    "once": true,
+    "weight": 3
   },
   {
-    "id": "e_w_refugees", "kind": "WAR", "title": "The Roads Fill",
+    "id": "e_w_refugees",
+    "kind": "WAR",
+    "title": "The Roads Fill",
     "text": "A column of refugees passes the camp from dawn to dusk — carts, dogs, grandmothers, everything a village is when you pour it onto a road. They do not ask for help. They have stopped asking anyone.",
-    "sourceTag": "seen around camp", "acts": [2, 3], "weight": 1
+    "sourceTag": "seen around camp",
+    "acts": [
+      2,
+      3
+    ],
+    "weight": 1
   },
   {
-    "id": "e_w_mass_grave", "kind": "WAR", "title": "What the Storm Uncovered",
+    "id": "e_w_mass_grave",
+    "kind": "WAR",
+    "title": "What the Storm Uncovered",
     "text": "The glass-wind stripped a hillside two leagues east and uncovered a battle nobody remembers — hundreds of dead in a fashion of armor no living smith makes. By evening, both powers had riders circling it. The Fields have been feeding this war a long time.",
-    "sourceTag": "war news", "acts": [1, 2, 3], "weight": 1
+    "sourceTag": "war news",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1
   },
   {
-    "id": "e_w_deadwind", "kind": "WAR", "title": "The Dead Walk the Flats",
-    "text": "Travelers off the {flats} report the unbannered dead walking in numbers again — drawn, the glasspickers say, to wherever the war is about to go next. The glasspickers are usually right.",
-    "sourceTag": "war news", "acts": [1, 2, 3], "weight": 1
+    "id": "e_w_deadwind",
+    "kind": "WAR",
+    "title": "The Dead Walk the Flats",
+    "text": "Travelers off {flats} report the unbannered dead walking in numbers again — drawn, the glasspickers say, to wherever the war is about to go next. The glasspickers are usually right.",
+    "sourceTag": "war news",
+    "acts": [
+      1,
+      2,
+      3
+    ],
+    "weight": 1
   }
 ]

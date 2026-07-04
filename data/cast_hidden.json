@@ -7,28 +7,102 @@
       "setpointBase": 70,
       "competence": 9,
       "specialty": "BATTLE",
-      "temperaments": ["HONORABLE", "PROTECTIVE"],
+      "temperaments": [
+        "HONORABLE",
+        "PROTECTIVE"
+      ],
       "departureStyle": "RESIGNATION",
       "hooks": [
-        { "id": "s_desecration", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "DESECRATION" }, "delta": -7, "grievance": true, "note": "desecration completed by the company cuts her" },
-        { "id": "s_corpse_takers", "on": { "kind": "SUSTAINED_STANDING", "faction": "zombie", "atLeast": 40, "turns": 3 }, "delta": -2, "grievance": true, "note": "sustained closeness to the corpse-takers, per turn" },
-        { "id": "s_protect", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "PROTECT_NEUTRAL" }, "delta": 4, "note": "protecting neutrals affirms her" },
-        { "id": "s_harm_village", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "HARMS_VILLAGE" }, "delta": -5, "grievance": true, "note": "harming the helpless is past her line" }
+        {
+          "id": "s_desecration",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "DESECRATION"
+          },
+          "delta": -7,
+          "grievance": true,
+          "note": "desecration completed by the company cuts her"
+        },
+        {
+          "id": "s_corpse_takers",
+          "on": {
+            "kind": "SUSTAINED_STANDING",
+            "faction": "zombie",
+            "atLeast": 40,
+            "turns": 3
+          },
+          "delta": -2,
+          "grievance": true,
+          "note": "sustained closeness to the corpse-takers, per turn"
+        },
+        {
+          "id": "s_protect",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "PROTECT_NEUTRAL"
+          },
+          "delta": 4,
+          "note": "protecting neutrals affirms her"
+        },
+        {
+          "id": "s_harm_village",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "HARMS_VILLAGE"
+          },
+          "delta": -5,
+          "grievance": true,
+          "note": "harming the helpless is past her line"
+        }
       ]
     },
     {
       "id": "kael",
       "loyaltyStart": 58,
-      "setpointBase": 45,
+      "setpointBase": 40,
       "competence": 7,
       "specialty": "RAID",
-      "temperaments": ["AMBITIOUS", "PRIDEFUL"],
+      "temperaments": [
+        "AMBITIOUS",
+        "PRIDEFUL"
+      ],
       "departureStyle": "BETRAYAL",
       "hooks": [
-        { "id": "k_glory", "on": { "kind": "TAG_COMPLETED_BY_SELF", "tag": "GLORY" }, "delta": 6, "note": "glory won by his own hand" },
-        { "id": "k_latitude", "on": { "kind": "INTENT_LATITUDE_GIVEN" }, "delta": 1, "note": "command latitude reads as trust" },
-        { "id": "k_unglamorous", "on": { "kind": "UNGLAMOROUS_ASSIGNMENT" }, "delta": -3, "grievance": true, "note": "wagon-guarding is an insult" },
-        { "id": "k_passed_over", "on": { "kind": "PASSED_OVER" }, "delta": -8, "grievance": true, "note": "another name called first" }
+        {
+          "id": "k_glory",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_SELF",
+            "tag": "GLORY"
+          },
+          "delta": 6,
+          "note": "glory won by his own hand"
+        },
+        {
+          "id": "k_latitude",
+          "on": {
+            "kind": "INTENT_LATITUDE_GIVEN"
+          },
+          "delta": 1,
+          "note": "command latitude reads as trust"
+        },
+        {
+          "id": "k_unglamorous",
+          "on": {
+            "kind": "UNGLAMOROUS_ASSIGNMENT"
+          },
+          "delta": -3,
+          "grievance": true,
+          "note": "wagon-guarding is an insult"
+        },
+        {
+          "id": "k_passed_over",
+          "on": {
+            "kind": "PASSED_OVER"
+          },
+          "delta": -8,
+          "grievance": true,
+          "note": "another name called first"
+        }
       ]
     },
     {
@@ -37,12 +111,34 @@
       "setpointBase": 74,
       "competence": 8,
       "specialty": "INTEL",
-      "temperaments": ["CAUTIOUS", "METICULOUS"],
+      "temperaments": [
+        "CAUTIOUS",
+        "METICULOUS"
+      ],
       "departureStyle": "RESIGNATION",
-      "hiddenMods": { "logisticsBonus": 1 },
+      "hiddenMods": {
+        "logisticsBonus": 1
+      },
       "hooks": [
-        { "id": "r_kin_harmed", "on": { "kind": "TAG_ACCEPTED", "tag": "HARMS_VILLAGE" }, "delta": -8, "grievance": true, "note": "her kin live in that village; taking the job at all wounds her" },
-        { "id": "r_kin_helped", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "HELPS_VILLAGE" }, "delta": 8, "note": "the company stood for Marrowbrook" }
+        {
+          "id": "r_kin_harmed",
+          "on": {
+            "kind": "TAG_ACCEPTED",
+            "tag": "HARMS_VILLAGE"
+          },
+          "delta": -8,
+          "grievance": true,
+          "note": "her kin live in that village; taking the job at all wounds her"
+        },
+        {
+          "id": "r_kin_helped",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "HELPS_VILLAGE"
+          },
+          "delta": 8,
+          "note": "the company stood for Marrowbrook"
+        }
       ]
     },
     {
@@ -51,14 +147,54 @@
       "setpointBase": 60,
       "competence": 6,
       "specialty": "PURGE",
-      "temperaments": ["ZEALOUS", "PRIDEFUL"],
+      "temperaments": [
+        "ZEALOUS",
+        "PRIDEFUL"
+      ],
       "departureStyle": "DESERTION",
-      "hiddenMods": { "antiUndeadBonus": 2 },
+      "hiddenMods": {
+        "antiUndeadBonus": 2
+      },
       "hooks": [
-        { "id": "h_serve_lich", "on": { "kind": "SOURCE_COMPLETED_BY_COMPANY", "source": "LICH" }, "delta": -6, "grievance": true, "note": "every job done FOR the Bone Court is a stain" },
-        { "id": "h_serve_zombie", "on": { "kind": "SOURCE_COMPLETED_BY_COMPANY", "source": "ZOMBIE" }, "delta": -6, "grievance": true, "note": "every job done FOR the Carrion Throne is a stain" },
-        { "id": "h_purge", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "ANTI_UNDEAD" }, "delta": 5, "note": "burning the dead is the work" },
-        { "id": "h_desecration", "on": { "kind": "TAG_COMPLETED_BY_COMPANY", "tag": "DESECRATION" }, "delta": -8, "grievance": true, "note": "profaning the honored dead" }
+        {
+          "id": "h_serve_lich",
+          "on": {
+            "kind": "SOURCE_COMPLETED_BY_COMPANY",
+            "source": "LICH"
+          },
+          "delta": -5,
+          "grievance": true,
+          "note": "every job done FOR the Bone Court is a stain"
+        },
+        {
+          "id": "h_serve_zombie",
+          "on": {
+            "kind": "SOURCE_COMPLETED_BY_COMPANY",
+            "source": "ZOMBIE"
+          },
+          "delta": -5,
+          "grievance": true,
+          "note": "every job done FOR the Carrion Throne is a stain"
+        },
+        {
+          "id": "h_purge",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "ANTI_UNDEAD"
+          },
+          "delta": 6,
+          "note": "burning the dead is the work"
+        },
+        {
+          "id": "h_desecration",
+          "on": {
+            "kind": "TAG_COMPLETED_BY_COMPANY",
+            "tag": "DESECRATION"
+          },
+          "delta": -8,
+          "grievance": true,
+          "note": "profaning the honored dead"
+        }
       ]
     },
     {
@@ -67,7 +203,10 @@
       "setpointBase": 42,
       "competence": 5,
       "specialty": "ESCORT",
-      "temperaments": ["GREEDY", "CAUTIOUS"],
+      "temperaments": [
+        "GREEDY",
+        "CAUTIOUS"
+      ],
       "departureStyle": "ABSCOND",
       "hooks": []
     }

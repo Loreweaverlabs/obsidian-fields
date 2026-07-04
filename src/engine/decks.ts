@@ -293,12 +293,12 @@ export function drawEvents(state: GameState): void {
         if (!lt || lt.status !== 'active') return false;
         if (liveOpportunityFor(state, spawn.lt)) return false;
         const lastOpp = state.oppLastTurn[spawn.lt];
-        if (lastOpp != null && state.turn - lastOpp < o.poachCooldownTurns) return false;
+        if (lastOpp != null && state.turn - lastOpp < o.oppCooldownTurns) return false;
         if (spawn.kind === 'SKIM_BIG' && lt.loyalty >= o.skimBigLoyaltyBelow) return false;
       }
       return true;
     });
-    if (oppCandidates.length > 0) {
+    if (oppCandidates.length > 0 && chance(state, 50)) {
       const def = weightedPick(state, oppCandidates, oppCandidates.map((d) => d.weight ?? 1));
       fireEvent(state, def);
       fired++;

@@ -72,20 +72,20 @@
     },
     {
       "accepts": [
-        "c_n04",
-        "c_z01"
+        "c_l06",
+        "c_n04"
       ],
       "orders": [
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l06",
+          "latitude": "intent"
+        },
         {
           "ltId": "rooke",
           "verb": "TAKE_CONTRACT",
           "contractId": "c_n04",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "serah",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_z01",
           "latitude": "intent"
         },
         {
@@ -106,40 +106,9 @@
     },
     {
       "accepts": [
-        "c_l02",
+        "c_l03",
         "c_z02"
       ],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_l02",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "serah",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_z02",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_l04",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "hale",
-          "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
       "orders": [
         {
           "ltId": "kael",
@@ -150,9 +119,31 @@
         {
           "ltId": "serah",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_z05",
+          "contractId": "c_z02",
           "latitude": "intent"
         },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z01",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "hale",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "vex",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_z04",
+        "c_n05"
+      ],
+      "orders": [
         {
           "ltId": "vex",
           "verb": "TAKE_CONTRACT",
@@ -160,7 +151,19 @@
           "latitude": "explicit"
         },
         {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n05",
+          "latitude": "intent"
+        },
+        {
           "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l04",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
@@ -173,16 +176,9 @@
     },
     {
       "accepts": [
-        "c_n05",
         "c_n01"
       ],
       "orders": [
-        {
-          "ltId": "serah",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_n05",
-          "latitude": "intent"
-        },
         {
           "ltId": "vex",
           "verb": "TAKE_CONTRACT",
@@ -190,9 +186,15 @@
           "latitude": "explicit"
         },
         {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z05",
+          "latitude": "intent"
+        },
+        {
           "ltId": "rooke",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_l01",
+          "contractId": "c_l02",
           "latitude": "intent"
         },
         {
@@ -211,15 +213,10 @@
       "accepts": [],
       "orders": [
         {
-          "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t7-c52"
-          ]
-        },
-        {
-          "ltId": "hale",
-          "verb": "PRIVATE_TALK"
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l01",
+          "latitude": "intent"
         },
         {
           "ltId": "serah",
@@ -229,99 +226,16 @@
         },
         {
           "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
+        },
         {
           "ltId": "hale",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "serah",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
           "verb": "GUARD_CAMP"
         },
         {
           "ltId": "vex",
-          "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t7-c52"
-          ]
-        },
-        {
-          "ltId": "hale",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t7-c52"
-          ]
-        },
-        {
-          "ltId": "hale",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "serah",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
           "verb": "GUARD_CAMP"
         }
       ]
@@ -334,10 +248,165 @@
           "verb": "PRIVATE_TALK"
         },
         {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP"
+        },
+        {
           "ltId": "kael",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "vex",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "kael",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "vex",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "vex",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l07",
+        "c_l08"
+      ],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_z06",
+          "contractId": "c_l07",
           "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l08",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n09",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l10",
+        "c_n08"
+      ],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "kael",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l10",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n08",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z09",
+          "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n06"
+      ],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "vex",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n06",
+          "latitude": "explicit"
         },
         {
           "ltId": "rooke",
@@ -350,16 +419,12 @@
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
-        },
-        {
-          "ltId": "vex",
-          "verb": "GUARD_CAMP"
         }
       ]
     },
     {
       "accepts": [
-        "c_z10",
+        "c_l11",
         "c_n11"
       ],
       "orders": [
@@ -367,126 +432,30 @@
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t7-c52"
+            "t14-c118"
           ]
         },
         {
-          "ltId": "hale",
+          "ltId": "kael",
           "verb": "PRAISE"
         },
         {
           "ltId": "serah",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_z10",
+          "contractId": "c_l11",
           "latitude": "intent"
         },
         {
-          "ltId": "kael",
+          "ltId": "hale",
           "verb": "TAKE_CONTRACT",
           "contractId": "c_n11",
-          "latitude": "intent"
+          "latitude": "explicit"
         },
         {
           "ltId": "rooke",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_l10",
-          "latitude": "intent"
-        }
-      ]
-    },
-    {
-      "accepts": [
-        "c_z11"
-      ],
-      "orders": [
-        {
-          "ltId": "hale",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "vex",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_z11",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "kael",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_l07",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [
-        "c_n08"
-      ],
-      "orders": [
-        {
-          "ltId": "hale",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "kael",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_n08",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "vex",
-          "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [
-        "c_n06",
-        "c_n10"
-      ],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_n06",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "serah",
           "verb": "TAKE_CONTRACT",
           "contractId": "c_n10",
           "latitude": "intent"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "TAKE_CONTRACT",
-          "contractId": "c_n09",
-          "latitude": "intent"
-        },
-        {
-          "ltId": "kael",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
         }
       ]
     },
@@ -496,6 +465,10 @@
       ],
       "orders": [
         {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
+        },
+        {
           "ltId": "serah",
           "verb": "TAKE_CONTRACT",
           "contractId": "c_n07",
@@ -503,9 +476,40 @@
         },
         {
           "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z06",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "RECRUIT",
+          "gold": 50,
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "vex",
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP"
         },
         {
           "ltId": "rooke",
@@ -524,8 +528,12 @@
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t17-c139"
+            "t14-c118"
           ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
         },
         {
           "ltId": "serah",
@@ -546,6 +554,68 @@
     {
       "accepts": [],
       "orders": [
+        {
+          "ltId": "vex",
+          "verb": "CONFRONT",
+          "evidenceCardIds": [
+            "t14-c118"
+          ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
+        },
+        {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "vex",
+          "verb": "CONFRONT",
+          "evidenceCardIds": [
+            "t19-c159"
+          ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
         {
           "ltId": "vex",
           "verb": "REWARD",
@@ -574,12 +644,18 @@
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t17-c139"
+            "t19-c159"
           ]
         },
         {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
+        },
+        {
           "ltId": "serah",
-          "verb": "GUARD_CAMP"
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
         },
         {
           "ltId": "kael",
@@ -596,10 +672,12 @@
       "orders": [
         {
           "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t17-c139"
-          ]
+          "verb": "REWARD",
+          "gold": 50
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
         },
         {
           "ltId": "serah",
@@ -614,91 +692,43 @@
         {
           "ltId": "rooke",
           "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t17-c139"
-          ]
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "vex",
-          "verb": "CONFRONT",
-          "evidenceCardIds": [
-            "t17-c139"
-          ]
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "kael",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
         }
       ]
     },
     {
       "accepts": [
-        "c_n15",
-        "c_n14"
+        "c_l12",
+        "c_l15"
       ],
       "orders": [
         {
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t20-c155"
+            "t19-c159"
           ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
         },
         {
           "ltId": "serah",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_n15",
+          "contractId": "c_l12",
           "latitude": "intent"
         },
         {
           "ltId": "rooke",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_n14",
+          "contractId": "c_l15",
           "latitude": "intent"
         },
         {
           "ltId": "kael",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z12",
+          "latitude": "intent"
         }
       ]
     },
@@ -714,15 +744,51 @@
           "gold": 50
         },
         {
-          "ltId": "serah",
+          "ltId": "hale",
           "verb": "TAKE_CONTRACT",
           "contractId": "c_n13",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n12",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n14",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_n15"
+      ],
+      "orders": [
+        {
+          "ltId": "vex",
+          "verb": "CONFRONT",
+          "evidenceCardIds": [
+            "t22-c181"
+          ]
+        },
+        {
+          "ltId": "serah",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_n15",
           "latitude": "intent"
         },
         {
           "ltId": "kael",
           "verb": "TAKE_CONTRACT",
-          "contractId": "c_n12",
+          "contractId": "c_z13",
           "latitude": "intent"
         },
         {
@@ -730,6 +796,10 @@
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
+        },
+        {
+          "ltId": "hale",
+          "verb": "GUARD_CAMP"
         }
       ]
     },
@@ -740,12 +810,71 @@
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t20-c155"
+            "t22-c181"
           ]
         },
         {
-          "ltId": "kael",
+          "ltId": "hale",
           "verb": "PRAISE"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_z15",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "kael",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [
+        "c_l13"
+      ],
+      "orders": [
+        {
+          "ltId": "vex",
+          "verb": "CONFRONT",
+          "evidenceCardIds": [
+            "t22-c181"
+          ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "kael",
+          "verb": "TAKE_CONTRACT",
+          "contractId": "c_l13",
+          "latitude": "intent"
+        },
+        {
+          "ltId": "serah",
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "hale",
+          "verb": "PRIVATE_TALK"
         },
         {
           "ltId": "serah",
@@ -754,22 +883,7 @@
           "latitude": "explicit"
         },
         {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
           "ltId": "kael",
-          "verb": "PRIVATE_TALK"
-        },
-        {
-          "ltId": "serah",
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
@@ -781,75 +895,6 @@
         {
           "ltId": "vex",
           "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "kael",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "serah",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "vex",
-          "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "kael",
-          "verb": "PRAISE"
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
-        },
-        {
-          "ltId": "vex",
-          "verb": "GUARD_CAMP"
-        }
-      ]
-    },
-    {
-      "accepts": [],
-      "orders": [
-        {
-          "ltId": "kael",
-          "verb": "PRIVATE_TALK"
-        },
-        {
-          "ltId": "serah",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "rooke",
-          "verb": "GUARD_CAMP"
-        },
-        {
-          "ltId": "vex",
-          "verb": "SCOUT",
-          "scoutTarget": "warFront",
-          "latitude": "explicit"
         }
       ]
     },
@@ -860,14 +905,46 @@
           "ltId": "vex",
           "verb": "CONFRONT",
           "evidenceCardIds": [
-            "t30-c222"
+            "t29-c250"
           ]
         },
         {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
           "ltId": "serah",
+          "verb": "GUARD_CAMP"
+        },
+        {
+          "ltId": "kael",
           "verb": "SCOUT",
           "scoutTarget": "warFront",
           "latitude": "explicit"
+        },
+        {
+          "ltId": "rooke",
+          "verb": "GUARD_CAMP"
+        }
+      ]
+    },
+    {
+      "accepts": [],
+      "orders": [
+        {
+          "ltId": "vex",
+          "verb": "CONFRONT",
+          "evidenceCardIds": [
+            "t29-c250"
+          ]
+        },
+        {
+          "ltId": "hale",
+          "verb": "PRAISE"
+        },
+        {
+          "ltId": "serah",
+          "verb": "GUARD_CAMP"
         },
         {
           "ltId": "kael",
@@ -875,7 +952,9 @@
         },
         {
           "ltId": "rooke",
-          "verb": "GUARD_CAMP"
+          "verb": "SCOUT",
+          "scoutTarget": "warFront",
+          "latitude": "explicit"
         }
       ]
     }

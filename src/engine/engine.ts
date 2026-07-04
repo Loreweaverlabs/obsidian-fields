@@ -237,6 +237,7 @@ export function submitCouncil(state: GameState, council: CouncilOrders): void {
   for (const order of peopleOrders) {
     const lt = getLt(state, order.ltId);
     state.stats.peopleVerbsUsed[order.verb] = (state.stats.peopleVerbsUsed[order.verb] ?? 0) + 1;
+    state.stats.assignmentsByLt[order.ltId].push(state.turn); // a people verb is that lt's assignment (§3.2)
     if (lt.status !== 'active') continue; // may have ruptured out mid-phase
     switch (order.verb as PeopleVerb) {
       case 'PRAISE':

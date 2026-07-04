@@ -1,305 +1,1196 @@
 [
   {
-    "id": "c_l01", "source": "LICH", "title": "Count the Carrion Columns",
+    "id": "c_l01",
+    "source": "LICH",
+    "title": "Count the Carrion Columns",
     "flavor": "A pale legate unrolls a map etched in fingerbone. The Bone Court pays for eyes: number the horde's columns moving north of {ridge}, and say nothing of who asked.",
-    "difficulty": 2, "domain": "INTEL", "payment": 45, "troopRisk": "LOW",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 6 }, "onFail": { "lich": -4 } },
-    "heatEffect": 6, "hookTags": [], "expiresIn": 3, "acts": [1]
+    "difficulty": 2,
+    "domain": "INTEL",
+    "payment": 45,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 6
+      },
+      "onFail": {
+        "lich": -4
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_l02", "source": "LICH", "title": "The Pale Legate's Road",
+    "id": "c_l02",
+    "source": "LICH",
+    "title": "The Pale Legate's Road",
     "flavor": "An envoy of the Bone Court must cross {road} unmolested. The Court dislikes surprises and pays for their absence.",
-    "difficulty": 3, "domain": "ESCORT", "payment": 60, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 7, "zombie": -3 }, "onFail": { "lich": -5 } },
-    "heatEffect": 6, "hookTags": [], "expiresIn": 3, "acts": [1]
+    "difficulty": 3,
+    "domain": "ESCORT",
+    "payment": 60,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 7,
+        "zombie": -3
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_l03", "source": "LICH", "title": "Silence the Signal Fires",
+    "id": "c_l03",
+    "source": "LICH",
+    "title": "Silence the Signal Fires",
     "flavor": "The horde talks to itself with fire along {ridge}. The Court would prefer silence. Ride fast, burn the beacons, be gone before the smoke settles.",
-    "difficulty": 4, "domain": "RAID", "payment": 85, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 8, "zombie": -4 }, "onFail": { "lich": -5 } },
-    "heatEffect": 8, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [1], "contested": true
+    "difficulty": 4,
+    "domain": "RAID",
+    "payment": 85,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 8,
+        "zombie": -4
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      1
+    ],
+    "contested": true
   },
   {
-    "id": "c_l04", "source": "LICH", "title": "Bone Meal and Black Glass",
+    "id": "c_l04",
+    "source": "LICH",
+    "title": "Bone Meal and Black Glass",
     "flavor": "Forty crates of reagents to {gate}, unopened. The Court is precise about 'unopened.' Dull work; clean coin.",
-    "difficulty": 2, "domain": "LOGISTICS", "payment": 40, "troopRisk": "LOW",
-    "standing": { "onAccept": { "lich": 1 }, "onComplete": { "lich": 5 }, "onFail": { "lich": -4 } },
-    "heatEffect": 5, "hookTags": ["UNGLAMOROUS"], "expiresIn": 3, "acts": [1]
+    "difficulty": 2,
+    "domain": "LOGISTICS",
+    "payment": 40,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "lich": 1
+      },
+      "onComplete": {
+        "lich": 5
+      },
+      "onFail": {
+        "lich": -4
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [
+      "UNGLAMOROUS"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_l05", "source": "LICH", "title": "Burn the Shambling Vanguard",
+    "id": "c_l05",
+    "source": "LICH",
+    "title": "Burn the Shambling Vanguard",
     "flavor": "A forward camp of the horde festers within a day's march. The Court wants it ash by week's end — every walking thing in it unmade.",
-    "difficulty": 4, "domain": "PURGE", "payment": 90, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 8, "zombie": -5 }, "onFail": { "lich": -5 } },
-    "heatEffect": 8, "hookTags": ["ANTI_UNDEAD"], "expiresIn": 2, "acts": [1], "contested": true
+    "difficulty": 4,
+    "domain": "PURGE",
+    "payment": 90,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 8,
+        "zombie": -5
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "ANTI_UNDEAD"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      1
+    ],
+    "contested": true
   },
   {
-    "id": "c_l06", "source": "LICH", "title": "Hold the Glass Bridge",
+    "id": "c_l06",
+    "source": "LICH",
+    "title": "Hold the Glass Bridge",
     "flavor": "The horde will push at {bridge} before the black moon. The Court requires the crossing held. It does not require survivors — but it pays better for them.",
-    "difficulty": 6, "domain": "BATTLE", "payment": 140, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "lich": 3 }, "onComplete": { "lich": 10, "zombie": -6 }, "onFail": { "lich": -6 } },
-    "heatEffect": 10, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 6,
+    "domain": "BATTLE",
+    "payment": 140,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "lich": 3
+      },
+      "onComplete": {
+        "lich": 10,
+        "zombie": -6
+      },
+      "onFail": {
+        "lich": -6
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      1,
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_l07", "source": "LICH", "title": "Unmake the Meat Wagons",
+    "id": "c_l07",
+    "source": "LICH",
+    "title": "Unmake the Meat Wagons",
     "flavor": "The horde feeds its columns from a crawling train of carrion wagons. Burn the train and the Carrion Throne's push starves in the field.",
-    "difficulty": 6, "domain": "RAID", "payment": 130, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 9, "zombie": -6 }, "onFail": { "lich": -5 } },
-    "heatEffect": 10, "hookTags": [], "expiresIn": 2, "acts": [2], "contested": true, "conflictPair": "c_z11"
+    "difficulty": 6,
+    "domain": "RAID",
+    "payment": 130,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 9,
+        "zombie": -6
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true,
+    "conflictPair": "c_z11"
   },
   {
-    "id": "c_l08", "source": "LICH", "title": "A Name in the Horde's Court",
+    "id": "c_l08",
+    "source": "LICH",
+    "title": "A Name in the Horde's Court",
     "flavor": "Someone close to the Carrion Throne wishes to sell it. The Bone Court will pay for the traitor's name — and pay more if no one learns who bought it.",
-    "difficulty": 5, "domain": "INTEL", "payment": 110, "troopRisk": "LOW",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 8 }, "onFail": { "lich": -5 } },
-    "heatEffect": 12, "hookTags": [], "expiresIn": 3, "acts": [2]
+    "difficulty": 5,
+    "domain": "INTEL",
+    "payment": 110,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 8
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_l09", "source": "LICH", "title": "Harvest the Barrow Fields",
+    "id": "c_l09",
+    "source": "LICH",
+    "title": "Harvest the Barrow Fields",
     "flavor": "Old graves, honored ones, west of {flats}. The Court wants what sleeps there — bones of the named dead, dug and crated. The pay is generous. The Court knows why.",
-    "difficulty": 4, "domain": "LOGISTICS", "payment": 120, "troopRisk": "LOW",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 8 }, "onFail": { "lich": -5 } },
-    "heatEffect": 8, "hookTags": ["DESECRATION"], "expiresIn": 2, "acts": [2, 3]
+    "difficulty": 4,
+    "domain": "LOGISTICS",
+    "payment": 120,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 8
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "DESECRATION"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2,
+      3
+    ]
   },
   {
-    "id": "c_l10", "source": "LICH", "title": "Break the Ninth Column",
+    "id": "c_l10",
+    "source": "LICH",
+    "title": "Break the Ninth Column",
     "flavor": "The horde's Ninth Column masses at the fords. The Court offers war-wages: meet it, break it, and let the Fields drink what's left.",
-    "difficulty": 7, "domain": "BATTLE", "payment": 170, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "lich": 3 }, "onComplete": { "lich": 10, "zombie": -6 }, "onFail": { "lich": -6 } },
-    "heatEffect": 12, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [2], "contested": true, "conflictPair": "c_z10"
+    "difficulty": 7,
+    "domain": "BATTLE",
+    "payment": 170,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "lich": 3
+      },
+      "onComplete": {
+        "lich": 10,
+        "zombie": -6
+      },
+      "onFail": {
+        "lich": -6
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true,
+    "conflictPair": "c_z10"
   },
   {
-    "id": "c_l11", "source": "LICH", "title": "Scour the Hollow Crypt",
+    "id": "c_l11",
+    "source": "LICH",
+    "title": "Scour the Hollow Crypt",
     "flavor": "Revenants of the horde have nested in {crypt}. The Court finds this untidy. Empty it — the Court is indifferent to how.",
-    "difficulty": 5, "domain": "PURGE", "payment": 115, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 8, "zombie": -4 }, "onFail": { "lich": -5 } },
-    "heatEffect": 8, "hookTags": ["ANTI_UNDEAD"], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 5,
+    "domain": "PURGE",
+    "payment": 115,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 8,
+        "zombie": -4
+      },
+      "onFail": {
+        "lich": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "ANTI_UNDEAD"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_l12", "source": "LICH", "title": "The Push at Mirror Flats",
+    "id": "c_l12",
+    "source": "LICH",
+    "title": "The Push at Mirror Flats",
     "flavor": "The Court commits its legions to {flats} for the war's deciding stroke, and buys every sword that can hold a line. Stand with the bone banners, and be remembered by what wins.",
-    "difficulty": 8, "domain": "BATTLE", "payment": 200, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "lich": 3 }, "onComplete": { "lich": 12, "zombie": -7 }, "onFail": { "lich": -7 } },
-    "heatEffect": 12, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [3], "contested": true, "conflictPair": "c_z12"
+    "difficulty": 8,
+    "domain": "BATTLE",
+    "payment": 200,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "lich": 3
+      },
+      "onComplete": {
+        "lich": 12,
+        "zombie": -7
+      },
+      "onFail": {
+        "lich": -7
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true,
+    "conflictPair": "c_z12"
   },
   {
-    "id": "c_l13", "source": "LICH", "title": "Cut the Crown's Road",
+    "id": "c_l13",
+    "source": "LICH",
+    "title": "Cut the Crown's Road",
     "flavor": "When the horde breaks, it will run down the Salt Road. The Court pays for the road to be gone when it gets there.",
-    "difficulty": 7, "domain": "RAID", "payment": 170, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "lich": 3 }, "onComplete": { "lich": 10, "zombie": -6 }, "onFail": { "lich": -6 } },
-    "heatEffect": 10, "hookTags": [], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 7,
+    "domain": "RAID",
+    "payment": 170,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "lich": 3
+      },
+      "onComplete": {
+        "lich": 10,
+        "zombie": -6
+      },
+      "onFail": {
+        "lich": -6
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   },
   {
-    "id": "c_l14", "source": "LICH", "title": "The Reliquary Train",
+    "id": "c_l14",
+    "source": "LICH",
+    "title": "The Reliquary Train",
     "flavor": "Wagons of grave-goods — crowns, blades, the honored dead's honors — bound for the Court's vaults. See them through the contested ground. Do not ask whose graves.",
-    "difficulty": 6, "domain": "ESCORT", "payment": 150, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 2 }, "onComplete": { "lich": 9 }, "onFail": { "lich": -6 } },
-    "heatEffect": 10, "hookTags": ["DESECRATION"], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 6,
+    "domain": "ESCORT",
+    "payment": 150,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 2
+      },
+      "onComplete": {
+        "lich": 9
+      },
+      "onFail": {
+        "lich": -6
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [
+      "DESECRATION"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   },
   {
-    "id": "c_l15", "source": "LICH", "title": "Eyes Inside Bleakgate",
+    "id": "c_l15",
+    "source": "LICH",
+    "title": "Eyes Inside Bleakgate",
     "flavor": "{gate} holds for the horde. The Court wants its walls counted from the inside: gates, wards, watch-turns. Quiet feet and a long memory.",
-    "difficulty": 7, "domain": "INTEL", "payment": 160, "troopRisk": "MED",
-    "standing": { "onAccept": { "lich": 3 }, "onComplete": { "lich": 10 }, "onFail": { "lich": -6 } },
-    "heatEffect": 12, "hookTags": [], "expiresIn": 2, "acts": [3]
+    "difficulty": 7,
+    "domain": "INTEL",
+    "payment": 160,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "lich": 3
+      },
+      "onComplete": {
+        "lich": 10
+      },
+      "onFail": {
+        "lich": -6
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ]
   },
-
   {
-    "id": "c_z01", "source": "ZOMBIE", "title": "Where the Bone Banners March",
+    "id": "c_z01",
+    "source": "ZOMBIE",
+    "title": "Where the Bone Banners March",
     "flavor": "A fly-crowned herald speaks for the Carrion Throne: watch the bone legions' roads for a week, and bring back their pattern. The Throne rewards those who count well.",
-    "difficulty": 2, "domain": "INTEL", "payment": 45, "troopRisk": "LOW",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 6 }, "onFail": { "zombie": -4 } },
-    "heatEffect": 6, "hookTags": [], "expiresIn": 3, "acts": [1]
+    "difficulty": 2,
+    "domain": "INTEL",
+    "payment": 45,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 6
+      },
+      "onFail": {
+        "zombie": -4
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_z02", "source": "ZOMBIE", "title": "Feed the Column",
+    "id": "c_z02",
+    "source": "ZOMBIE",
+    "title": "Feed the Column",
     "flavor": "The horde does not forage; it is fed. Drive the Throne's provision — do not look under the tarps — to the forward camps.",
-    "difficulty": 3, "domain": "LOGISTICS", "payment": 55, "troopRisk": "LOW",
-    "standing": { "onAccept": { "zombie": 1 }, "onComplete": { "zombie": 5 }, "onFail": { "zombie": -4 } },
-    "heatEffect": 5, "hookTags": ["UNGLAMOROUS", "SERVES_UNDEAD"], "expiresIn": 3, "acts": [1]
+    "difficulty": 3,
+    "domain": "LOGISTICS",
+    "payment": 55,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "zombie": 1
+      },
+      "onComplete": {
+        "zombie": 5
+      },
+      "onFail": {
+        "zombie": -4
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [
+      "UNGLAMOROUS",
+      "SERVES_UNDEAD"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_z03", "source": "ZOMBIE", "title": "Topple the Watch-Spires",
+    "id": "c_z03",
+    "source": "ZOMBIE",
+    "title": "Topple the Watch-Spires",
     "flavor": "The Bone Court sees too far from its glass spires on the high ground. The Throne would have the Fields dark again.",
-    "difficulty": 3, "domain": "RAID", "payment": 70, "troopRisk": "MED",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 7, "lich": -4 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 8, "hookTags": [], "expiresIn": 2, "acts": [1], "contested": true
+    "difficulty": 3,
+    "domain": "RAID",
+    "payment": 70,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 7,
+        "lich": -4
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      1
+    ],
+    "contested": true
   },
   {
-    "id": "c_z04", "source": "ZOMBIE", "title": "The Herald's Crossing",
+    "id": "c_z04",
+    "source": "ZOMBIE",
+    "title": "The Herald's Crossing",
     "flavor": "The Throne's herald must reach the eastern camps with the Throne's word. The word is heavy; the road is watched. Go around what you cannot go through.",
-    "difficulty": 4, "domain": "ESCORT", "payment": 80, "troopRisk": "MED",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 7, "lich": -3 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 6, "hookTags": [], "expiresIn": 3, "acts": [1]
+    "difficulty": 4,
+    "domain": "ESCORT",
+    "payment": 80,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 7,
+        "lich": -3
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 3,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_z05", "source": "ZOMBIE", "title": "Blunt the Bone Sortie",
+    "id": "c_z05",
+    "source": "ZOMBIE",
+    "title": "Blunt the Bone Sortie",
     "flavor": "The Court's legions sally at dawn against the Throne's western camps. The Throne offers living silver for living swords to stand in the gap.",
-    "difficulty": 5, "domain": "BATTLE", "payment": 105, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 8, "lich": -5 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 8, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [1], "contested": true
+    "difficulty": 5,
+    "domain": "BATTLE",
+    "payment": 105,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 8,
+        "lich": -5
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      1
+    ],
+    "contested": true
   },
   {
-    "id": "c_z06", "source": "ZOMBIE", "title": "Ash the Reagent Barges",
+    "id": "c_z06",
+    "source": "ZOMBIE",
+    "title": "Ash the Reagent Barges",
     "flavor": "Black-glass reagents float down to the Court's ritualists by barge. The Throne pays for the river to burn.",
-    "difficulty": 6, "domain": "RAID", "payment": 135, "troopRisk": "MED",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 9, "lich": -6 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 10, "hookTags": [], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 6,
+    "domain": "RAID",
+    "payment": 135,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 9,
+        "lich": -6
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_z07", "source": "ZOMBIE", "title": "Empty Marrowbrook's Granaries",
+    "id": "c_z07",
+    "source": "ZOMBIE",
+    "title": "Empty Marrowbrook's Granaries",
     "flavor": "The village of {village} hoards grain the Throne requires. Take it. The Throne is indifferent to what the village eats this winter. The pay is very good.",
-    "difficulty": 5, "domain": "RAID", "payment": 130, "troopRisk": "LOW",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 8 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 8, "hookTags": ["HARMS_VILLAGE"], "expiresIn": 2, "acts": [2]
+    "difficulty": 5,
+    "domain": "RAID",
+    "payment": 130,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 8
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "HARMS_VILLAGE"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_z08", "source": "ZOMBIE", "title": "Mark the Legate's Path",
+    "id": "c_z08",
+    "source": "ZOMBIE",
+    "title": "Mark the Legate's Path",
     "flavor": "A pale legate of the Bone Court travels with a small guard and a large secret. The Throne wants its road, its rests, its hours — everything but the killing, which the Throne keeps for itself.",
-    "difficulty": 5, "domain": "INTEL", "payment": 110, "troopRisk": "LOW",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 8 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 12, "hookTags": [], "expiresIn": 3, "acts": [2]
+    "difficulty": 5,
+    "domain": "INTEL",
+    "payment": 110,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 8
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_z09", "source": "ZOMBIE", "title": "Unseat the Bone Garrison",
+    "id": "c_z09",
+    "source": "ZOMBIE",
+    "title": "Unseat the Bone Garrison",
     "flavor": "A bone legion holds the quarry fort above {ridge}. The Throne wants the fort. It does not want the legion. Resolve the difference.",
-    "difficulty": 6, "domain": "PURGE", "payment": 140, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 9, "lich": -6 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 10, "hookTags": ["ANTI_UNDEAD", "GLORY"], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 6,
+    "domain": "PURGE",
+    "payment": 140,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 9,
+        "lich": -6
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [
+      "ANTI_UNDEAD",
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_z10", "source": "ZOMBIE", "title": "Break the Bridge Shields",
+    "id": "c_z10",
+    "source": "ZOMBIE",
+    "title": "Break the Bridge Shields",
     "flavor": "The Court's shield-wall forms at the fords to meet the Ninth Column. The Throne buys hands to break it from the flank while the Column comes on.",
-    "difficulty": 7, "domain": "BATTLE", "payment": 170, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "zombie": 3 }, "onComplete": { "zombie": 10, "lich": -6 }, "onFail": { "zombie": -6 } },
-    "heatEffect": 12, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [2], "contested": true, "conflictPair": "c_l10"
+    "difficulty": 7,
+    "domain": "BATTLE",
+    "payment": 170,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "zombie": 3
+      },
+      "onComplete": {
+        "zombie": 10,
+        "lich": -6
+      },
+      "onFail": {
+        "zombie": -6
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true,
+    "conflictPair": "c_l10"
   },
   {
-    "id": "c_z11", "source": "ZOMBIE", "title": "The Tithe of Meat",
+    "id": "c_z11",
+    "source": "ZOMBIE",
+    "title": "The Tithe of Meat",
     "flavor": "The Throne's carrion wagons crawl to the front under too few guards. Walk beside them. Ignore the smell. Ignore the sounds. Deliver the tithe.",
-    "difficulty": 5, "domain": "ESCORT", "payment": 115, "troopRisk": "MED",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 8 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 8, "hookTags": ["SERVES_UNDEAD", "UNGLAMOROUS"], "expiresIn": 2, "acts": [2], "contested": true, "conflictPair": "c_l07"
+    "difficulty": 5,
+    "domain": "ESCORT",
+    "payment": 115,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 8
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 4,
+    "hookTags": [
+      "SERVES_UNDEAD",
+      "UNGLAMOROUS"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true,
+    "conflictPair": "c_l07"
   },
   {
-    "id": "c_z12", "source": "ZOMBIE", "title": "Mirror Flats: the Charnel Tide",
+    "id": "c_z12",
+    "source": "ZOMBIE",
+    "title": "Mirror Flats: the Charnel Tide",
     "flavor": "The Throne empties its camps onto {flats} for the deciding stroke, and hires every living blade to ride the tide's edge. Stand with the horde, and outlive the argument.",
-    "difficulty": 8, "domain": "BATTLE", "payment": 200, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "zombie": 3 }, "onComplete": { "zombie": 12, "lich": -7 }, "onFail": { "zombie": -7 } },
-    "heatEffect": 12, "hookTags": ["GLORY"], "expiresIn": 2, "acts": [3], "contested": true, "conflictPair": "c_l12"
+    "difficulty": 8,
+    "domain": "BATTLE",
+    "payment": 200,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "zombie": 3
+      },
+      "onComplete": {
+        "zombie": 12,
+        "lich": -7
+      },
+      "onFail": {
+        "zombie": -7
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true,
+    "conflictPair": "c_l12"
   },
   {
-    "id": "c_z13", "source": "ZOMBIE", "title": "Snuff the Last Beacons",
+    "id": "c_z13",
+    "source": "ZOMBIE",
+    "title": "Snuff the Last Beacons",
     "flavor": "When the Court's line cracks, its beacons will call the reserve legions. The Throne pays for dark hills and unanswered calls.",
-    "difficulty": 7, "domain": "RAID", "payment": 170, "troopRisk": "HIGH",
-    "standing": { "onAccept": { "zombie": 3 }, "onComplete": { "zombie": 10, "lich": -6 }, "onFail": { "zombie": -6 } },
-    "heatEffect": 10, "hookTags": [], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 7,
+    "domain": "RAID",
+    "payment": 170,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onAccept": {
+        "zombie": 3
+      },
+      "onComplete": {
+        "zombie": 10,
+        "lich": -6
+      },
+      "onFail": {
+        "zombie": -6
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   },
   {
-    "id": "c_z14", "source": "ZOMBIE", "title": "Raise the Fallen Fields",
+    "id": "c_z14",
+    "source": "ZOMBIE",
+    "title": "Raise the Fallen Fields",
     "flavor": "The battle-dead of {flats} lie wasted in the sun. Cart them to the Throne's raisers. The Throne calls this mercy: everyone marches again.",
-    "difficulty": 6, "domain": "LOGISTICS", "payment": 150, "troopRisk": "LOW",
-    "standing": { "onAccept": { "zombie": 2 }, "onComplete": { "zombie": 9 }, "onFail": { "zombie": -5 } },
-    "heatEffect": 10, "hookTags": ["DESECRATION", "SERVES_UNDEAD"], "expiresIn": 2, "acts": [3]
+    "difficulty": 6,
+    "domain": "LOGISTICS",
+    "payment": 150,
+    "troopRisk": "LOW",
+    "standing": {
+      "onAccept": {
+        "zombie": 2
+      },
+      "onComplete": {
+        "zombie": 9
+      },
+      "onFail": {
+        "zombie": -5
+      }
+    },
+    "heatEffect": 5,
+    "hookTags": [
+      "DESECRATION",
+      "SERVES_UNDEAD"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ]
   },
   {
-    "id": "c_z15", "source": "ZOMBIE", "title": "A Key to the Broken Spire",
+    "id": "c_z15",
+    "source": "ZOMBIE",
+    "title": "A Key to the Broken Spire",
     "flavor": "The Court wards its ritual seat at {spire}. Somewhere a warden's key exists in living hands. The Throne wants the key, the hands, or both.",
-    "difficulty": 7, "domain": "INTEL", "payment": 160, "troopRisk": "MED",
-    "standing": { "onAccept": { "zombie": 3 }, "onComplete": { "zombie": 10 }, "onFail": { "zombie": -6 } },
-    "heatEffect": 12, "hookTags": [], "expiresIn": 2, "acts": [3]
+    "difficulty": 7,
+    "domain": "INTEL",
+    "payment": 160,
+    "troopRisk": "MED",
+    "standing": {
+      "onAccept": {
+        "zombie": 3
+      },
+      "onComplete": {
+        "zombie": 10
+      },
+      "onFail": {
+        "zombie": -6
+      }
+    },
+    "heatEffect": 6,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ]
   },
-
   {
-    "id": "c_n01", "source": "NEUTRAL", "title": "Glasspickers on the Salt Road",
+    "id": "c_n01",
+    "source": "NEUTRAL",
+    "title": "Glasspickers on the Salt Road",
     "flavor": "The Glasspickers' Guild moves a season's salvage down {road} and would rather arrive with it. Honest coin for honest walking.",
-    "difficulty": 2, "domain": "ESCORT", "payment": 35, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": ["PROTECT_NEUTRAL"], "expiresIn": 3, "acts": [1, 2]
+    "difficulty": 2,
+    "domain": "ESCORT",
+    "payment": 35,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "PROTECT_NEUTRAL"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      1,
+      2
+    ]
   },
   {
-    "id": "c_n02", "source": "NEUTRAL", "title": "Grain Before the Frost",
+    "id": "c_n02",
+    "source": "NEUTRAL",
+    "title": "Grain Before the Frost",
     "flavor": "{village} needs its grain carted in from the far terraces before frost and worse things find it. The village pays in copper and gratitude — mostly gratitude.",
-    "difficulty": 2, "domain": "LOGISTICS", "payment": 30, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": ["HELPS_VILLAGE", "PROTECT_NEUTRAL", "UNGLAMOROUS"], "expiresIn": 3, "acts": [1, 2]
+    "difficulty": 2,
+    "domain": "LOGISTICS",
+    "payment": 30,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "HELPS_VILLAGE",
+      "PROTECT_NEUTRAL",
+      "UNGLAMOROUS"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      1,
+      2
+    ]
   },
   {
-    "id": "c_n03", "source": "NEUTRAL", "title": "Clear the Roadside Dead",
+    "id": "c_n03",
+    "source": "NEUTRAL",
+    "title": "Clear the Roadside Dead",
     "flavor": "Feral dead — no banner, no master — have taken to the culverts along the pilgrim road. The Guild pays by the skull.",
-    "difficulty": 3, "domain": "PURGE", "payment": 55, "troopRisk": "MED",
-    "standing": {}, "heatEffect": 0, "hookTags": ["ANTI_UNDEAD", "PROTECT_NEUTRAL"], "expiresIn": 3, "acts": [1, 2]
+    "difficulty": 3,
+    "domain": "PURGE",
+    "payment": 55,
+    "troopRisk": "MED",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "ANTI_UNDEAD",
+      "PROTECT_NEUTRAL"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      1,
+      2
+    ]
   },
   {
-    "id": "c_n04", "source": "NEUTRAL", "title": "The Broker's Question",
-    "flavor": "Ossian the relic-broker slides a purse across the table: 'A caravan vanished on the {flats} a month back. Find me the where and the who. The what is my business.'",
-    "difficulty": 3, "domain": "INTEL", "payment": 50, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": [], "expiresIn": 3, "acts": [1]
+    "id": "c_n04",
+    "source": "NEUTRAL",
+    "title": "The Broker's Question",
+    "flavor": "Ossian the relic-broker slides a purse across the table: 'A caravan vanished on {flats} a month back. Find me the where and the who. The what is my business.'",
+    "difficulty": 3,
+    "domain": "INTEL",
+    "payment": 50,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_n05", "source": "NEUTRAL", "title": "Drive Off the Corpse-Raiders",
+    "id": "c_n05",
+    "source": "NEUTRAL",
+    "title": "Drive Off the Corpse-Raiders",
     "flavor": "Masterless dead have been dragging {village}'s people from their beds. The village elders have pooled what they have. It isn't much. They know it isn't much.",
-    "difficulty": 4, "domain": "BATTLE", "payment": 75, "troopRisk": "MED",
-    "standing": {}, "heatEffect": 0, "hookTags": ["HELPS_VILLAGE", "PROTECT_NEUTRAL", "ANTI_UNDEAD"], "expiresIn": 2, "acts": [1]
+    "difficulty": 4,
+    "domain": "BATTLE",
+    "payment": 75,
+    "troopRisk": "MED",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "HELPS_VILLAGE",
+      "PROTECT_NEUTRAL",
+      "ANTI_UNDEAD"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      1
+    ]
   },
   {
-    "id": "c_n06", "source": "NEUTRAL", "title": "The Relic Caravan",
+    "id": "c_n06",
+    "source": "NEUTRAL",
+    "title": "The Relic Caravan",
     "flavor": "Ossian has bought well and now must move it: three wagons of grave-glass through ground both powers claim. He pays in advance, which tells you what he thinks of the odds.",
-    "difficulty": 4, "domain": "ESCORT", "payment": 85, "troopRisk": "MED",
-    "standing": {}, "heatEffect": 0, "hookTags": [], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 4,
+    "domain": "ESCORT",
+    "payment": 85,
+    "troopRisk": "MED",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_n07", "source": "NEUTRAL", "title": "Marrowbrook Calls",
+    "id": "c_n07",
+    "source": "NEUTRAL",
+    "title": "Marrowbrook Calls",
     "flavor": "A foraging column of the horde has turned toward {village}. The elders send a boy on a lame horse with everything they can promise. He waits in the yard for an answer.",
-    "difficulty": 5, "domain": "BATTLE", "payment": 95, "troopRisk": "HIGH",
-    "standing": { "onComplete": { "zombie": -4 } }, "heatEffect": 0,
-    "hookTags": ["HELPS_VILLAGE", "PROTECT_NEUTRAL", "ANTI_UNDEAD"], "expiresIn": 2, "acts": [2], "contested": true
+    "difficulty": 5,
+    "domain": "BATTLE",
+    "payment": 95,
+    "troopRisk": "HIGH",
+    "standing": {
+      "onComplete": {
+        "zombie": -4
+      }
+    },
+    "heatEffect": 0,
+    "hookTags": [
+      "HELPS_VILLAGE",
+      "PROTECT_NEUTRAL",
+      "ANTI_UNDEAD"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ],
+    "contested": true
   },
   {
-    "id": "c_n08", "source": "NEUTRAL", "title": "Break the Toll-Camp",
+    "id": "c_n08",
+    "source": "NEUTRAL",
+    "title": "Break the Toll-Camp",
     "flavor": "Deserters from six armies have made a toll of the north ford and a sport of the refugees crossing it. The Guild will pay to have the ford opened and the sport ended.",
-    "difficulty": 5, "domain": "RAID", "payment": 100, "troopRisk": "MED",
-    "standing": {}, "heatEffect": 0, "hookTags": ["PROTECT_NEUTRAL", "GLORY"], "expiresIn": 2, "acts": [2]
+    "difficulty": 5,
+    "domain": "RAID",
+    "payment": 100,
+    "troopRisk": "MED",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "PROTECT_NEUTRAL",
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_n09", "source": "NEUTRAL", "title": "Census of the Displaced",
+    "id": "c_n09",
+    "source": "NEUTRAL",
+    "title": "Census of the Displaced",
     "flavor": "The Guild wants the refugee roads mapped and counted — who moves, where, how many can dig. Cold arithmetic, warm coin.",
-    "difficulty": 4, "domain": "INTEL", "payment": 70, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": ["UNGLAMOROUS"], "expiresIn": 3, "acts": [2]
+    "difficulty": 4,
+    "domain": "INTEL",
+    "payment": 70,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "UNGLAMOROUS"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_n10", "source": "NEUTRAL", "title": "Water for the Mirror Flats",
-    "flavor": "The wells on the {flats} road have gone foul. Cart clean water to the waystations before the crossing kills more than the war does.",
-    "difficulty": 4, "domain": "LOGISTICS", "payment": 75, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": ["UNGLAMOROUS", "PROTECT_NEUTRAL"], "expiresIn": 3, "acts": [2]
+    "id": "c_n10",
+    "source": "NEUTRAL",
+    "title": "Water for the Mirror Flats",
+    "flavor": "The wells on {flats} road have gone foul. Cart clean water to the waystations before the crossing kills more than the war does.",
+    "difficulty": 4,
+    "domain": "LOGISTICS",
+    "payment": 75,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "UNGLAMOROUS",
+      "PROTECT_NEUTRAL"
+    ],
+    "expiresIn": 3,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_n11", "source": "NEUTRAL", "title": "The Weeping Barrow",
+    "id": "c_n11",
+    "source": "NEUTRAL",
+    "title": "The Weeping Barrow",
     "flavor": "Something old has sat up under the barrow at the pilgrim shrine, and it is calling the lesser dead to it. The shrine-keepers' plate is thin silver, but it is all offered.",
-    "difficulty": 5, "domain": "PURGE", "payment": 110, "troopRisk": "HIGH",
-    "standing": {}, "heatEffect": 0, "hookTags": ["ANTI_UNDEAD", "GLORY"], "expiresIn": 2, "acts": [2]
+    "difficulty": 5,
+    "domain": "PURGE",
+    "payment": 110,
+    "troopRisk": "HIGH",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "ANTI_UNDEAD",
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      2
+    ]
   },
   {
-    "id": "c_n12", "source": "NEUTRAL", "title": "Flight from Bleakgate",
+    "id": "c_n12",
+    "source": "NEUTRAL",
+    "title": "Flight from Bleakgate",
     "flavor": "The war is closing on {gate} and the living inside want out. The Guild has bought passage for three hundred souls. Someone must walk them through a battlefield.",
-    "difficulty": 6, "domain": "ESCORT", "payment": 130, "troopRisk": "HIGH",
-    "standing": {}, "heatEffect": 0, "hookTags": ["PROTECT_NEUTRAL"], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 6,
+    "domain": "ESCORT",
+    "payment": 130,
+    "troopRisk": "HIGH",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "PROTECT_NEUTRAL"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   },
   {
-    "id": "c_n13", "source": "NEUTRAL", "title": "Cleanse the Glass Bridge Dead",
+    "id": "c_n13",
+    "source": "NEUTRAL",
+    "title": "Cleanse the Glass Bridge Dead",
     "flavor": "Both powers have fed {bridge} for a season and the fallen there no longer stay fallen. The Guild pays for the crossing burned clean — no banners, no questions.",
-    "difficulty": 7, "domain": "PURGE", "payment": 150, "troopRisk": "HIGH",
-    "standing": {}, "heatEffect": 0, "hookTags": ["ANTI_UNDEAD", "GLORY"], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 7,
+    "domain": "PURGE",
+    "payment": 150,
+    "troopRisk": "HIGH",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "ANTI_UNDEAD",
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   },
   {
-    "id": "c_n14", "source": "NEUTRAL", "title": "Who Wins This War?",
+    "id": "c_n14",
+    "source": "NEUTRAL",
+    "title": "Who Wins This War?",
     "flavor": "Ossian, quietly: 'Every fool on the Fields has an opinion. I will pay for an answer. Ride the front, count what's true, and tell me which way the glass breaks.'",
-    "difficulty": 5, "domain": "INTEL", "payment": 90, "troopRisk": "LOW",
-    "standing": {}, "heatEffect": 0, "hookTags": [], "expiresIn": 3, "acts": [3]
+    "difficulty": 5,
+    "domain": "INTEL",
+    "payment": 90,
+    "troopRisk": "LOW",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [],
+    "expiresIn": 3,
+    "acts": [
+      3
+    ]
   },
   {
-    "id": "c_n15", "source": "NEUTRAL", "title": "The Last Stand at Marrowbrook",
+    "id": "c_n15",
+    "source": "NEUTRAL",
+    "title": "The Last Stand at Marrowbrook",
     "flavor": "The war's edge has finally found {village}. The elders no longer offer coin; they offer everything the village will ever have again. The boy on the lame horse is back in the yard.",
-    "difficulty": 7, "domain": "BATTLE", "payment": 160, "troopRisk": "HIGH",
-    "standing": {}, "heatEffect": 0, "hookTags": ["HELPS_VILLAGE", "PROTECT_NEUTRAL", "GLORY"], "expiresIn": 2, "acts": [3], "contested": true
+    "difficulty": 7,
+    "domain": "BATTLE",
+    "payment": 160,
+    "troopRisk": "HIGH",
+    "standing": {},
+    "heatEffect": 0,
+    "hookTags": [
+      "HELPS_VILLAGE",
+      "PROTECT_NEUTRAL",
+      "GLORY"
+    ],
+    "expiresIn": 2,
+    "acts": [
+      3
+    ],
+    "contested": true
   }
 ]

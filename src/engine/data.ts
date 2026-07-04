@@ -146,6 +146,7 @@ export interface Tuning {
     walkoutLoyaltyBelow: number;
     skimBigLoyaltyBelow: number;
     windowTurns: number;
+    oppCooldownTurns: number;
   };
   epilogue: { richGold: number; groundDownGold: number; alignedStanding: number; deedsPerLt: number };
 }

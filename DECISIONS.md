@@ -98,3 +98,28 @@ lead should skim them and veto any that feel wrong.
 - **D-027 — Sealed values.** Exact hidden integers live only in `data/cast_hidden.json` (which the
   lead avoids reading), the debug viewer, and the decision log. This file and DECISIONS.md quote
   bands only.
+
+## Tuning pass 1 (M3, harness-driven)
+
+- **D-028 — One departure roll per opportunity.** First implementation re-rolled the §9.4 check
+  every turn an opportunity stayed live, which multiplied fire rates ~3× (random-policy departure
+  union hit 55%). Now each opportunity buys exactly one roll — a held check consumes it ("the
+  moment passed") — and tell-gate-suppressed checks do NOT consume it, so legibility still comes
+  first. Non-poach opportunities also spawn at 50%/turn when eligible with a 6-turn per-lieutenant
+  cooldown. Result: 28% union under randomPolicy (in the 10–35% band), 1.4% under attentive.
+- **D-029 — Heat re-dial.** All-EXPOSED-all-the-time at first (74% of random runs). Contract
+  heatEffects halved (now 3–6), lookback 5→3 turns, decay 2→3/quiet turn. EXPOSED is now rare
+  under bots (~0–2%) but the 40/70 thresholds (warning, −15/−15 standing) fire regularly under
+  double-dealing play; a human running both sides hard can still reach it. **[LEAD-REVIEW]** if
+  you want Exposed hotter, raise contract heatEffects or drop `heat.decay` back to 2.
+- **D-030 — Kael simmers at the line.** His setpointBase is 40 — exactly the Disaffected
+  boundary — so an unrecognized Kael hovers at the edge and any fresh insult tips him into
+  eligibility, while praise/latitude/promotion (recognition) lift his setpoint well clear. This is
+  the mechanical reading of "setpoint tied to recognition" (§6.3), and it is what makes his flip
+  possible-but-evitable: random captains lose him in ~9% of runs, attentive ones essentially never.
+- **D-031 — Misc balance.** Hale's serve-a-power hooks −6→−5 and purge affirmation +5→+6 (he was
+  deserting in a third of random runs); recruit cost 2→3 gold/soldier (troop inflation trivialized
+  risk); act-2 war oscillation now sums to zero and `c_l06` deals from Act I so both powers have an
+  early BATTLE pusher (war outcomes were zombie-tilted ~57/26; now ~48/38 with the rest stalemates).
+- **D-032 — Golden snapshots re-baselined** after this pass (deliberate, per §0.2): fixtures and
+  outcome snapshots regenerated at commit "M3".

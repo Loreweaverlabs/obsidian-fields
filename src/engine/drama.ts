@@ -354,7 +354,10 @@ export function executeDeparture(state: GameState, lt: LtState, opp?: Opportunit
   });
 }
 
-/** Turn-end departure sweep (§9.4): band conditions AND a live opportunity. */
+/** Turn-end departure sweep (§9.4): band conditions AND a live opportunity.
+ * Each opportunity buys exactly ONE roll — a held check means the moment passed
+ * (the offer went stale, nerve failed, the window closed). Suppressed checks
+ * (tell gate) do NOT consume the opportunity: legibility first, then the roll. */
 export function departureSweep(state: GameState): void {
   for (const lt of state.lts) {
     if (lt.status !== 'active') continue;
@@ -363,7 +366,17 @@ export function departureSweep(state: GameState): void {
     if (!eligible) continue;
     const opp = liveOpportunityFor(state, lt.id);
     if (!opp) continue;
+    const surfaced = surfacedTellCount(state, lt);
+    const consumed = surfaced >= TUNING.tells.minBeforeDeparture;
     departureCheck(state, lt, { trigger: `opportunity:${opp.kind}` });
+    if (consumed && lt.status === 'active') {
+      state.opportunities = state.opportunities.filter((o) => o.id !== opp.id);
+      log(state, 'OPPORTUNITY', {
+        actor: lt.id,
+        inputs: { opportunity: opp.id, kind: opp.kind },
+        computation: 'the moment passed — opportunity consumed by a held departure check',
+      });
+    }
   }
 }
 

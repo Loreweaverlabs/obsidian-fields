@@ -55,7 +55,9 @@ export const randomPolicy: Policy = (state, rng) => {
 
   const lts = activeLts(state);
   for (const lt of lts) {
-    if (!chance(rng, 75)) continue;
+    // Nobody idles 4+ turns straight (no dead cast members, §13.2)
+    const recent = state.stats.assignmentsByLt[lt.id].some((t) => state.turn - t < 4);
+    if (recent && !chance(rng, 75)) continue;
     // Occasionally use a people verb instead of a mission
     if (peopleUsed < TUNING.peopleVerbs.capPerTurn && chance(rng, 18)) {
       const opts: Order[] = [];
@@ -192,13 +194,18 @@ export const attentivePolicy: Policy = (state, rng) => {
     peopleUsed++;
   }
 
-  // 3. Contracts: avoid hook-violating work; keep heat down; prefer solid pay
-  const heatWary = state.heat >= 30;
+  // 3. Contracts: pick a side by mid-game and stick to it; avoid hook-violating work
+  const side = dominantSide(state);
+  const committed = state.turn >= 8 && side !== 'NEUTRAL';
   const offerDefs = state.offers
     .filter((o) => o.expiresTurn >= state.turn)
     .map((o) => ({ o, def: contractById.get(o.contractId)! }))
     .filter(({ def }) => !def.hookTags.includes('DESECRATION') && !def.hookTags.includes('HARMS_VILLAGE'))
-    .filter(({ def }) => !heatWary || def.source === 'NEUTRAL' || dominantSide(state) === def.source)
+    .filter(({ def }) => {
+      if (def.source === 'NEUTRAL') return true;
+      if (committed) return def.source === side; // one banner + neutrals: heat stays cold
+      return state.heat < 20; // uncommitted early game: only dabble while nobody is watching
+    })
     .sort((a, b) => b.o.paymentAdjusted - a.o.paymentAdjusted);
   for (const { o } of offerDefs.slice(0, 2)) accepts.push(o.contractId);
 

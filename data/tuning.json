@@ -1,7 +1,13 @@
 {
-  "start": { "gold": 220, "troops": 100 },
+  "start": {
+    "gold": 220,
+    "troops": 100
+  },
   "turns": 30,
-  "acts": { "act2Start": 11, "act3Start": 23 },
+  "acts": {
+    "act2Start": 11,
+    "act3Start": 23
+  },
   "wagesNote": "per-lieutenant wages live in cast_public.json",
   "roll": {
     "base": 50,
@@ -9,25 +15,124 @@
     "clampMin": 10,
     "clampMax": 95,
     "specialtyBonus": 2,
-    "tiersExplicit": { "crit": 30, "success": 0, "partial": -15, "failure": -30 },
+    "tiersExplicit": {
+      "crit": 30,
+      "success": 0,
+      "partial": -15,
+      "failure": -30
+    },
     "intentTailWiden": 8,
     "latitudeCompetencePct": 25,
     "temperamentFit": {
-      "BATTLE": { "HONORABLE": 1, "CAUTIOUS": -1, "ZEALOUS": 1 },
-      "RAID": { "AMBITIOUS": 1, "CAUTIOUS": -1, "METICULOUS": -1 },
-      "ESCORT": { "PROTECTIVE": 1, "GREEDY": -1 },
-      "INTEL": { "METICULOUS": 1, "CAUTIOUS": 1, "PRIDEFUL": -1, "ZEALOUS": -1 },
-      "LOGISTICS": { "METICULOUS": 1, "AMBITIOUS": -1, "PRIDEFUL": -1 },
-      "PURGE": { "ZEALOUS": 1, "CAUTIOUS": -1 }
+      "BATTLE": {
+        "HONORABLE": 1,
+        "CAUTIOUS": -1,
+        "ZEALOUS": 1
+      },
+      "RAID": {
+        "AMBITIOUS": 1,
+        "CAUTIOUS": -1,
+        "METICULOUS": -1
+      },
+      "ESCORT": {
+        "PROTECTIVE": 1,
+        "GREEDY": -1
+      },
+      "INTEL": {
+        "METICULOUS": 1,
+        "CAUTIOUS": 1,
+        "PRIDEFUL": -1,
+        "ZEALOUS": -1
+      },
+      "LOGISTICS": {
+        "METICULOUS": 1,
+        "AMBITIOUS": -1,
+        "PRIDEFUL": -1
+      },
+      "PURGE": {
+        "ZEALOUS": 1,
+        "CAUTIOUS": -1
+      }
     }
   },
-  "payout": { "critPct": 125, "successPct": 100, "partialPct": 50, "failurePct": 0, "disasterPct": 0 },
-  "troopLoss": {
-    "LOW":  { "CRIT": [0, 0], "SUCCESS": [0, 2], "PARTIAL": [1, 3], "FAILURE": [2, 5], "DISASTER": [4, 8] },
-    "MED":  { "CRIT": [0, 1], "SUCCESS": [1, 4], "PARTIAL": [2, 6], "FAILURE": [4, 9], "DISASTER": [7, 14] },
-    "HIGH": { "CRIT": [0, 2], "SUCCESS": [2, 6], "PARTIAL": [4, 9], "FAILURE": [7, 14], "DISASTER": [12, 22] }
+  "payout": {
+    "critPct": 125,
+    "successPct": 100,
+    "partialPct": 50,
+    "failurePct": 0,
+    "disasterPct": 0
   },
-  "ltDeath": { "chanceOnDisasterHighRisk": 10 },
+  "troopLoss": {
+    "LOW": {
+      "CRIT": [
+        0,
+        0
+      ],
+      "SUCCESS": [
+        0,
+        2
+      ],
+      "PARTIAL": [
+        1,
+        3
+      ],
+      "FAILURE": [
+        2,
+        5
+      ],
+      "DISASTER": [
+        4,
+        8
+      ]
+    },
+    "MED": {
+      "CRIT": [
+        0,
+        1
+      ],
+      "SUCCESS": [
+        1,
+        4
+      ],
+      "PARTIAL": [
+        2,
+        6
+      ],
+      "FAILURE": [
+        4,
+        9
+      ],
+      "DISASTER": [
+        7,
+        14
+      ]
+    },
+    "HIGH": {
+      "CRIT": [
+        0,
+        2
+      ],
+      "SUCCESS": [
+        2,
+        6
+      ],
+      "PARTIAL": [
+        4,
+        9
+      ],
+      "FAILURE": [
+        7,
+        14
+      ],
+      "DISASTER": [
+        12,
+        22
+      ]
+    }
+  },
+  "ltDeath": {
+    "chanceOnDisasterHighRisk": 10
+  },
   "willingness": {
     "slowWalkChance": 40,
     "slowWalkPenalty": 2,
@@ -35,7 +140,12 @@
     "sandbagPenalty": 4,
     "refusalHookDeltaAtMost": -5
   },
-  "bands": { "devoted": 80, "solid": 60, "wavering": 40, "disaffected": 25 },
+  "bands": {
+    "devoted": 80,
+    "solid": 60,
+    "wavering": 40,
+    "disaffected": 25
+  },
   "drift": {
     "passiveStep": 1,
     "fairPay": 1,
@@ -49,14 +159,29 @@
     "bigLossPenalty": -2,
     "bigLossThreshold": 10
   },
-  "micromanage": { "ordersPerPenalty": 2, "penalty": 1, "appliesTo": ["PRIDEFUL", "AMBITIOUS"] },
+  "micromanage": {
+    "ordersPerPenalty": 2,
+    "penalty": 1,
+    "appliesTo": [
+      "PRIDEFUL",
+      "AMBITIOUS"
+    ]
+  },
   "peopleVerbs": {
     "capPerTurn": 2,
     "praiseBase": 3,
     "praiseHungryMult": 2,
     "praiseStoicMult": 0.5,
-    "praiseHungry": ["AMBITIOUS", "PRIDEFUL", "GREEDY"],
-    "praiseStoic": ["HONORABLE", "METICULOUS", "CAUTIOUS"],
+    "praiseHungry": [
+      "AMBITIOUS",
+      "PRIDEFUL",
+      "GREEDY"
+    ],
+    "praiseStoic": [
+      "HONORABLE",
+      "METICULOUS",
+      "CAUTIOUS"
+    ],
     "praiseDiminishWindow": 5,
     "rewardGoldPerPoint": 25,
     "rewardMaxPoints": 6,
@@ -75,10 +200,18 @@
     "confrontRuptureBonus": 10,
     "evidenceRecencyTurns": 6
   },
-  "tells": { "minBeforeDeparture": 2, "maxDelayTurns": 2 },
+  "tells": {
+    "minBeforeDeparture": 2,
+    "maxDelayTurns": 2
+  },
   "departure": {
     "base": 20,
-    "temperament": { "AMBITIOUS": 15, "GREEDY": 10, "HONORABLE": -20, "ZEALOUS": 0 },
+    "temperament": {
+      "AMBITIOUS": 15,
+      "GREEDY": 10,
+      "HONORABLE": -20,
+      "ZEALOUS": 0
+    },
     "grievanceRecencyTurns": 3,
     "grievanceRecencyBonus": 10,
     "powerTroopsRef": 200,
@@ -95,17 +228,42 @@
     "ruptureOfferQuality": 5
   },
   "heat": {
-    "thresholds": [40, 70, 90],
-    "discoveryChances": [25, 50, 80],
-    "decay": 2,
-    "lookbackTurns": 5,
+    "thresholds": [
+      40,
+      70,
+      90
+    ],
+    "discoveryChances": [
+      25,
+      50,
+      80
+    ],
+    "decay": 3,
+    "lookbackTurns": 3,
     "penaltyStandingBoth": -15,
     "exposedStandingCeiling": -60
   },
   "war": {
-    "noiseWeights": { "-1": 25, "0": 50, "1": 25 },
+    "noiseWeights": {
+      "-1": 25,
+      "0": 50,
+      "1": 25
+    },
     "act1Drift": 0,
-    "act2Oscillation": [0, 1, 0, -1, 0, 1, -1, 0, 1, 0, -1, 1],
+    "act2Oscillation": [
+      0,
+      1,
+      0,
+      -1,
+      0,
+      1,
+      -1,
+      0,
+      1,
+      0,
+      -1,
+      0
+    ],
     "act3Accel": 1,
     "majorDifficulty": 6,
     "clamp": 10,
@@ -119,24 +277,83 @@
     "lifelineWagesMultiple": 2,
     "bankedForfeitStandingPct": 50
   },
-  "events": { "campEventChance": 65, "maxEventsPerTurn": 2 },
-  "collapse": { "troopsFloor": 10, "goldDebtTurns": 2, "minActiveLts": 2 },
-  "recruit": { "goldPerTroop": 2, "difficulty": 4, "tierMult": { "CRIT": 1.25, "SUCCESS": 1.0, "PARTIAL": 0.7, "FAILURE": 0.4, "DISASTER": 0.2 } },
-  "scout": { "difficulty": 4, "disasterTroopLoss": [2, 5] },
-  "negotiate": { "difficulty": 5, "standingCrit": 5, "standingSuccess": 3, "standingFail": -1, "betterTermsPayPct": 15 },
-  "rest": { "loyalty": 2 },
-  "kaelRecognition": { "praise": 3, "promote": 8, "latitude": 1, "decayPerTurn": 1, "max": 20 },
-  "vexSetpoint": { "cap": 15, "divisor": 15, "rewardWindowTurns": 8 },
-  "vexSkim": { "pctMin": 15, "pctMax": 30, "inflatePctMin": 15, "inflatePctMax": 40, "auditChanceWhenRookeInCamp": 45 },
-  "unglamorous": { "domains": ["LOGISTICS", "ESCORT"], "maxDifficulty": 4 },
+  "events": {
+    "campEventChance": 65,
+    "maxEventsPerTurn": 2
+  },
+  "collapse": {
+    "troopsFloor": 10,
+    "goldDebtTurns": 2,
+    "minActiveLts": 2
+  },
+  "recruit": {
+    "goldPerTroop": 3,
+    "difficulty": 4,
+    "tierMult": {
+      "CRIT": 1.25,
+      "SUCCESS": 1.0,
+      "PARTIAL": 0.7,
+      "FAILURE": 0.4,
+      "DISASTER": 0.2
+    }
+  },
+  "scout": {
+    "difficulty": 4,
+    "disasterTroopLoss": [
+      2,
+      5
+    ]
+  },
+  "negotiate": {
+    "difficulty": 5,
+    "standingCrit": 5,
+    "standingSuccess": 3,
+    "standingFail": -1,
+    "betterTermsPayPct": 15
+  },
+  "rest": {
+    "loyalty": 2
+  },
+  "kaelRecognition": {
+    "praise": 3,
+    "promote": 8,
+    "latitude": 1,
+    "decayPerTurn": 1,
+    "max": 20
+  },
+  "vexSetpoint": {
+    "cap": 15,
+    "divisor": 15,
+    "rewardWindowTurns": 8
+  },
+  "vexSkim": {
+    "pctMin": 15,
+    "pctMax": 30,
+    "inflatePctMin": 15,
+    "inflatePctMax": 40,
+    "auditChanceWhenRookeInCamp": 45
+  },
+  "unglamorous": {
+    "domains": [
+      "LOGISTICS",
+      "ESCORT"
+    ],
+    "maxDifficulty": 4
+  },
   "sustainedStandingCheckTurns": 3,
   "opportunities": {
-    "poachCooldownTurns": 4,
+    "poachCooldownTurns": 3,
     "poachLoyaltyBelow": 55,
     "poachMinTurn": 11,
     "walkoutLoyaltyBelow": 30,
-    "skimBigLoyaltyBelow": 45,
-    "windowTurns": 3
+    "skimBigLoyaltyBelow": 38,
+    "windowTurns": 3,
+    "oppCooldownTurns": 6
   },
-  "epilogue": { "richGold": 500, "groundDownGold": 120, "alignedStanding": 30, "deedsPerLt": 3 }
+  "epilogue": {
+    "richGold": 500,
+    "groundDownGold": 120,
+    "alignedStanding": 30,
+    "deedsPerLt": 3
+  }
 }
