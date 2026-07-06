@@ -73,12 +73,15 @@ async function callApi(body: Record<string, unknown>, apiKey: string): Promise<s
   return text;
 }
 
+// NOTE: no sampling params (temperature 400s on Sonnet 5 / Opus 4.7+ / Fable 5) and no
+// thinking config (shapes differ per model family) — the body must stay valid across every
+// model an operator might type in. Determinism-of-facts comes from the constraint prompt.
+// max_tokens is total output incl. any adaptive thinking newer models do, hence the headroom.
 async function voiceCard(card: ReportCard, apiKey: string, model: string): Promise<string> {
   return callApi(
     {
       model,
-      max_tokens: 350,
-      temperature: 0.2,
+      max_tokens: 1024,
       system: systemPrompt(),
       messages: [{ role: 'user', content: recordFor(card) }],
     },
@@ -86,18 +89,21 @@ async function voiceCard(card: ReportCard, apiKey: string, model: string): Promi
   );
 }
 
-/** One tiny request to prove key + model + network work. Returns a human-readable verdict. */
+/** Probe with the EXACT production request shape (same builder, synthetic card), so a
+ * passing test guarantees real voicing works — key, model, params, and network together. */
 export async function testConnection(apiKey: string, model: string): Promise<{ ok: boolean; detail: string }> {
   if (!apiKey.trim()) return { ok: false, detail: 'no API key entered' };
+  const probe: ReportCard = {
+    id: 'probe',
+    turn: 0,
+    kind: 'STEWARD',
+    templateKey: 'camp_duty',
+    sourceTag: 'the duty roster',
+    facts: { duties: [{ ltId: 'serah', name: 'Serah the Anvil', verb: 'GUARD_CAMP' }] },
+    citable: false,
+  };
   try {
-    await callApi(
-      {
-        model,
-        max_tokens: 16,
-        messages: [{ role: 'user', content: 'Reply with the single word: ready' }],
-      },
-      apiKey.trim(),
-    );
+    await voiceCard(probe, apiKey.trim(), model);
     return { ok: true, detail: `connected — key and model "${model}" are working` };
   } catch (err) {
     return { ok: false, detail: err instanceof Error ? err.message : String(err) };
@@ -277,7 +283,7 @@ export function LlmStatusOverlay(props: {
         {diagnostics.failedCount > 0 && (
           <p className="dim">
             {diagnostics.failedCount} card{diagnostics.failedCount > 1 ? 's' : ''} fell back to templated
-            text (marked in the export). After fixing the key or connection, retry them:
+            text (marked in the export). Once Test connection passes, retry them:
           </p>
         )}
         <div className="row" style={{ marginBottom: 12 }}>

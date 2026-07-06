@@ -164,3 +164,12 @@ lead should skim them and veto any that feel wrong.
   one-click "Test connection" probe, and a "Re-voice failed cards" retry that clears the
   fallback marks after the key/network is fixed. Console.error breadcrumbs per failure.
   Player-facing behavior is unchanged: silent template fallback, cards marked in the export.
+- **D-038 — Voiced-mode request body is model-agnostic; probe = production shape.** The lead's
+  first working key still failed voicing with `400: temperature is deprecated for this model`
+  after switching the model to claude-sonnet-5 — newer models (Sonnet 5, Opus 4.7+, Fable 5)
+  reject sampling parameters. The §11.3 "low temperature" intent is now carried by the ironclad
+  constraint prompt instead of a sampling param; the body sends no temperature and no thinking
+  config (valid across Haiku 4.5 through Fable 5), with max_tokens 1024 so models that think
+  adaptively don't truncate the prose. Test connection now routes through the exact production
+  request builder (synthetic card + full system prompt), so a passing probe guarantees real
+  voicing works — the old 16-token probe could pass while voicing failed.
