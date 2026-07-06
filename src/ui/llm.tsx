@@ -1,6 +1,8 @@
 // LLMRenderer (§11.3): re-voices cards from the SAME structured records, behind the
 // Renderer toggle chosen at session start. Silent fallback to TemplateRenderer on any
-// API failure; affected cards are marked in the run export (llmFallbackCards).
+// API failure (testers never see errors); affected cards are marked in the run export.
+// The OPERATOR, however, gets full diagnostics: captured error details, a connection
+// test, and a retry action — reachable from the "voiced" chip in the top bar.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CAST_PUBLIC, STRINGS } from '../engine/data';
 import type { ReportCard } from '../engine/types';
@@ -35,28 +37,79 @@ function recordFor(card: ReportCard): string {
   );
 }
 
+/** POST to the Messages API. Throws an Error whose message names the exact failure. */
+async function callApi(body: Record<string, unknown>, apiKey: string): Promise<string> {
+  let res: Response;
+  try {
+    res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify(body),
+    });
+  } catch (err) {
+    // fetch itself rejecting = network layer: offline, DNS, adblocker/extension, or CORS block
+    throw new Error(
+      `network error before reaching the API (${err instanceof Error ? err.message : String(err)}) — check connectivity, VPN/adblock extensions, or a firewall blocking api.anthropic.com`,
+    );
+  }
+  if (!res.ok) {
+    let detail = `HTTP ${res.status}`;
+    try {
+      const parsed = (await res.json()) as { error?: { type?: string; message?: string } };
+      if (parsed.error) detail = `${res.status} ${parsed.error.type ?? ''}: ${parsed.error.message ?? ''}`;
+    } catch {
+      /* body not JSON; keep status */
+    }
+    throw new Error(detail);
+  }
+  const data = (await res.json()) as { content: { type: string; text?: string }[] };
+  const text = data.content.find((b) => b.type === 'text')?.text?.trim();
+  if (!text) throw new Error('the API returned an empty response');
+  return text;
+}
+
 async function voiceCard(card: ReportCard, apiKey: string, model: string): Promise<string> {
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
-    },
-    body: JSON.stringify({
+  return callApi(
+    {
       model,
       max_tokens: 350,
       temperature: 0.2,
       system: systemPrompt(),
       messages: [{ role: 'user', content: recordFor(card) }],
-    }),
-  });
-  if (!res.ok) throw new Error(`API ${res.status}`);
-  const data = (await res.json()) as { content: { type: string; text?: string }[] };
-  const text = data.content.find((b) => b.type === 'text')?.text?.trim();
-  if (!text) throw new Error('empty response');
-  return text;
+    },
+    apiKey,
+  );
+}
+
+/** One tiny request to prove key + model + network work. Returns a human-readable verdict. */
+export async function testConnection(apiKey: string, model: string): Promise<{ ok: boolean; detail: string }> {
+  if (!apiKey.trim()) return { ok: false, detail: 'no API key entered' };
+  try {
+    await callApi(
+      {
+        model,
+        max_tokens: 16,
+        messages: [{ role: 'user', content: 'Reply with the single word: ready' }],
+      },
+      apiKey.trim(),
+    );
+    return { ok: true, detail: `connected — key and model "${model}" are working` };
+  } catch (err) {
+    return { ok: false, detail: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+export interface LlmDiagnostics {
+  texts: Map<string, string>;
+  llmStatus: string;
+  lastError: string | null;
+  failedCount: number;
+  retryFailed: () => void;
 }
 
 /** Merge template texts with LLM voicings; queue new cards for voicing in llm mode. */
@@ -64,19 +117,24 @@ export function useLlmTexts(
   session: Session | null,
   templateTexts: Map<string, string>,
   onUpdate: () => void,
-): { texts: Map<string, string>; llmStatus: string } {
+): LlmDiagnostics {
   const cache = useRef(new Map<string, string>());
   const inFlight = useRef(new Set<string>());
   const [pendingCount, setPendingCount] = useState(0);
-  const [failedRecently, setFailedRecently] = useState(false);
+  const [lastError, setLastError] = useState<string | null>(null);
+  const [, setRetryTick] = useState(0);
 
   const mode = session?.rendererMode ?? 'template';
   const cardCount = session?.state.cards.length ?? 0;
+  const failedCount = session?.llmFallbackCards.length ?? 0;
 
   useEffect(() => {
     if (!session || mode !== 'llm') return;
     const { apiKey, model } = loadSettings();
-    if (!apiKey) return; // no key: template text shows; operator sets key in setup
+    if (!apiKey.trim()) {
+      setLastError('no API key entered — open the voiced settings (click the "voiced" chip) and paste one');
+      return;
+    }
     const todo = session.state.cards.filter(
       (c) =>
         !cache.current.has(c.id) &&
@@ -92,16 +150,19 @@ export function useLlmTexts(
         const card = queue.pop()!;
         inFlight.current.add(card.id);
         try {
-          const text = await voiceCard(card, apiKey, model);
+          const text = await voiceCard(card, apiKey.trim(), model);
           cache.current.set(card.id, text);
-          setFailedRecently(false);
-        } catch {
-          // silent fallback (§11.3): template text stands in; card marked in export
+          setLastError(null);
+        } catch (err) {
+          const detail = err instanceof Error ? err.message : String(err);
+          // silent for the player (§11.3): template text stands in, card marked in export.
+          // loud for the operator: captured here + console breadcrumb.
+          console.error(`[obsidian-fields] LLM voicing failed for ${card.id}: ${detail}`);
+          setLastError(detail);
           if (!session.llmFallbackCards.includes(card.id)) {
             session.llmFallbackCards.push(card.id);
             persist(session);
           }
-          setFailedRecently(true);
         } finally {
           inFlight.current.delete(card.id);
           setPendingCount((n) => Math.max(0, n - 1));
@@ -114,7 +175,7 @@ export function useLlmTexts(
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, cardCount, session]);
+  }, [mode, cardCount, session, failedCount === 0]);
 
   const texts = useMemo(() => {
     if (mode !== 'llm') return templateTexts;
@@ -123,18 +184,49 @@ export function useLlmTexts(
     return merged;
   }, [templateTexts, mode, pendingCount]);
 
+  const retryFailed = (): void => {
+    if (!session) return;
+    session.llmFallbackCards = [];
+    persist(session);
+    setLastError(null);
+    setRetryTick((t) => t + 1); // effect re-runs via failedCount dep
+    onUpdate();
+  };
+
   const llmStatus =
-    mode !== 'llm' ? '' : pendingCount > 0 ? `voicing ${pendingCount}…` : failedRecently ? 'fallback' : '';
-  return { texts, llmStatus };
+    mode !== 'llm'
+      ? ''
+      : pendingCount > 0
+        ? `voicing ${pendingCount}…`
+        : lastError
+          ? 'failing'
+          : failedCount > 0
+            ? 'fallback'
+            : '';
+  return { texts, llmStatus, lastError, failedCount, retryFailed };
 }
 
-export function LlmSettingsBox(): JSX.Element {
+export function LlmSettingsBox(props: { onSettingsChange?: () => void }): JSX.Element {
   const [settings, setSettings] = useState(loadSettings());
+  const [testResult, setTestResult] = useState<{ ok: boolean; detail: string } | null>(null);
+  const [testing, setTesting] = useState(false);
+
   function update(patch: Partial<typeof settings>): void {
     const next = { ...settings, ...patch };
     setSettings(next);
     saveSettings(next);
+    setTestResult(null);
+    props.onSettingsChange?.();
   }
+
+  async function runTest(): Promise<void> {
+    setTesting(true);
+    setTestResult(null);
+    const result = await testConnection(settings.apiKey, settings.model);
+    setTestResult(result);
+    setTesting(false);
+  }
+
   return (
     <div className="llm-settings">
       <label>
@@ -151,10 +243,55 @@ export function LlmSettingsBox(): JSX.Element {
         Model
         <input value={settings.model} onChange={(e) => update({ model: e.target.value })} spellCheck={false} />
       </label>
+      <div className="row">
+        <button onClick={() => void runTest()} disabled={testing}>
+          {testing ? 'Testing…' : 'Test connection'}
+        </button>
+        {testResult && (
+          <span className={testResult.ok ? 'llm-test ok' : 'llm-test bad'}>{testResult.detail}</span>
+        )}
+      </div>
       <p className="dim">
         Cards render from the same structured records in both modes; on any API failure the
         templated text stands in silently and the card is marked in the export.
       </p>
+    </div>
+  );
+}
+
+/** Mid-session operator panel: settings + live error + retry, behind the "voiced" chip. */
+export function LlmStatusOverlay(props: {
+  diagnostics: LlmDiagnostics;
+  onClose: () => void;
+}): JSX.Element {
+  const { diagnostics } = props;
+  return (
+    <div className="overlay" onClick={props.onClose}>
+      <div className="overlay-box" onClick={(e) => e.stopPropagation()}>
+        <h2>Voiced mode</h2>
+        {diagnostics.lastError ? (
+          <div className="toast">Last error: {diagnostics.lastError}</div>
+        ) : (
+          <p className="dim">No errors recorded{diagnostics.failedCount > 0 ? ' since the last failure batch' : ''}.</p>
+        )}
+        {diagnostics.failedCount > 0 && (
+          <p className="dim">
+            {diagnostics.failedCount} card{diagnostics.failedCount > 1 ? 's' : ''} fell back to templated
+            text (marked in the export). After fixing the key or connection, retry them:
+          </p>
+        )}
+        <div className="row" style={{ marginBottom: 12 }}>
+          {diagnostics.failedCount > 0 && (
+            <button className="primary" onClick={diagnostics.retryFailed}>
+              Re-voice {diagnostics.failedCount} failed card{diagnostics.failedCount > 1 ? 's' : ''}
+            </button>
+          )}
+        </div>
+        <LlmSettingsBox />
+        <div className="row">
+          <button onClick={props.onClose}>Close</button>
+        </div>
+      </div>
     </div>
   );
 }

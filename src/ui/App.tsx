@@ -19,7 +19,7 @@ import {
 } from './store';
 import { CouncilPanel, ChroniclePanel, EpiloguePanel, LedgerPanel, ReportsPanel, RosterPanel } from './panels';
 import { DebugPanel } from './DebugPanel';
-import { LlmSettingsBox, useLlmTexts } from './llm';
+import { LlmSettingsBox, LlmStatusOverlay, useLlmTexts } from './llm';
 
 type Tab = 'reports' | 'council' | 'roster' | 'chronicle' | 'ledger' | 'debug';
 
@@ -34,12 +34,14 @@ export function App(): JSX.Element {
   const [showIntro, setShowIntro] = useState(false);
   const [showExport, setShowExport] = useState(false);
   const [showImport, setShowImport] = useState(false);
+  const [showLlm, setShowLlm] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const errorTimer = useRef<number | undefined>(undefined);
 
   const state = session?.state ?? null;
   const templateTexts = useMemo(() => (state ? buildCardTexts(state) : new Map<string, string>()), [state, state?.turn, state?.over]);
-  const { texts: cardTexts, llmStatus } = useLlmTexts(session, templateTexts, bump);
+  const llm = useLlmTexts(session, templateTexts, bump);
+  const { texts: cardTexts, llmStatus } = llm;
 
   useEffect(() => {
     if (error) {
@@ -119,9 +121,19 @@ export function App(): JSX.Element {
         <div className="vitals">
           <span title="treasury">{state.gold}g</span>
           <span title="soldiers">{state.troops} swords</span>
-          <span title="renderer mode" className="dim">
-            {session.rendererMode === 'llm' ? `voiced${llmStatus ? ` (${llmStatus})` : ''}` : 'templated'}
-          </span>
+          {session.rendererMode === 'llm' ? (
+            <button
+              className={`chip ${llm.lastError ? 'chip-bad' : ''}`}
+              title="Voiced-mode settings & diagnostics"
+              onClick={() => setShowLlm(true)}
+            >
+              voiced{llmStatus ? ` (${llmStatus})` : ''}
+            </button>
+          ) : (
+            <span title="renderer mode" className="dim">
+              templated
+            </span>
+          )}
         </div>
       </header>
 
@@ -184,6 +196,7 @@ export function App(): JSX.Element {
       {showImport && (
         <ImportOverlay onSubmit={doImport} onClose={() => setShowImport(false)} />
       )}
+      {showLlm && <LlmStatusOverlay diagnostics={llm} onClose={() => setShowLlm(false)} />}
     </div>
   );
 }
